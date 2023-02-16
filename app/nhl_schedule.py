@@ -1,0 +1,1 @@
+url = 'https://statsapi.web.nhl.com/api/v1/schedule?startDate=2023-02-14&endDate=2023-02-19&hydrate=team,linescore,broadcasts(all),tickets,game(content(media(epg)),seriesSummary),radioBroadcasts,metadata,seriesSummary(series)&site=en_nhl&teamId=&gameType=&timecode='
