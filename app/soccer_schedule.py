@@ -1,1 +1,1 @@
-url = 'https://www.fotmob.com/api/tvlistings?countryCode=US'
+url = "https://www.fotmob.com/api/tvlistings?countryCode=US"
