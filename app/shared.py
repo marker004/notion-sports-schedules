@@ -2,6 +2,7 @@ from shared_items.interfaces import Prop as NotionProp
 
 SCHEDULE_DATABASE_ID = "7890f1c1844444228b0016ad68c07d22"
 
+
 class NotionSportsScheduleItem:
     def __init__(
         self, matchup: str, date: str, network: str, league: str, sport: str

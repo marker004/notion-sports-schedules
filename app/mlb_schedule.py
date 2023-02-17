@@ -18,7 +18,7 @@ params = (
     ("language", "en"),
     ("leagueId", 104),
     ("contextTeamId", ""),
-    ("hydrate", "broadcasts")
+    ("hydrate", "broadcasts"),
 )
 
 assembled_url = base_url + parse.urlencode(params)

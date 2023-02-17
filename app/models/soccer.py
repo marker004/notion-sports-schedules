@@ -2,11 +2,13 @@ from datetime import datetime
 from typing import Optional, Union
 from pydantic import BaseModel, validator
 
+
 def normalize_dates(raw_date_string: str) -> datetime:
     unix_timestamp = (
         int(raw_date_string.removeprefix("/Date(").removesuffix(")/")) / 1000
     )
     return datetime.utcfromtimestamp(unix_timestamp)
+
 
 class Station(BaseModel):
     callSign: Optional[str]
@@ -23,6 +25,7 @@ class Team(BaseModel):
     isHome: bool
     teamBrandId: str
 
+
 class Program(BaseModel):
     rootId: str
     teams: list[Team]
@@ -32,10 +35,11 @@ class Affiliate(BaseModel):
     langCode: str
     title: str
     subtitle: str
-    link: str # convert to URL if I care
+    link: str  # convert to URL if I care
     callToAction: str
-    imageUrl: str # convert to URL if I care
+    imageUrl: str  # convert to URL if I care
     disclaimer: str
+
 
 class GameBroadcast(BaseModel):
     startTime: datetime
@@ -52,15 +56,17 @@ class GameBroadcast(BaseModel):
     affiliates: list[Affiliate]
     tags: list[str]
 
-    @validator('startTime', 'endTime', pre=True)
+    @validator("startTime", "endTime", pre=True)
     def normalize_dates(cls, value):
         if isinstance(value, str):
             return normalize_dates(value)
         return value
 
+
 class League(BaseModel):
     id: int
     name: str
+
 
 class Matches(BaseModel):
     leagues: list[League]

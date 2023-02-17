@@ -1,6 +1,7 @@
 from shared_items.utils import pp
 from shared_items.interfaces import Notion
 from requests import Response, get
+from constants import SOCCER_BROADCAST_BADLIST
 
 from models.soccer import GameBroadcast, Matches
 from shared import SCHEDULE_DATABASE_ID, NotionSportsScheduleItem
@@ -26,67 +27,12 @@ game_broadcasts: list[GameBroadcast] = [
 
 matches = Matches.parse_obj(matches_json)
 
-BROADCAST_BADLIST = [
-    "Antenna 20 Years",
-    # 'CBS',
-    # 'CBS Sports Network',
-    # 'CBS Sports Network HD',
-    "CL beIN Sports English SD in Spanish",
-    "ESPN Deportes",
-    "ESPN Deportes HD",
-    # 'ESPN+ USA',
-    "ESPN3",
-    # 'FS2',
-    "Fox Deportes",
-    "Fox Deportes HD",
-    "Fox Soccer Plus",
-    "Fox Soccer Plus HD",
-    "Fox Sports 2 HD",
-    "GOL TV",
-    # 'NBC',
-    "NBC Sports California SAT",
-    "NBC Sports California SAT HD",
-    # 'NBC Sports Chicago',
-    # 'NBC Sports Chicago HD',
-    "NBCSports.com",
-    "Nuestra Tele Internacional",
-    # 'Paramount+',
-    # 'Peacock',
-    "RREC",
-    "SporTV",
-    # 'TNT',
-    # 'TNT HD',
-    # 'TNT HD (Pacific)',
-    "TUDN",
-    "TV5MONDE Etats Unis",
-    "Telemundo Satellite Feed",
-    "Telemundo Satellite Feed Pacific",
-    # 'Telemundo Television Network',
-    "Twitch",
-    "TyC Sports Internacional USA",
-    # 'UNIVERSO',
-    # 'UNIVERSO HD',
-    # 'USA Network',
-    # 'USA Network HD',
-    "UniMas",
-    "UniMas Satellite Feed (Pacific)",
-    "Univision NOW",
-    "Univision Network",
-    "VIX+",
-    "ViX",
-    "Yes Network",
-    "Yes Network HD",
-    "beIN Sports",
-    "beIN Sports En Español",
-    "beIN Sports En Español HD",
-    "beIN Sports HD",
-    "iFollow",
-]
 
 broadcasts = [
     broadcast
     for broadcast in game_broadcasts
-    if broadcast.station.name not in BROADCAST_BADLIST and "live" in broadcast.tags
+    if broadcast.station.name not in SOCCER_BROADCAST_BADLIST
+    and "live" in broadcast.tags
 ]
 
 # todo: uniq this list of broadcasts
@@ -119,13 +65,16 @@ def format_sport() -> str:
 
 broadcasts.sort(key=lambda b: b.startTime)
 
-schedule_items = [NotionSportsScheduleItem(
+schedule_items = [
+    NotionSportsScheduleItem(
         matchup=assemble_matchup(broadcast),
         date=format_date(broadcast),
         network=format_network(broadcast),
         league=fetch_league(broadcast, matches),
         sport=format_sport(),
-    ) for broadcast in broadcasts]
+    )
+    for broadcast in broadcasts
+]
 
 for schedule_item in schedule_items:
     props = notion.assemble_props(schedule_item.format_for_notion_interface())
