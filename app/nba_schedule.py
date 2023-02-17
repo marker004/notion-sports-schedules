@@ -55,7 +55,6 @@ def recursive_fetch_and_delete(next_cursor=None):
     database_rows = database_response["results"]
 
     for row in database_rows:
-        print(f"deleting {row['id']}...")
         notion.client.blocks.delete(block_id=row["id"])
 
     if database_response["has_more"]:
@@ -68,8 +67,6 @@ def clear_db_totally():
 print('deleting existing games starting after yesterday...')
 clear_db_totally()
 print('Done')
-
-exit()
 
 
 watchable_games: list[Game] = [
@@ -87,8 +84,6 @@ all_props = [
     notion.assemble_props(schedule_item.format_for_notion_interface())
     for schedule_item in assembed_items
 ]
-
-# pp(all_props)
 
 print("inserting games starting after yesterday...")
 for props in all_props:
