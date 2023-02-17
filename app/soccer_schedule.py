@@ -1,32 +1,31 @@
+from itertools import groupby
 from shared_items.utils import pp
 from shared_items.interfaces import Notion
 from requests import Response, get
 from constants import SOCCER_BROADCAST_BADLIST
 
-from models.soccer import GameBroadcast, Matches
-from shared import SCHEDULE_DATABASE_ID, NotionSportsScheduleItem
+from models.soccer import GameBroadcast, LeagueTypes
+from shared import SCHEDULE_DATABASE_ID
+from utils.assemblers import SoccerAssembler
 
 notion = Notion()
 
 schedule_url = "https://www.fotmob.com/api/tvlistings?countryCode=US"
-matches_url = "https://www.fotmob.com/api/matches?date=20230216&timezone=America%2FIndianapolis&ccode3=USA_IN"
+leagues_url = "https://www.fotmob.com/api/allLeagues"
 
 schedule_response: Response = get(schedule_url)
-matches_response: Response = get(matches_url)
-
-
 schedule_json: dict = schedule_response.json()
-matches_json: dict = matches_response.json()
 
+leagues_response: Response = get(leagues_url)
+leagues_json: dict = leagues_response.json()
+
+league_types = LeagueTypes(**leagues_json)
 
 game_broadcasts: list[GameBroadcast] = [
     GameBroadcast(**game_broadcast)
     for sublist in schedule_json.values()
     for game_broadcast in sublist
 ]
-
-matches = Matches.parse_obj(matches_json)
-
 
 broadcasts = [
     broadcast
@@ -35,51 +34,50 @@ broadcasts = [
     and "live" in broadcast.tags
 ]
 
-# todo: uniq this list of broadcasts
-
-
-def assemble_matchup(broadcast: GameBroadcast) -> str:
-    teams = sorted(broadcast.program.teams, key=lambda t: t.isHome, reverse=True)
-    team_names = [team.name for team in teams]
-    return " vs ".join(team_names)
-
-
-def format_date(broadcast: GameBroadcast) -> str:
-    return broadcast.startTime.strftime("%Y-%m-%dT%H:%M:%S")
-
-
-def format_network(broadcast: GameBroadcast) -> str:
-    return broadcast.station.name
-
-
-def fetch_league(broadcast: GameBroadcast, matches: Matches) -> str:
-    return next(
-        (league.name for league in matches.leagues if league.id == broadcast.leagueId),
-        "",
-    )
-
-
-def format_sport() -> str:
-    return "⚽"
-
 
 broadcasts.sort(key=lambda b: b.startTime)
 
-schedule_items = [
-    NotionSportsScheduleItem(
-        matchup=assemble_matchup(broadcast),
-        date=format_date(broadcast),
-        network=format_network(broadcast),
-        league=fetch_league(broadcast, matches),
-        sport=format_sport(),
-    )
-    for broadcast in broadcasts
+
+def unique_broadcasts_by_match_id(
+    broadcasts: list[GameBroadcast],
+) -> list[GameBroadcast]:
+    broadcast_groups: list[list[GameBroadcast]] = []
+    uniquekeys = []
+
+    for k, v in groupby(broadcasts, key=lambda b: b.matchId):
+        broadcast_groups.append(list(v))
+        uniquekeys.append(k)
+
+    unique_broadcasts: list[GameBroadcast] = []
+    for broadcast_group in broadcast_groups:
+        first_broadcast = broadcast_group[0]
+        networks: list[str] = []
+        for broadcast in broadcast_group:
+            networks.append(broadcast.station.name)
+        first_broadcast.station.name = ", ".join(networks)
+        unique_broadcasts.append(first_broadcast)
+    return unique_broadcasts
+
+
+unique_broadcasts = unique_broadcasts_by_match_id(broadcasts)
+
+
+assembed_items = [
+    SoccerAssembler(broadcast, league_types).notion_sports_schedule_item()
+    for broadcast in unique_broadcasts
 ]
 
-for schedule_item in schedule_items:
-    props = notion.assemble_props(schedule_item.format_for_notion_interface())
 
-    # don't do this until deduped and deletion in place
-    # notion.client.pages.create(
-    #     parent={"database_id": SCHEDULE_DATABASE_ID}, properties=props
-    # )
+all_props = [
+    notion.assemble_props(schedule_item.format_for_notion_interface())
+    for schedule_item in assembed_items
+]
+
+pp(all_props)
+
+exit()
+
+for props in all_props:
+    notion.client.pages.create(
+        parent={"database_id": SCHEDULE_DATABASE_ID}, properties=props
+    )

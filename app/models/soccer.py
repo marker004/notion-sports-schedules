@@ -1,6 +1,9 @@
 from datetime import datetime
-from typing import Optional, Union
+from typing import Optional, TypedDict, Union
 from pydantic import BaseModel, validator
+from dataclasses import InitVar
+from pydantic.dataclasses import dataclass
+
 
 
 def normalize_dates(raw_date_string: str) -> datetime:
@@ -70,3 +73,38 @@ class League(BaseModel):
 
 class Matches(BaseModel):
     leagues: list[League]
+
+class LeagueDict(TypedDict):
+    id: int
+    name: str
+
+class CountryEntity(TypedDict):
+    name: str
+    leagues: list[LeagueDict]
+
+
+@dataclass
+class LeagueTypes:
+    international: InitVar[list[CountryEntity]]
+    countries: InitVar[list[CountryEntity]]
+    leagues: Optional[list[League]] = None
+
+    def __post_init__(self, international: list[CountryEntity], countries: list[CountryEntity]):
+        leagues: list[League] = []
+
+        for entity in international:
+            for league in entity['leagues']:
+                leagues.append(League(**league))
+
+        for country in countries:
+            for league in country['leagues']:
+                league['name'] = f"{league['name']} - {country['name']}"
+                leagues.append(League(**league))
+
+        self.leagues = leagues
+
+    def find_by_ids(self, id: int, parent_id: int) -> League:
+        default = League(id=0, name='')
+        if not self.leagues:
+            return default
+        return next((league for league in self.leagues if league.id == id or league.id == parent_id), default)
