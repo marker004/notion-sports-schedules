@@ -9,9 +9,9 @@ from requests import Response
 
 from shared_items.interfaces.notion import Notion, Prop as NotionProp
 
-# SEASON_DATE_BOOKENDS = ["2022-10-18", "2023-06-18"]
+from shared import SCHEDULE_DATABASE_ID
 
-SCHEDULE_DATABASE_ID = "7890f1c1844444228b0016ad68c07d22"
+# SEASON_DATE_BOOKENDS = ["2022-10-18", "2023-06-18"]
 
 notion = Notion()
 
@@ -161,14 +161,12 @@ clear_db_totally()
 # exit()
 
 
-def assemble_matchup(game: Game, visitors_first=True) -> str:
+def assemble_matchup(game: Game) -> str:
     team_names = [game.visiting_team.team_name, game.home_team.team_name]
-    if not visitors_first:
-        team_names.reverse()
 
     for n, team_name in enumerate(team_names):
         if SPECIAL_SYMBOLS.get(team_name):
-            team_name = f"{team_name} {SPECIAL_SYMBOLS[team_name]}"
+            team_name = f"{team_name} {SPECIAL_SYMBOLS[team_name]} "
         team_names[n] = team_name
 
     return " @ ".join(team_names)
