@@ -1,0 +1,1674 @@
+{
+  "leagues": [
+    {
+      "ccode": "INT",
+      "id": 879554,
+      "primaryId": 73,
+      "name": "Europa League Final Stage",
+      "matches": [
+        {
+          "id": 4060620,
+          "leagueId": 879554,
+          "time": "16.02.2023 18:45",
+          "home": {
+            "id": 8593,
+            "score": 0,
+            "name": "Ajax",
+            "longName": "Ajax"
+          },
+          "away": {
+            "id": 8149,
+            "score": 0,
+            "name": "Union Berlin",
+            "longName": "Union Berlin"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T17:45:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "0 - 0",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676569500000
+        },
+        {
+          "id": 4060616,
+          "leagueId": 879554,
+          "time": "16.02.2023 18:45",
+          "home": {
+            "id": 8634,
+            "score": 2,
+            "name": "Barcelona",
+            "longName": "Barcelona"
+          },
+          "away": {
+            "id": 10260,
+            "score": 2,
+            "name": "Man United",
+            "longName": "Manchester United"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T17:45:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "2 - 2",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676569500000
+        },
+        {
+          "id": 4060623,
+          "leagueId": 879554,
+          "time": "16.02.2023 18:45",
+          "home": {
+            "id": 10013,
+            "score": 1,
+            "name": "Salzburg",
+            "longName": "Salzburg"
+          },
+          "away": {
+            "id": 8686,
+            "score": 0,
+            "name": "Roma",
+            "longName": "Roma"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T17:45:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "1 - 0",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676569500000
+        },
+        {
+          "id": 4060619,
+          "leagueId": 879554,
+          "time": "16.02.2023 18:45",
+          "home": {
+            "id": 9728,
+            "score": 2,
+            "name": "Shakhtar Donetsk",
+            "longName": "Shakhtar Donetsk"
+          },
+          "away": {
+            "id": 9851,
+            "score": 1,
+            "name": "Rennes",
+            "longName": "Rennes"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T17:45:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "2 - 1",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676569500000
+        },
+        {
+          "id": 4060621,
+          "leagueId": 879554,
+          "time": "16.02.2023 21:00",
+          "home": {
+            "id": 8178,
+            "score": 0,
+            "name": "Leverkusen",
+            "longName": "Bayer Leverkusen"
+          },
+          "away": {
+            "id": 9829,
+            "score": 0,
+            "name": "Monaco",
+            "longName": "Monaco"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 2,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T20:00:00.000Z",
+            "finished": false,
+            "started": true,
+            "cancelled": false,
+            "ongoing": true,
+            "scoreStr": "0 - 0",
+            "liveTime": {
+              "short": "9’",
+              "long": "8:26"
+            }
+          },
+          "timeTS": 1676577600000
+        },
+        {
+          "id": 4060617,
+          "leagueId": 879554,
+          "time": "16.02.2023 21:00",
+          "home": {
+            "id": 9885,
+            "score": 0,
+            "name": "Juventus",
+            "longName": "Juventus"
+          },
+          "away": {
+            "id": 9830,
+            "score": 0,
+            "name": "Nantes",
+            "longName": "Nantes"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 2,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T20:00:00.000Z",
+            "finished": false,
+            "started": true,
+            "cancelled": false,
+            "ongoing": true,
+            "scoreStr": "0 - 0",
+            "liveTime": {
+              "short": "8’",
+              "long": "7:48"
+            }
+          },
+          "timeTS": 1676577600000
+        },
+        {
+          "id": 4060622,
+          "leagueId": 879554,
+          "time": "16.02.2023 21:00",
+          "home": {
+            "id": 8302,
+            "score": 0,
+            "name": "Sevilla",
+            "longName": "Sevilla"
+          },
+          "away": {
+            "id": 8640,
+            "score": 0,
+            "name": "PSV Eindhoven",
+            "longName": "PSV Eindhoven"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 2,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T20:00:00.000Z",
+            "finished": false,
+            "started": true,
+            "cancelled": false,
+            "ongoing": true,
+            "scoreStr": "0 - 0",
+            "liveTime": {
+              "short": "9’",
+              "long": "8:36"
+            }
+          },
+          "timeTS": 1676577600000
+        },
+        {
+          "id": 4060618,
+          "leagueId": 879554,
+          "time": "16.02.2023 21:00",
+          "home": {
+            "id": 9768,
+            "score": 0,
+            "name": "Sporting CP",
+            "longName": "Sporting CP"
+          },
+          "away": {
+            "id": 8113,
+            "score": 0,
+            "name": "Midtjylland",
+            "longName": "Midtjylland"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 2,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T20:00:00.000Z",
+            "finished": false,
+            "started": true,
+            "cancelled": false,
+            "ongoing": true,
+            "scoreStr": "0 - 0",
+            "liveTime": {
+              "short": "9’",
+              "long": "8:53"
+            }
+          },
+          "timeTS": 1676577600000
+        }
+      ],
+      "parentLeagueId": 73,
+      "internalRank": 8,
+      "liveRank": 1000,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "INT",
+      "id": 879831,
+      "primaryId": 10216,
+      "name": "Europa Conference League Final Stage",
+      "matches": [
+        {
+          "id": 4060638,
+          "leagueId": 879831,
+          "time": "16.02.2023 18:45",
+          "home": {
+            "id": 8402,
+            "score": 0,
+            "name": "Bodø/Glimt",
+            "longName": "Bodø/Glimt"
+          },
+          "away": {
+            "id": 2182,
+            "score": 0,
+            "name": "Lech Poznan",
+            "longName": "Lech Poznan"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T17:45:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "0 - 0",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676569500000
+        },
+        {
+          "id": 4060640,
+          "leagueId": 879831,
+          "time": "16.02.2023 18:45",
+          "home": {
+            "id": 10264,
+            "score": 0,
+            "name": "Braga",
+            "longName": "Braga"
+          },
+          "away": {
+            "id": 8535,
+            "score": 4,
+            "name": "Fiorentina",
+            "longName": "Fiorentina"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T17:45:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "0 - 4",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676569500000
+        },
+        {
+          "id": 4060632,
+          "leagueId": 879831,
+          "time": "16.02.2023 18:45",
+          "home": {
+            "id": 7981,
+            "score": 1,
+            "name": "Qarabag FK",
+            "longName": "Qarabag FK"
+          },
+          "away": {
+            "id": 9991,
+            "score": 0,
+            "name": "Gent",
+            "longName": "Gent"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T17:45:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "1 - 0",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676569500000
+        },
+        {
+          "id": 4060634,
+          "leagueId": 879831,
+          "time": "16.02.2023 18:45",
+          "home": {
+            "id": 9752,
+            "score": 1,
+            "name": "Trabzonspor",
+            "longName": "Trabzonspor"
+          },
+          "away": {
+            "id": 9931,
+            "score": 0,
+            "name": "Basel",
+            "longName": "Basel"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T17:45:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "1 - 0",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676569500000
+        },
+        {
+          "id": 4060642,
+          "leagueId": 879831,
+          "time": "16.02.2023 21:00",
+          "home": {
+            "id": 7797,
+            "score": 0,
+            "name": "AEK Larnaca",
+            "longName": "AEK Larnaca"
+          },
+          "away": {
+            "id": 883952,
+            "score": 0,
+            "name": "SC Dnipro-1",
+            "longName": "SC Dnipro-1"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 2,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T20:00:00.000Z",
+            "finished": false,
+            "started": true,
+            "cancelled": false,
+            "ongoing": true,
+            "scoreStr": "0 - 0",
+            "liveTime": {
+              "short": "10’",
+              "long": "9:02"
+            }
+          },
+          "timeTS": 1676577600000
+        },
+        {
+          "id": 4060644,
+          "leagueId": 879831,
+          "time": "16.02.2023 21:00",
+          "home": {
+            "id": 9729,
+            "score": 0,
+            "name": "FC Sheriff",
+            "longName": "FC Sheriff"
+          },
+          "away": {
+            "id": 7998,
+            "score": 0,
+            "name": "Partizan Beograd",
+            "longName": "Partizan Beograd"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 2,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T20:00:00.000Z",
+            "finished": false,
+            "started": true,
+            "cancelled": false,
+            "ongoing": true,
+            "scoreStr": "0 - 0",
+            "liveTime": {
+              "short": "10’",
+              "long": "9:12"
+            }
+          },
+          "timeTS": 1676577600000
+        },
+        {
+          "id": 4060636,
+          "leagueId": 879831,
+          "time": "16.02.2023 21:00",
+          "home": {
+            "id": 8543,
+            "score": 0,
+            "name": "Lazio",
+            "longName": "Lazio"
+          },
+          "away": {
+            "id": 9731,
+            "score": 0,
+            "name": "CFR Cluj",
+            "longName": "CFR Cluj"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 2,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T20:00:00.000Z",
+            "finished": false,
+            "started": true,
+            "cancelled": false,
+            "ongoing": true,
+            "scoreStr": "0 - 0",
+            "liveTime": {
+              "short": "9’",
+              "long": "8:46"
+            }
+          },
+          "timeTS": 1676577600000
+        },
+        {
+          "id": 4060646,
+          "leagueId": 879831,
+          "time": "16.02.2023 21:00",
+          "home": {
+            "id": 210173,
+            "score": 0,
+            "name": "Ludogorets Razgrad",
+            "longName": "Ludogorets Razgrad"
+          },
+          "away": {
+            "id": 8635,
+            "score": 0,
+            "name": "Anderlecht",
+            "longName": "Anderlecht"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 2,
+          "tournamentStage": "1/16",
+          "status": {
+            "utcTime": "2023-02-16T20:00:00.000Z",
+            "finished": false,
+            "started": true,
+            "cancelled": false,
+            "ongoing": true,
+            "scoreStr": "0 - 0",
+            "liveTime": {
+              "short": "6’",
+              "long": "5:02"
+            }
+          },
+          "timeTS": 1676577600000
+        }
+      ],
+      "parentLeagueId": 10216,
+      "internalRank": 0,
+      "liveRank": 999,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "BRA",
+      "id": 882475,
+      "primaryId": 10272,
+      "name": "Carioca Taca Guanabara",
+      "matches": [
+        {
+          "id": 4066596,
+          "leagueId": 882475,
+          "time": "17.02.2023 00:30",
+          "home": {
+            "id": 10276,
+            "score": 0,
+            "name": "Vasco da Gama",
+            "longName": "Vasco da Gama"
+          },
+          "away": {
+            "id": 8517,
+            "score": 0,
+            "name": "Botafogo",
+            "longName": "Botafogo"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "3",
+          "status": {
+            "utcTime": "2023-02-16T23:30:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676590200000
+        }
+      ],
+      "parentLeagueId": 10272,
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "BRA",
+      "id": 882273,
+      "primaryId": 10274,
+      "name": "Gaucho",
+      "matches": [
+        {
+          "id": 4065013,
+          "leagueId": 882273,
+          "time": "17.02.2023 01:00",
+          "home": {
+            "id": 197883,
+            "score": 0,
+            "name": "Novo Hamburgo",
+            "longName": "Novo Hamburgo"
+          },
+          "away": {
+            "id": 172206,
+            "score": 0,
+            "name": "Caxias",
+            "longName": "Caxias"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "8",
+          "status": {
+            "utcTime": "2023-02-17T00:00:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676592000000
+        },
+        {
+          "id": 4065012,
+          "leagueId": 882273,
+          "time": "17.02.2023 01:30",
+          "home": {
+            "id": 8702,
+            "score": 0,
+            "name": "Internacional",
+            "longName": "Internacional"
+          },
+          "away": {
+            "id": 197889,
+            "score": 0,
+            "name": "EC Sao Jose",
+            "longName": "EC Sao Jose"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "8",
+          "status": {
+            "utcTime": "2023-02-17T00:30:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676593800000
+        },
+        {
+          "id": 4065014,
+          "leagueId": 882273,
+          "time": "17.02.2023 01:30",
+          "home": {
+            "id": 10274,
+            "score": 0,
+            "name": "Juventude",
+            "longName": "Juventude"
+          },
+          "away": {
+            "id": 509687,
+            "score": 0,
+            "name": "CE Aimore",
+            "longName": "CE Aimore"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "8",
+          "status": {
+            "utcTime": "2023-02-17T00:30:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676593800000
+        }
+      ],
+      "parentLeagueId": 10274,
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "BRA",
+      "id": 881877,
+      "primaryId": 10244,
+      "name": "Paulista A1",
+      "matches": [
+        {
+          "id": 4066438,
+          "leagueId": 881877,
+          "time": "16.02.2023 22:00",
+          "home": {
+            "id": 163782,
+            "score": 0,
+            "name": "Mirassol",
+            "longName": "Mirassol"
+          },
+          "away": {
+            "id": 104823,
+            "score": 0,
+            "name": "Ituano FC",
+            "longName": "Ituano FC"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "9",
+          "status": {
+            "utcTime": "2023-02-16T21:00:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676581200000
+        },
+        {
+          "id": 4066441,
+          "leagueId": 881877,
+          "time": "16.02.2023 23:30",
+          "home": {
+            "id": 4151,
+            "score": 0,
+            "name": "Santo Andre",
+            "longName": "Santo Andre"
+          },
+          "away": {
+            "id": 8514,
+            "score": 0,
+            "name": "Santos FC",
+            "longName": "Santos FC"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "9",
+          "status": {
+            "utcTime": "2023-02-16T22:30:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676586600000
+        },
+        {
+          "id": 4066442,
+          "leagueId": 881877,
+          "time": "17.02.2023 01:30",
+          "home": {
+            "id": 9808,
+            "score": 0,
+            "name": "Corinthians",
+            "longName": "Corinthians"
+          },
+          "away": {
+            "id": 10283,
+            "score": 0,
+            "name": "Palmeiras",
+            "longName": "Palmeiras"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "9",
+          "status": {
+            "utcTime": "2023-02-17T00:30:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676593800000
+        }
+      ],
+      "parentLeagueId": 10244,
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "CHI",
+      "id": 883354,
+      "primaryId": 273,
+      "name": "Primera Division",
+      "matches": [
+        {
+          "id": 4088882,
+          "leagueId": 883354,
+          "time": "17.02.2023 00:30",
+          "home": {
+            "id": 162905,
+            "score": 0,
+            "name": "Curico Unido",
+            "longName": "Curico Unido"
+          },
+          "away": {
+            "id": 192436,
+            "score": 0,
+            "name": "Deportes Copiapo",
+            "longName": "Deportes Copiapo"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "5",
+          "status": {
+            "utcTime": "2023-02-16T23:30:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676590200000
+        }
+      ],
+      "parentLeagueId": 273,
+      "internalRank": 11,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "INT",
+      "id": 882035,
+      "primaryId": 489,
+      "name": "Club Friendlies",
+      "matches": [
+        {
+          "id": 4105752,
+          "leagueId": 882035,
+          "time": "16.02.2023 13:00",
+          "home": {
+            "id": 2305,
+            "score": 4,
+            "name": "KFUM",
+            "longName": "KFUM"
+          },
+          "away": {
+            "id": 9919,
+            "score": 5,
+            "name": "Start",
+            "longName": "Start"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1",
+          "status": {
+            "utcTime": "2023-02-16T12:00:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "4 - 5",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676548800000
+        },
+        {
+          "id": 4122903,
+          "leagueId": 882035,
+          "time": "16.02.2023 14:00",
+          "home": {
+            "id": 8531,
+            "score": 0,
+            "name": "Bryne",
+            "longName": "Bryne"
+          },
+          "away": {
+            "id": 8478,
+            "score": 2,
+            "name": "Viking",
+            "longName": "Viking"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1",
+          "status": {
+            "utcTime": "2023-02-16T13:00:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "0 - 2",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676552400000
+        }
+      ],
+      "parentLeagueId": 489,
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "COL",
+      "id": 883753,
+      "primaryId": 274,
+      "name": "Primera A Championship Final",
+      "matches": [
+        {
+          "id": 4110018,
+          "leagueId": 883753,
+          "time": "17.02.2023 02:00",
+          "home": {
+            "id": 6368,
+            "score": 0,
+            "name": "Atletico Nacional",
+            "longName": "Atletico Nacional"
+          },
+          "away": {
+            "id": 4404,
+            "score": 0,
+            "name": "Deportivo Pereira",
+            "longName": "Deportivo Pereira"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "final",
+          "status": {
+            "utcTime": "2023-02-17T01:00:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false,
+            "aggregatedStr": "1-0"
+          },
+          "timeTS": 1676595600000
+        }
+      ],
+      "parentLeagueId": 274,
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "INT",
+      "id": 883296,
+      "primaryId": 45,
+      "name": "Copa Libertadores Qualification",
+      "matches": [
+        {
+          "id": 4085651,
+          "leagueId": 883296,
+          "time": "17.02.2023 01:00",
+          "home": {
+            "id": 49686,
+            "score": 0,
+            "name": "Zamora FC",
+            "longName": "Zamora FC"
+          },
+          "away": {
+            "id": 188313,
+            "score": 0,
+            "name": "Boston River",
+            "longName": "Boston River"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "1",
+          "status": {
+            "utcTime": "2023-02-17T00:00:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false,
+            "aggregatedStr": "1-3"
+          },
+          "timeTS": 1676592000000
+        }
+      ],
+      "parentLeagueId": 45,
+      "internalRank": 0,
+      "liveRank": 100,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "CYP",
+      "id": 330,
+      "primaryId": 330,
+      "name": "Cup",
+      "matches": [
+        {
+          "id": 4113362,
+          "leagueId": 330,
+          "time": "16.02.2023 17:00",
+          "home": {
+            "id": 5771,
+            "score": 2,
+            "name": "Olympiakos Nicosia",
+            "longName": "Olympiakos Nicosia"
+          },
+          "away": {
+            "id": 6243,
+            "score": 1,
+            "name": "Anorthosis",
+            "longName": "Anorthosis"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1/4",
+          "status": {
+            "utcTime": "2023-02-16T16:00:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "2 - 1",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676563200000
+        }
+      ],
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "EGY",
+      "id": 519,
+      "primaryId": 519,
+      "name": "Premier League",
+      "matches": [
+        {
+          "id": 4054185,
+          "leagueId": 519,
+          "time": "16.02.2023 16:00",
+          "home": {
+            "id": 797212,
+            "score": 1,
+            "name": "Future FC",
+            "longName": "Future FC"
+          },
+          "away": {
+            "id": 101767,
+            "score": 0,
+            "name": "Haras El Hodoud",
+            "longName": "Haras El Hodoud"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "18",
+          "status": {
+            "utcTime": "2023-02-16T15:00:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "1 - 0",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676559600000
+        },
+        {
+          "id": 4054172,
+          "leagueId": 519,
+          "time": "16.02.2023 18:00",
+          "home": {
+            "id": 517894,
+            "score": 2,
+            "name": "Pyramids FC",
+            "longName": "Pyramids FC"
+          },
+          "away": {
+            "id": 101754,
+            "score": 1,
+            "name": "ENPPI",
+            "longName": "ENPPI"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "18",
+          "status": {
+            "utcTime": "2023-02-16T17:00:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "2 - 1",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676566800000
+        }
+      ],
+      "internalRank": 9,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "SLV",
+      "id": 883738,
+      "primaryId": 335,
+      "name": "Primera Division - Clausura",
+      "matches": [
+        {
+          "id": 4110765,
+          "leagueId": 883738,
+          "time": "16.02.2023 22:30",
+          "home": {
+            "id": 948224,
+            "score": 0,
+            "name": "Jocoro FC",
+            "longName": "Jocoro FC"
+          },
+          "away": {
+            "id": 49742,
+            "score": 0,
+            "name": "CD FAS",
+            "longName": "CD FAS"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "5",
+          "status": {
+            "utcTime": "2023-02-16T21:30:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676583000000
+        }
+      ],
+      "parentLeagueId": 335,
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "INT",
+      "id": 882018,
+      "primaryId": 293,
+      "name": "Friendlies",
+      "matches": [
+        {
+          "id": 4111645,
+          "leagueId": 882018,
+          "time": "16.02.2023 18:30",
+          "home": {
+            "id": 5814,
+            "score": 4,
+            "name": "Sweden (W)",
+            "longName": "Sweden (W)"
+          },
+          "away": {
+            "id": 5904,
+            "score": 1,
+            "name": "China (W)",
+            "longName": "China (W)"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1",
+          "status": {
+            "utcTime": "2023-02-16T17:30:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "4 - 1",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676568600000
+        },
+        {
+          "id": 4094632,
+          "leagueId": 882018,
+          "time": "16.02.2023 20:45",
+          "home": {
+            "id": 5811,
+            "score": 0,
+            "name": "England (W)",
+            "longName": "England (W)"
+          },
+          "away": {
+            "id": 244164,
+            "score": 0,
+            "name": "South Korea (W)",
+            "longName": "South Korea (W)"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 2,
+          "tournamentStage": "1",
+          "status": {
+            "utcTime": "2023-02-16T19:45:00.000Z",
+            "finished": false,
+            "started": true,
+            "cancelled": false,
+            "ongoing": true,
+            "scoreStr": "0 - 0",
+            "liveTime": {
+              "short": "24’",
+              "long": "23:16"
+            }
+          },
+          "timeTS": 1676576700000
+        }
+      ],
+      "parentLeagueId": 293,
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "HON",
+      "id": 883376,
+      "primaryId": 337,
+      "name": "Liga Nacional - Clausura",
+      "matches": [
+        {
+          "id": 4089899,
+          "leagueId": 883376,
+          "time": "16.02.2023 22:30",
+          "home": {
+            "id": 9932,
+            "score": 0,
+            "name": "CD Marathon",
+            "longName": "CD Marathon"
+          },
+          "away": {
+            "id": 559874,
+            "score": 0,
+            "name": "Honduras Progreso",
+            "longName": "Honduras Progreso"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "7",
+          "status": {
+            "utcTime": "2023-02-16T21:30:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676583000000
+        }
+      ],
+      "parentLeagueId": 337,
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "isGroup": true,
+      "groupName": "3",
+      "ccode": "ISL",
+      "id": 882726,
+      "primaryId": 10076,
+      "name": "League Cup Grp. 3",
+      "matches": [
+        {
+          "id": 4071814,
+          "leagueId": 882726,
+          "time": "16.02.2023 20:00",
+          "home": {
+            "id": 6017,
+            "score": 1,
+            "name": "Vikingur Reykjavik",
+            "longName": "Vikingur Reykjavik"
+          },
+          "away": {
+            "id": 6343,
+            "score": 1,
+            "name": "Stjarnan",
+            "longName": "Stjarnan"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 3,
+          "tournamentStage": "2",
+          "status": {
+            "utcTime": "2023-02-16T19:00:00.000Z",
+            "finished": false,
+            "started": true,
+            "cancelled": false,
+            "ongoing": true,
+            "scoreStr": "1 - 1",
+            "liveTime": {
+              "short": "50’",
+              "long": "49:32"
+            }
+          },
+          "timeTS": 1676574000000
+        }
+      ],
+      "parentLeagueId": 10076,
+      "parentLeagueName": "League Cup",
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "IND",
+      "id": 881066,
+      "primaryId": 9478,
+      "name": "Indian Super League",
+      "matches": [
+        {
+          "id": 4019201,
+          "leagueId": 881066,
+          "time": "16.02.2023 15:00",
+          "home": {
+            "id": 578650,
+            "score": 1,
+            "name": "FC Goa",
+            "longName": "FC Goa"
+          },
+          "away": {
+            "id": 578652,
+            "score": 2,
+            "name": "Chennaiyin FC",
+            "longName": "Chennaiyin FC"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "1",
+          "status": {
+            "utcTime": "2023-02-16T14:00:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "1 - 2",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676556000000
+        }
+      ],
+      "parentLeagueId": 9478,
+      "internalRank": 9,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "IDN",
+      "id": 8983,
+      "primaryId": 8983,
+      "name": "Liga 1",
+      "matches": [
+        {
+          "id": 3956325,
+          "leagueId": 8983,
+          "time": "16.02.2023 09:00",
+          "home": {
+            "id": 185749,
+            "score": 2,
+            "name": "Bhayangkara FC",
+            "longName": "Bhayangkara FC"
+          },
+          "away": {
+            "id": 165191,
+            "score": 1,
+            "name": "Persija Jakarta",
+            "longName": "Persija Jakarta"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "25",
+          "status": {
+            "utcTime": "2023-02-16T08:00:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "2 - 1",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676534400000
+        },
+        {
+          "id": 3956326,
+          "leagueId": 8983,
+          "time": "16.02.2023 11:00",
+          "home": {
+            "id": 585858,
+            "score": 3,
+            "name": "Borneo Samarinda",
+            "longName": "Borneo Samarinda"
+          },
+          "away": {
+            "id": 746830,
+            "score": 1,
+            "name": "Persikabo 1973",
+            "longName": "Persikabo 1973"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "25",
+          "status": {
+            "utcTime": "2023-02-16T10:00:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "3 - 1",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676541600000
+        }
+      ],
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "MEX",
+      "id": 882700,
+      "primaryId": 8976,
+      "name": "Liga de Expansion MX Clausura",
+      "matches": [
+        {
+          "id": 4070278,
+          "leagueId": 882700,
+          "time": "17.02.2023 02:05",
+          "home": {
+            "id": 6574,
+            "score": 0,
+            "name": "Mineros",
+            "longName": "Mineros de Zacatecas"
+          },
+          "away": {
+            "id": 1270862,
+            "score": 0,
+            "name": "Raya2 Expansion",
+            "longName": "Raya2 Expansion"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "7",
+          "status": {
+            "utcTime": "2023-02-17T01:05:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676595900000
+        }
+      ],
+      "parentLeagueId": 8976,
+      "internalRank": 9,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "MEX",
+      "id": 882279,
+      "primaryId": 230,
+      "name": "Liga MX Clausura",
+      "matches": [
+        {
+          "id": 4065398,
+          "leagueId": 882279,
+          "time": "17.02.2023 04:00",
+          "home": {
+            "id": 1170234,
+            "score": 0,
+            "name": "Mazatlán",
+            "longName": "Mazatlan FC"
+          },
+          "away": {
+            "id": 7848,
+            "score": 0,
+            "name": "Pachuca",
+            "longName": "Pachuca"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "7",
+          "status": {
+            "utcTime": "2023-02-17T03:00:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676602800000
+        }
+      ],
+      "parentLeagueId": 230,
+      "internalRank": 10,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "isGroup": true,
+      "groupName": "A",
+      "ccode": "NGA",
+      "id": 883387,
+      "primaryId": 533,
+      "name": "NPFL Grp. A",
+      "matches": [
+        {
+          "id": 4117831,
+          "leagueId": 883387,
+          "time": "16.02.2023 16:00",
+          "home": {
+            "id": 102051,
+            "score": 1,
+            "name": "Akwa United",
+            "longName": "Akwa United"
+          },
+          "away": {
+            "id": 102055,
+            "score": 0,
+            "name": "Gombe United",
+            "longName": "Gombe United"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "8",
+          "status": {
+            "utcTime": "2023-02-16T15:00:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "1 - 0",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676559600000
+        }
+      ],
+      "parentLeagueId": 533,
+      "parentLeagueName": "Professional Football League",
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "KSA",
+      "id": 536,
+      "primaryId": 536,
+      "name": "Premier League",
+      "matches": [
+        {
+          "id": 4063754,
+          "leagueId": 536,
+          "time": "16.02.2023 16:00",
+          "home": {
+            "id": 582816,
+            "score": 2,
+            "name": "Al-Adalah",
+            "longName": "Al-Adalah"
+          },
+          "away": {
+            "id": 101917,
+            "score": 2,
+            "name": "Al Taee",
+            "longName": "Al Taee"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "17",
+          "status": {
+            "utcTime": "2023-02-16T15:00:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "2 - 2",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676559600000
+        },
+        {
+          "id": 4063753,
+          "leagueId": 536,
+          "time": "16.02.2023 18:30",
+          "home": {
+            "id": 101915,
+            "score": 0,
+            "name": "Al-Ettifaq",
+            "longName": "Al-Ettifaq"
+          },
+          "away": {
+            "id": 8577,
+            "score": 3,
+            "name": "Al Ittihad",
+            "longName": "Al Ittihad"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 6,
+          "tournamentStage": "17",
+          "status": {
+            "utcTime": "2023-02-16T17:30:00.000Z",
+            "finished": true,
+            "started": true,
+            "cancelled": false,
+            "scoreStr": "0 - 3",
+            "reason": {
+              "short": "FT",
+              "long": "Full-Time"
+            }
+          },
+          "timeTS": 1676568600000
+        }
+      ],
+      "internalRank": 9,
+      "liveRank": 0,
+      "simpleLeague": false
+    },
+    {
+      "ccode": "INT",
+      "id": 9921,
+      "primaryId": 9921,
+      "name": "SheBelieves Cup",
+      "matches": [
+        {
+          "id": 4078369,
+          "leagueId": 9921,
+          "time": "16.02.2023 22:00",
+          "home": {
+            "id": 5906,
+            "score": 0,
+            "name": "Japan (W)",
+            "longName": "Japan (W)"
+          },
+          "away": {
+            "id": 5903,
+            "score": 0,
+            "name": "Brazil (W)",
+            "longName": "Brazil (W)"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "1",
+          "status": {
+            "utcTime": "2023-02-16T21:00:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676581200000
+        },
+        {
+          "id": 4078370,
+          "leagueId": 9921,
+          "time": "17.02.2023 01:00",
+          "home": {
+            "id": 5909,
+            "score": 0,
+            "name": "USA (W)",
+            "longName": "USA (W)"
+          },
+          "away": {
+            "id": 74873,
+            "score": 0,
+            "name": "Canada (W)",
+            "longName": "Canada (W)"
+          },
+          "eliminatedTeamId": null,
+          "statusId": 1,
+          "tournamentStage": "1",
+          "status": {
+            "utcTime": "2023-02-17T00:00:00.000Z",
+            "started": false,
+            "cancelled": false,
+            "finished": false
+          },
+          "timeTS": 1676592000000
+        }
+      ],
+      "internalRank": 0,
+      "liveRank": 0,
+      "simpleLeague": false
+    }
+  ],
+  "date": "20230216"
+}

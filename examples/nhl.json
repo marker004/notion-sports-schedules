@@ -1,0 +1,3527 @@
+{
+  "copyright": "NHL and the NHL Shield are registered trademarks of the National Hockey League. NHL and NHL team marks are the property of the NHL and its teams. © NHL 2023. All Rights Reserved.",
+  "totalItems": 47,
+  "totalEvents": 0,
+  "totalGames": 47,
+  "totalMatches": 0,
+  "metaData": {
+    "timeStamp": "20230216_185648"
+  },
+  "wait": 10,
+  "dates": [
+    {
+      "date": "2023-02-14",
+      "totalItems": 9,
+      "totalEvents": 0,
+      "totalGames": 9,
+      "totalMatches": 0,
+      "games": [
+        {
+          "gamePk": 2022020855,
+          "link": "/api/v1/game/2022020855/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-15T00:00:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 35,
+                "losses": 10,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 3,
+              "team": {
+                "id": 12,
+                "name": "Carolina Hurricanes",
+                "link": "/api/v1/teams/12"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 28,
+                "losses": 22,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 2,
+              "team": {
+                "id": 15,
+                "name": "Washington Capitals",
+                "link": "/api/v1/teams/15"
+              }
+            }
+          },
+          "venue": {
+            "id": 5094,
+            "name": "Capital One Arena",
+            "link": "/api/v1/venues/5094"
+          },
+          "broadcasts": [
+            {
+              "id": 287,
+              "name": "SNE",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 288,
+              "name": "SNO",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 320,
+              "name": "NBCSWA",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 375,
+              "name": "BSSO",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020855/content"
+          }
+        },
+        {
+          "gamePk": 2022020856,
+          "link": "/api/v1/game/2022020856/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-15T00:00:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 16,
+                "losses": 31,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 16,
+                "name": "Chicago Blackhawks",
+                "link": "/api/v1/teams/16"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 23,
+                "losses": 27,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 4,
+              "team": {
+                "id": 8,
+                "name": "Montréal Canadiens",
+                "link": "/api/v1/teams/8"
+              }
+            }
+          },
+          "venue": {
+            "name": "Centre Bell",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 33,
+              "name": "RDS",
+              "type": "home",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 131,
+              "name": "TSN2",
+              "type": "home",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 318,
+              "name": "NBCSCH",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020856/content"
+          }
+        },
+        {
+          "gamePk": 2022020857,
+          "link": "/api/v1/game/2022020857/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-15T00:30:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 35,
+                "losses": 13,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 3,
+              "team": {
+                "id": 1,
+                "name": "New Jersey Devils",
+                "link": "/api/v1/teams/1"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 16,
+                "losses": 34,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 2,
+              "team": {
+                "id": 29,
+                "name": "Columbus Blue Jackets",
+                "link": "/api/v1/teams/29"
+              }
+            }
+          },
+          "venue": {
+            "id": 5059,
+            "name": "Nationwide Arena",
+            "link": "/api/v1/venues/5059"
+          },
+          "broadcasts": [
+            {
+              "id": 347,
+              "name": "BSOH",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 27,
+              "name": "MSG",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020857/content"
+          }
+        },
+        {
+          "gamePk": 2022020858,
+          "link": "/api/v1/game/2022020858/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-15T00:30:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 26,
+                "losses": 24,
+                "ot": 3,
+                "type": "league"
+              },
+              "score": 3,
+              "team": {
+                "id": 9,
+                "name": "Ottawa Senators",
+                "link": "/api/v1/teams/9"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 27,
+                "losses": 23,
+                "ot": 7,
+                "type": "league"
+              },
+              "score": 2,
+              "team": {
+                "id": 2,
+                "name": "New York Islanders",
+                "link": "/api/v1/teams/2"
+              }
+            }
+          },
+          "venue": {
+            "name": "UBS Arena",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 409,
+              "name": "MSGSN",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 230,
+              "name": "RDS2",
+              "type": "away",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 294,
+              "name": "TSN5",
+              "type": "away",
+              "site": "nhlCA",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020858/content"
+          }
+        },
+        {
+          "gamePk": 2022020859,
+          "link": "/api/v1/game/2022020859/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-15T01:00:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 27,
+                "losses": 24,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 2,
+              "team": {
+                "id": 13,
+                "name": "Florida Panthers",
+                "link": "/api/v1/teams/13"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 25,
+                "losses": 25,
+                "ot": 3,
+                "type": "league"
+              },
+              "score": 6,
+              "team": {
+                "id": 19,
+                "name": "St. Louis Blues",
+                "link": "/api/v1/teams/19"
+              }
+            }
+          },
+          "venue": {
+            "id": 5076,
+            "name": "Enterprise Center",
+            "link": "/api/v1/venues/5076"
+          },
+          "broadcasts": [
+            {
+              "id": 329,
+              "name": "ESPN+",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 391,
+              "name": "HULU",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020859/content"
+          }
+        },
+        {
+          "gamePk": 2022020860,
+          "link": "/api/v1/game/2022020860/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-15T01:00:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 30,
+                "losses": 18,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 2,
+              "team": {
+                "id": 55,
+                "name": "Seattle Kraken",
+                "link": "/api/v1/teams/55"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 34,
+                "losses": 19,
+                "ot": 1,
+                "type": "league"
+              },
+              "score": 3,
+              "team": {
+                "id": 52,
+                "name": "Winnipeg Jets",
+                "link": "/api/v1/teams/52"
+              }
+            }
+          },
+          "venue": {
+            "id": 5058,
+            "name": "Canada Life Centre",
+            "link": "/api/v1/venues/5058"
+          },
+          "broadcasts": [
+            {
+              "id": 292,
+              "name": "TSN3",
+              "type": "home",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 386,
+              "name": "ROOT-NW",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020860/content"
+          }
+        },
+        {
+          "gamePk": 2022020861,
+          "link": "/api/v1/game/2022020861/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-15T01:30:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 40,
+                "losses": 8,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 3,
+              "team": {
+                "id": 6,
+                "name": "Boston Bruins",
+                "link": "/api/v1/teams/6"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 30,
+                "losses": 14,
+                "ot": 11,
+                "type": "league"
+              },
+              "score": 2,
+              "team": {
+                "id": 25,
+                "name": "Dallas Stars",
+                "link": "/api/v1/teams/25"
+              }
+            }
+          },
+          "venue": {
+            "id": 5019,
+            "name": "American Airlines Center",
+            "link": "/api/v1/venues/5019"
+          },
+          "broadcasts": [
+            {
+              "id": 349,
+              "name": "BSSW",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 31,
+              "name": "NESN",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020861/content"
+          }
+        },
+        {
+          "gamePk": 2022020862,
+          "link": "/api/v1/game/2022020862/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-15T02:00:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 35,
+                "losses": 16,
+                "ot": 2,
+                "type": "league"
+              },
+              "score": 4,
+              "team": {
+                "id": 14,
+                "name": "Tampa Bay Lightning",
+                "link": "/api/v1/teams/14"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 28,
+                "losses": 19,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 3,
+              "team": {
+                "id": 21,
+                "name": "Colorado Avalanche",
+                "link": "/api/v1/teams/21"
+              }
+            }
+          },
+          "venue": {
+            "id": 5064,
+            "name": "Ball Arena",
+            "link": "/api/v1/venues/5064"
+          },
+          "broadcasts": [
+            {
+              "id": 281,
+              "name": "TVAS",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 282,
+              "name": "SN",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 2,
+              "name": "ALT",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 359,
+              "name": "BSSUN",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020862/content"
+          }
+        },
+        {
+          "gamePk": 2022020863,
+          "link": "/api/v1/game/2022020863/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-15T03:30:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 27,
+                "losses": 17,
+                "ot": 9,
+                "type": "league"
+              },
+              "score": 3,
+              "team": {
+                "id": 5,
+                "name": "Pittsburgh Penguins",
+                "link": "/api/v1/teams/5"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 17,
+                "losses": 27,
+                "ot": 11,
+                "type": "league"
+              },
+              "score": 1,
+              "team": {
+                "id": 28,
+                "name": "San Jose Sharks",
+                "link": "/api/v1/teams/28"
+              }
+            }
+          },
+          "venue": {
+            "name": "SAP Center at San Jose",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 314,
+              "name": "NBCSCA",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 316,
+              "name": "ATTSN-PT",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020863/content"
+          }
+        }
+      ],
+      "events": [],
+      "matches": []
+    },
+    {
+      "date": "2023-02-15",
+      "totalItems": 6,
+      "totalEvents": 0,
+      "totalGames": 6,
+      "totalMatches": 0,
+      "games": [
+        {
+          "gamePk": 2022020864,
+          "link": "/api/v1/game/2022020864/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-16T00:00:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 16,
+                "losses": 32,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 2,
+              "team": {
+                "id": 16,
+                "name": "Chicago Blackhawks",
+                "link": "/api/v1/teams/16"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 33,
+                "losses": 14,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 5,
+              "team": {
+                "id": 10,
+                "name": "Toronto Maple Leafs",
+                "link": "/api/v1/teams/10"
+              }
+            }
+          },
+          "venue": {
+            "name": "Scotiabank Arena",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 385,
+              "name": "TNT",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 281,
+              "name": "TVAS",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 282,
+              "name": "SN",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020864/content"
+          }
+        },
+        {
+          "gamePk": 2022020865,
+          "link": "/api/v1/game/2022020865/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-16T02:00:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 35,
+                "losses": 16,
+                "ot": 3,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 14,
+                "name": "Tampa Bay Lightning",
+                "link": "/api/v1/teams/14"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 19,
+                "losses": 28,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 1,
+              "team": {
+                "id": 53,
+                "name": "Arizona Coyotes",
+                "link": "/api/v1/teams/53"
+              }
+            }
+          },
+          "venue": {
+            "name": "Mullett Arena",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 343,
+              "name": "BSAZ",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 400,
+              "name": "BSSUNX",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020865/content"
+          }
+        },
+        {
+          "gamePk": 2022020867,
+          "link": "/api/v1/game/2022020867/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-16T02:30:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 25,
+                "losses": 20,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 5,
+              "team": {
+                "id": 17,
+                "name": "Detroit Red Wings",
+                "link": "/api/v1/teams/17"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 30,
+                "losses": 19,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 4,
+              "team": {
+                "id": 22,
+                "name": "Edmonton Oilers",
+                "link": "/api/v1/teams/22"
+              }
+            }
+          },
+          "venue": {
+            "id": 5100,
+            "name": "Rogers Place",
+            "link": "/api/v1/venues/5100"
+          },
+          "broadcasts": [
+            {
+              "id": 281,
+              "name": "TVAS",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 284,
+              "name": "SN1",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 289,
+              "name": "SNW",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 392,
+              "name": "BSDETX",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020867/content"
+          }
+        },
+        {
+          "gamePk": 2022020866,
+          "link": "/api/v1/game/2022020866/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-16T02:30:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 29,
+                "losses": 19,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 3,
+              "team": {
+                "id": 21,
+                "name": "Colorado Avalanche",
+                "link": "/api/v1/teams/21"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 28,
+                "losses": 21,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 2,
+              "team": {
+                "id": 30,
+                "name": "Minnesota Wild",
+                "link": "/api/v1/teams/30"
+              }
+            }
+          },
+          "venue": {
+            "id": 5098,
+            "name": "Xcel Energy Center",
+            "link": "/api/v1/venues/5098"
+          },
+          "broadcasts": [
+            {
+              "id": 385,
+              "name": "TNT",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020866/content"
+          }
+        },
+        {
+          "gamePk": 2022020868,
+          "link": "/api/v1/game/2022020868/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-16T03:00:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 27,
+                "losses": 22,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 7,
+              "team": {
+                "id": 7,
+                "name": "Buffalo Sabres",
+                "link": "/api/v1/teams/7"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 17,
+                "losses": 32,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 3,
+              "team": {
+                "id": 24,
+                "name": "Anaheim Ducks",
+                "link": "/api/v1/teams/24"
+              }
+            }
+          },
+          "venue": {
+            "id": 5046,
+            "name": "Honda Center",
+            "link": "/api/v1/venues/5046"
+          },
+          "broadcasts": [
+            {
+              "id": 341,
+              "name": "BSSC",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 28,
+              "name": "MSG-B",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020868/content"
+          }
+        },
+        {
+          "gamePk": 2022020869,
+          "link": "/api/v1/game/2022020869/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-16T03:00:00Z",
+          "status": {
+            "abstractGameState": "Final",
+            "codedGameState": "7",
+            "detailedState": "Final",
+            "statusCode": "7",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 32,
+                "losses": 14,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 6,
+              "team": {
+                "id": 3,
+                "name": "New York Rangers",
+                "link": "/api/v1/teams/3"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 21,
+                "losses": 30,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 4,
+              "team": {
+                "id": 23,
+                "name": "Vancouver Canucks",
+                "link": "/api/v1/teams/23"
+              }
+            }
+          },
+          "venue": {
+            "id": 5073,
+            "name": "Rogers Arena",
+            "link": "/api/v1/venues/5073"
+          },
+          "broadcasts": [
+            {
+              "id": 290,
+              "name": "SNP",
+              "type": "home",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 409,
+              "name": "MSGSN",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020869/content"
+          }
+        }
+      ],
+      "events": [],
+      "matches": []
+    },
+    {
+      "date": "2023-02-16",
+      "totalItems": 8,
+      "totalEvents": 0,
+      "totalGames": 8,
+      "totalMatches": 0,
+      "games": [
+        {
+          "gamePk": 2022020870,
+          "link": "/api/v1/game/2022020870/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-17T00:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 27,
+                "losses": 24,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 13,
+                "name": "Florida Panthers",
+                "link": "/api/v1/teams/13"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 28,
+                "losses": 22,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 15,
+                "name": "Washington Capitals",
+                "link": "/api/v1/teams/15"
+              }
+            }
+          },
+          "venue": {
+            "id": 5094,
+            "name": "Capital One Arena",
+            "link": "/api/v1/venues/5094"
+          },
+          "broadcasts": [
+            {
+              "id": 320,
+              "name": "NBCSWA",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 353,
+              "name": "BSFL",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020870/content"
+          }
+        },
+        {
+          "gamePk": 2022020871,
+          "link": "/api/v1/game/2022020871/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-17T00:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 23,
+                "losses": 27,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 8,
+                "name": "Montréal Canadiens",
+                "link": "/api/v1/teams/8"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 35,
+                "losses": 10,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 12,
+                "name": "Carolina Hurricanes",
+                "link": "/api/v1/teams/12"
+              }
+            }
+          },
+          "venue": {
+            "id": 5066,
+            "name": "PNC Arena",
+            "link": "/api/v1/venues/5066"
+          },
+          "broadcasts": [
+            {
+              "id": 375,
+              "name": "BSSO",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 33,
+              "name": "RDS",
+              "type": "away",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 131,
+              "name": "TSN2",
+              "type": "away",
+              "site": "nhlCA",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020871/content"
+          }
+        },
+        {
+          "gamePk": 2022020872,
+          "link": "/api/v1/game/2022020872/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-17T00:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 34,
+                "losses": 19,
+                "ot": 1,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 52,
+                "name": "Winnipeg Jets",
+                "link": "/api/v1/teams/52"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 16,
+                "losses": 34,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 29,
+                "name": "Columbus Blue Jackets",
+                "link": "/api/v1/teams/29"
+              }
+            }
+          },
+          "venue": {
+            "id": 5059,
+            "name": "Nationwide Arena",
+            "link": "/api/v1/venues/5059"
+          },
+          "broadcasts": [
+            {
+              "id": 347,
+              "name": "BSOH",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 292,
+              "name": "TSN3",
+              "type": "away",
+              "site": "nhlCA",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020872/content"
+          }
+        },
+        {
+          "gamePk": 2022020873,
+          "link": "/api/v1/game/2022020873/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-17T01:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 40,
+                "losses": 8,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 6,
+                "name": "Boston Bruins",
+                "link": "/api/v1/teams/6"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 25,
+                "losses": 20,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 18,
+                "name": "Nashville Predators",
+                "link": "/api/v1/teams/18"
+              }
+            }
+          },
+          "venue": {
+            "id": 5030,
+            "name": "Bridgestone Arena",
+            "link": "/api/v1/venues/5030"
+          },
+          "broadcasts": [
+            {
+              "id": 281,
+              "name": "TVAS",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 287,
+              "name": "SNE",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 288,
+              "name": "SNO",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 290,
+              "name": "SNP",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 375,
+              "name": "BSSO",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 31,
+              "name": "NESN",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020873/content"
+          }
+        },
+        {
+          "gamePk": 2022020875,
+          "link": "/api/v1/game/2022020875/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-17T02:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 25,
+                "losses": 20,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 17,
+                "name": "Detroit Red Wings",
+                "link": "/api/v1/teams/17"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 25,
+                "losses": 18,
+                "ot": 11,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 20,
+                "name": "Calgary Flames",
+                "link": "/api/v1/teams/20"
+              }
+            }
+          },
+          "venue": {
+            "id": 5075,
+            "name": "Scotiabank Saddledome",
+            "link": "/api/v1/venues/5075"
+          },
+          "broadcasts": [
+            {
+              "id": 289,
+              "name": "SNW",
+              "type": "home",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 351,
+              "name": "BSDET",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020875/content"
+          }
+        },
+        {
+          "gamePk": 2022020874,
+          "link": "/api/v1/game/2022020874/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-17T02:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 35,
+                "losses": 13,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 1,
+                "name": "New Jersey Devils",
+                "link": "/api/v1/teams/1"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 25,
+                "losses": 25,
+                "ot": 3,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 19,
+                "name": "St. Louis Blues",
+                "link": "/api/v1/teams/19"
+              }
+            }
+          },
+          "venue": {
+            "id": 5076,
+            "name": "Enterprise Center",
+            "link": "/api/v1/venues/5076"
+          },
+          "broadcasts": [
+            {
+              "id": 309,
+              "name": "ESPN",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020874/content"
+          }
+        },
+        {
+          "gamePk": 2022020876,
+          "link": "/api/v1/game/2022020876/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-17T03:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 22,
+                "losses": 23,
+                "ot": 10,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 4,
+                "name": "Philadelphia Flyers",
+                "link": "/api/v1/teams/4"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 30,
+                "losses": 18,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 55,
+                "name": "Seattle Kraken",
+                "link": "/api/v1/teams/55"
+              }
+            }
+          },
+          "venue": {
+            "name": "Climate Pledge Arena",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 386,
+              "name": "ROOT-NW",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 322,
+              "name": "NBCSP",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020876/content"
+          }
+        },
+        {
+          "gamePk": 2022020877,
+          "link": "/api/v1/game/2022020877/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-17T03:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 17,
+                "losses": 27,
+                "ot": 11,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 28,
+                "name": "San Jose Sharks",
+                "link": "/api/v1/teams/28"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 32,
+                "losses": 18,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 54,
+                "name": "Vegas Golden Knights",
+                "link": "/api/v1/teams/54"
+              }
+            }
+          },
+          "venue": {
+            "id": 5178,
+            "name": "T-Mobile Arena",
+            "link": "/api/v1/venues/5178"
+          },
+          "broadcasts": [
+            {
+              "id": 281,
+              "name": "TVAS",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 284,
+              "name": "SN1",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 317,
+              "name": "ATTSN-RM",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 314,
+              "name": "NBCSCA",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020877/content"
+          }
+        }
+      ],
+      "events": [],
+      "matches": []
+    },
+    {
+      "date": "2023-02-17",
+      "totalItems": 5,
+      "totalEvents": 0,
+      "totalGames": 5,
+      "totalMatches": 0,
+      "games": [
+        {
+          "gamePk": 2022020878,
+          "link": "/api/v1/game/2022020878/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-18T00:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 16,
+                "losses": 32,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 16,
+                "name": "Chicago Blackhawks",
+                "link": "/api/v1/teams/16"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 26,
+                "losses": 24,
+                "ot": 3,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 9,
+                "name": "Ottawa Senators",
+                "link": "/api/v1/teams/9"
+              }
+            }
+          },
+          "venue": {
+            "id": 5031,
+            "name": "Canadian Tire Centre",
+            "link": "/api/v1/venues/5031"
+          },
+          "broadcasts": [
+            {
+              "id": 33,
+              "name": "RDS",
+              "type": "home",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 294,
+              "name": "TSN5",
+              "type": "home",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 318,
+              "name": "NBCSCH",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020878/content"
+          }
+        },
+        {
+          "gamePk": 2022020879,
+          "link": "/api/v1/game/2022020879/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-18T00:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 27,
+                "losses": 17,
+                "ot": 9,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 5,
+                "name": "Pittsburgh Penguins",
+                "link": "/api/v1/teams/5"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 27,
+                "losses": 23,
+                "ot": 7,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 2,
+                "name": "New York Islanders",
+                "link": "/api/v1/teams/2"
+              }
+            }
+          },
+          "venue": {
+            "name": "UBS Arena",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 281,
+              "name": "TVAS",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 284,
+              "name": "SN1",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 409,
+              "name": "MSGSN",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 316,
+              "name": "ATTSN-PT",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020879/content"
+          }
+        },
+        {
+          "gamePk": 2022020880,
+          "link": "/api/v1/game/2022020880/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-18T01:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 30,
+                "losses": 14,
+                "ot": 11,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 25,
+                "name": "Dallas Stars",
+                "link": "/api/v1/teams/25"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 28,
+                "losses": 21,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 30,
+                "name": "Minnesota Wild",
+                "link": "/api/v1/teams/30"
+              }
+            }
+          },
+          "venue": {
+            "id": 5098,
+            "name": "Xcel Energy Center",
+            "link": "/api/v1/venues/5098"
+          },
+          "broadcasts": [
+            {
+              "id": 361,
+              "name": "BSN",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 396,
+              "name": "BSWIX",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 349,
+              "name": "BSSW",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020880/content"
+          }
+        },
+        {
+          "gamePk": 2022020882,
+          "link": "/api/v1/game/2022020882/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-18T02:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 30,
+                "losses": 18,
+                "ot": 7,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 26,
+                "name": "Los Angeles Kings",
+                "link": "/api/v1/teams/26"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 17,
+                "losses": 32,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 24,
+                "name": "Anaheim Ducks",
+                "link": "/api/v1/teams/24"
+              }
+            }
+          },
+          "venue": {
+            "id": 5046,
+            "name": "Honda Center",
+            "link": "/api/v1/venues/5046"
+          },
+          "broadcasts": [
+            {
+              "id": 309,
+              "name": "ESPN",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020882/content"
+          }
+        },
+        {
+          "gamePk": 2022020881,
+          "link": "/api/v1/game/2022020881/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-18T02:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 32,
+                "losses": 14,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 3,
+                "name": "New York Rangers",
+                "link": "/api/v1/teams/3"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 30,
+                "losses": 19,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 22,
+                "name": "Edmonton Oilers",
+                "link": "/api/v1/teams/22"
+              }
+            }
+          },
+          "venue": {
+            "id": 5100,
+            "name": "Rogers Place",
+            "link": "/api/v1/venues/5100"
+          },
+          "broadcasts": [
+            {
+              "id": 281,
+              "name": "TVAS",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 289,
+              "name": "SNW",
+              "type": "home",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 27,
+              "name": "MSG",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020881/content"
+          }
+        }
+      ],
+      "events": [],
+      "matches": []
+    },
+    {
+      "date": "2023-02-18",
+      "totalItems": 13,
+      "totalEvents": 0,
+      "totalGames": 13,
+      "totalMatches": 0,
+      "games": [
+        {
+          "gamePk": 2022020883,
+          "link": "/api/v1/game/2022020883/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-18T19:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 29,
+                "losses": 19,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 21,
+                "name": "Colorado Avalanche",
+                "link": "/api/v1/teams/21"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 25,
+                "losses": 25,
+                "ot": 3,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 19,
+                "name": "St. Louis Blues",
+                "link": "/api/v1/teams/19"
+              }
+            }
+          },
+          "venue": {
+            "id": 5076,
+            "name": "Enterprise Center",
+            "link": "/api/v1/venues/5076"
+          },
+          "broadcasts": [
+            {
+              "id": 324,
+              "name": "NHLN",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 282,
+              "name": "SN",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 357,
+              "name": "BSMW",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 2,
+              "name": "ALT",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020883/content"
+          }
+        },
+        {
+          "gamePk": 2022020884,
+          "link": "/api/v1/game/2022020884/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-18T19:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 27,
+                "losses": 24,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 13,
+                "name": "Florida Panthers",
+                "link": "/api/v1/teams/13"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 25,
+                "losses": 20,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 18,
+                "name": "Nashville Predators",
+                "link": "/api/v1/teams/18"
+              }
+            }
+          },
+          "venue": {
+            "id": 5030,
+            "name": "Bridgestone Arena",
+            "link": "/api/v1/venues/5030"
+          },
+          "broadcasts": [
+            {
+              "id": 375,
+              "name": "BSSO",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 353,
+              "name": "BSFL",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020884/content"
+          }
+        },
+        {
+          "gamePk": 2022020885,
+          "link": "/api/v1/game/2022020885/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-18T22:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 27,
+                "losses": 23,
+                "ot": 7,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 2,
+                "name": "New York Islanders",
+                "link": "/api/v1/teams/2"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 40,
+                "losses": 8,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 6,
+                "name": "Boston Bruins",
+                "link": "/api/v1/teams/6"
+              }
+            }
+          },
+          "venue": {
+            "id": 5085,
+            "name": "TD Garden",
+            "link": "/api/v1/venues/5085"
+          },
+          "broadcasts": [
+            {
+              "id": 31,
+              "name": "NESN",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 409,
+              "name": "MSGSN",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020885/content"
+          }
+        },
+        {
+          "gamePk": 2022020886,
+          "link": "/api/v1/game/2022020886/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-18T22:30:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 35,
+                "losses": 13,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 1,
+                "name": "New Jersey Devils",
+                "link": "/api/v1/teams/1"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 27,
+                "losses": 17,
+                "ot": 9,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 5,
+                "name": "Pittsburgh Penguins",
+                "link": "/api/v1/teams/5"
+              }
+            }
+          },
+          "venue": {
+            "id": 5034,
+            "name": "PPG Paints Arena",
+            "link": "/api/v1/venues/5034"
+          },
+          "broadcasts": [
+            {
+              "id": 316,
+              "name": "ATTSN-PT",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 27,
+              "name": "MSG",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020886/content"
+          }
+        },
+        {
+          "gamePk": 2022020887,
+          "link": "/api/v1/game/2022020887/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-18T23:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 16,
+                "losses": 34,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 29,
+                "name": "Columbus Blue Jackets",
+                "link": "/api/v1/teams/29"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 30,
+                "losses": 14,
+                "ot": 11,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 25,
+                "name": "Dallas Stars",
+                "link": "/api/v1/teams/25"
+              }
+            }
+          },
+          "venue": {
+            "id": 5019,
+            "name": "American Airlines Center",
+            "link": "/api/v1/venues/5019"
+          },
+          "broadcasts": [
+            {
+              "id": 349,
+              "name": "BSSW",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 347,
+              "name": "BSOH",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020887/content"
+          }
+        },
+        {
+          "gamePk": 2022020888,
+          "link": "/api/v1/game/2022020888/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-19T00:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 23,
+                "losses": 27,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 8,
+                "name": "Montréal Canadiens",
+                "link": "/api/v1/teams/8"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 33,
+                "losses": 14,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 10,
+                "name": "Toronto Maple Leafs",
+                "link": "/api/v1/teams/10"
+              }
+            }
+          },
+          "venue": {
+            "name": "Scotiabank Arena",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 4,
+              "name": "CBC",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 281,
+              "name": "TVAS",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 282,
+              "name": "SN",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 286,
+              "name": "CITY",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020888/content"
+          }
+        },
+        {
+          "gamePk": 2022020889,
+          "link": "/api/v1/game/2022020889/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-19T01:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 28,
+                "losses": 22,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 15,
+                "name": "Washington Capitals",
+                "link": "/api/v1/teams/15"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 35,
+                "losses": 10,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 12,
+                "name": "Carolina Hurricanes",
+                "link": "/api/v1/teams/12"
+              }
+            }
+          },
+          "venue": {
+            "name": "Carter-Finley Stadium",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 329,
+              "name": "ESPN+",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 384,
+              "name": "ABC",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 283,
+              "name": "SN360",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 291,
+              "name": "TVAS2",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "fr"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020889/content"
+          }
+        },
+        {
+          "gamePk": 2022020891,
+          "link": "/api/v1/game/2022020891/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-19T03:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 22,
+                "losses": 23,
+                "ot": 10,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 4,
+                "name": "Philadelphia Flyers",
+                "link": "/api/v1/teams/4"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 21,
+                "losses": 30,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 23,
+                "name": "Vancouver Canucks",
+                "link": "/api/v1/teams/23"
+              }
+            }
+          },
+          "venue": {
+            "id": 5073,
+            "name": "Rogers Arena",
+            "link": "/api/v1/venues/5073"
+          },
+          "broadcasts": [
+            {
+              "id": 4,
+              "name": "CBC",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 290,
+              "name": "SNP",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 322,
+              "name": "NBCSP",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020891/content"
+          }
+        },
+        {
+          "gamePk": 2022020890,
+          "link": "/api/v1/game/2022020890/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-19T03:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 32,
+                "losses": 14,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 3,
+                "name": "New York Rangers",
+                "link": "/api/v1/teams/3"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 25,
+                "losses": 18,
+                "ot": 11,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 20,
+                "name": "Calgary Flames",
+                "link": "/api/v1/teams/20"
+              }
+            }
+          },
+          "venue": {
+            "id": 5075,
+            "name": "Scotiabank Saddledome",
+            "link": "/api/v1/venues/5075"
+          },
+          "broadcasts": [
+            {
+              "id": 286,
+              "name": "CITY",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 287,
+              "name": "SNE",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 288,
+              "name": "SNO",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 289,
+              "name": "SNW",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 27,
+              "name": "MSG",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020890/content"
+          }
+        },
+        {
+          "gamePk": 2022020892,
+          "link": "/api/v1/game/2022020892/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-19T03:30:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 19,
+                "losses": 28,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 53,
+                "name": "Arizona Coyotes",
+                "link": "/api/v1/teams/53"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 30,
+                "losses": 18,
+                "ot": 7,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 26,
+                "name": "Los Angeles Kings",
+                "link": "/api/v1/teams/26"
+              }
+            }
+          },
+          "venue": {
+            "name": "Crypto.com Arena",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 355,
+              "name": "BSW",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 343,
+              "name": "BSAZ",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020892/content"
+          }
+        },
+        {
+          "gamePk": 2022020893,
+          "link": "/api/v1/game/2022020893/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-19T03:30:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 27,
+                "losses": 22,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 7,
+                "name": "Buffalo Sabres",
+                "link": "/api/v1/teams/7"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 17,
+                "losses": 27,
+                "ot": 11,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 28,
+                "name": "San Jose Sharks",
+                "link": "/api/v1/teams/28"
+              }
+            }
+          },
+          "venue": {
+            "name": "SAP Center at San Jose",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 314,
+              "name": "NBCSCA",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 28,
+              "name": "MSG-B",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020893/content"
+          }
+        },
+        {
+          "gamePk": 2022020894,
+          "link": "/api/v1/game/2022020894/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-19T03:30:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 25,
+                "losses": 20,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 17,
+                "name": "Detroit Red Wings",
+                "link": "/api/v1/teams/17"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 30,
+                "losses": 18,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 55,
+                "name": "Seattle Kraken",
+                "link": "/api/v1/teams/55"
+              }
+            }
+          },
+          "venue": {
+            "name": "Climate Pledge Arena",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 386,
+              "name": "ROOT-NW",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 351,
+              "name": "BSDET",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020894/content"
+          }
+        },
+        {
+          "gamePk": 2022020895,
+          "link": "/api/v1/game/2022020895/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-19T03:30:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 35,
+                "losses": 16,
+                "ot": 3,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 14,
+                "name": "Tampa Bay Lightning",
+                "link": "/api/v1/teams/14"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 32,
+                "losses": 18,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 54,
+                "name": "Vegas Golden Knights",
+                "link": "/api/v1/teams/54"
+              }
+            }
+          },
+          "venue": {
+            "id": 5178,
+            "name": "T-Mobile Arena",
+            "link": "/api/v1/venues/5178"
+          },
+          "broadcasts": [
+            {
+              "id": 317,
+              "name": "ATTSN-RM",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 359,
+              "name": "BSSUN",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020895/content"
+          }
+        }
+      ],
+      "events": [],
+      "matches": []
+    },
+    {
+      "date": "2023-02-19",
+      "totalItems": 6,
+      "totalEvents": 0,
+      "totalGames": 6,
+      "totalMatches": 0,
+      "games": [
+        {
+          "gamePk": 2022020896,
+          "link": "/api/v1/game/2022020896/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-19T19:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 25,
+                "losses": 20,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 18,
+                "name": "Nashville Predators",
+                "link": "/api/v1/teams/18"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 28,
+                "losses": 21,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 30,
+                "name": "Minnesota Wild",
+                "link": "/api/v1/teams/30"
+              }
+            }
+          },
+          "venue": {
+            "id": 5098,
+            "name": "Xcel Energy Center",
+            "link": "/api/v1/venues/5098"
+          },
+          "broadcasts": [
+            {
+              "id": 361,
+              "name": "BSN",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 363,
+              "name": "BSWI",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 375,
+              "name": "BSSO",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020896/content"
+          }
+        },
+        {
+          "gamePk": 2022020897,
+          "link": "/api/v1/game/2022020897/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-19T19:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 25,
+                "losses": 25,
+                "ot": 3,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 19,
+                "name": "St. Louis Blues",
+                "link": "/api/v1/teams/19"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 26,
+                "losses": 24,
+                "ot": 3,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 9,
+                "name": "Ottawa Senators",
+                "link": "/api/v1/teams/9"
+              }
+            }
+          },
+          "venue": {
+            "id": 5031,
+            "name": "Canadian Tire Centre",
+            "link": "/api/v1/venues/5031"
+          },
+          "broadcasts": [
+            {
+              "id": 281,
+              "name": "TVAS",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 294,
+              "name": "TSN5",
+              "type": "home",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 357,
+              "name": "BSMW",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020897/content"
+          }
+        },
+        {
+          "gamePk": 2022020898,
+          "link": "/api/v1/game/2022020898/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-19T20:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 30,
+                "losses": 19,
+                "ot": 6,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 22,
+                "name": "Edmonton Oilers",
+                "link": "/api/v1/teams/22"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 29,
+                "losses": 19,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 21,
+                "name": "Colorado Avalanche",
+                "link": "/api/v1/teams/21"
+              }
+            }
+          },
+          "venue": {
+            "id": 5064,
+            "name": "Ball Arena",
+            "link": "/api/v1/venues/5064"
+          },
+          "broadcasts": [
+            {
+              "id": 329,
+              "name": "ESPN+",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 391,
+              "name": "HULU",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 282,
+              "name": "SN",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020898/content"
+          }
+        },
+        {
+          "gamePk": 2022020899,
+          "link": "/api/v1/game/2022020899/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-19T23:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 33,
+                "losses": 14,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 10,
+                "name": "Toronto Maple Leafs",
+                "link": "/api/v1/teams/10"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 16,
+                "losses": 32,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 16,
+                "name": "Chicago Blackhawks",
+                "link": "/api/v1/teams/16"
+              }
+            }
+          },
+          "venue": {
+            "id": 5092,
+            "name": "United Center",
+            "link": "/api/v1/venues/5092"
+          },
+          "broadcasts": [
+            {
+              "id": 329,
+              "name": "ESPN+",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 391,
+              "name": "HULU",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 281,
+              "name": "TVAS",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "fr"
+            },
+            {
+              "id": 288,
+              "name": "SNO",
+              "type": "away",
+              "site": "nhlCA",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020899/content"
+          }
+        },
+        {
+          "gamePk": 2022020900,
+          "link": "/api/v1/game/2022020900/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-20T00:00:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 34,
+                "losses": 19,
+                "ot": 1,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 52,
+                "name": "Winnipeg Jets",
+                "link": "/api/v1/teams/52"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 35,
+                "losses": 13,
+                "ot": 5,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 1,
+                "name": "New Jersey Devils",
+                "link": "/api/v1/teams/1"
+              }
+            }
+          },
+          "venue": {
+            "name": "Prudential Center",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 409,
+              "name": "MSGSN",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 292,
+              "name": "TSN3",
+              "type": "away",
+              "site": "nhlCA",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020900/content"
+          }
+        },
+        {
+          "gamePk": 2022020901,
+          "link": "/api/v1/game/2022020901/feed/live",
+          "gameType": "R",
+          "season": "20222023",
+          "gameDate": "2023-02-20T01:30:00Z",
+          "status": {
+            "abstractGameState": "Preview",
+            "codedGameState": "1",
+            "detailedState": "Scheduled",
+            "statusCode": "1",
+            "startTimeTBD": false
+          },
+          "teams": {
+            "away": {
+              "leagueRecord": {
+                "wins": 16,
+                "losses": 34,
+                "ot": 4,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 29,
+                "name": "Columbus Blue Jackets",
+                "link": "/api/v1/teams/29"
+              }
+            },
+            "home": {
+              "leagueRecord": {
+                "wins": 19,
+                "losses": 28,
+                "ot": 8,
+                "type": "league"
+              },
+              "score": 0,
+              "team": {
+                "id": 53,
+                "name": "Arizona Coyotes",
+                "link": "/api/v1/teams/53"
+              }
+            }
+          },
+          "venue": {
+            "name": "Mullett Arena",
+            "link": "/api/v1/venues/null"
+          },
+          "broadcasts": [
+            {
+              "id": 324,
+              "name": "NHLN",
+              "type": "national",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 284,
+              "name": "SN1",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 287,
+              "name": "SNE",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 289,
+              "name": "SNW",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 290,
+              "name": "SNP",
+              "type": "national",
+              "site": "nhlCA",
+              "language": "en"
+            },
+            {
+              "id": 343,
+              "name": "BSAZ",
+              "type": "home",
+              "site": "nhl",
+              "language": "en"
+            },
+            {
+              "id": 347,
+              "name": "BSOH",
+              "type": "away",
+              "site": "nhl",
+              "language": "en"
+            }
+          ],
+          "content": {
+            "link": "/api/v1/game/2022020901/content"
+          }
+        }
+      ],
+      "events": [],
+      "matches": []
+    }
+  ]
+}
