@@ -15,66 +15,52 @@ def dummy_matches() -> Matches:
         ]
     )
 
+
 @fixture
 def dummy_leagues_primary() -> LeagueTypes:
     yield LeagueTypes(
-        international=[{
-            "name": "INT",
-            "leagues": [
-                {
-                    "name": "World Cup",
-                    "id": 2
-                },
-                {
-                    "name": "Euro Cup",
-                    "id": 879842
-                },
-            ]
-        }],
-        countries=[{
-            "name": "Wakanda",
-            "leagues": [
-                {
-                    "name": "BP Premiere League",
-                    "id": 3
-                },
-                {
-                    "name": "BP Second League",
-                    "id": 4
-                },
-            ]
-        }]
+        international=[
+            {
+                "name": "INT",
+                "leagues": [
+                    {"name": "World Cup", "id": 2},
+                    {"name": "Euro Cup", "id": 879842},
+                ],
+            }
+        ],
+        countries=[
+            {
+                "name": "Wakanda",
+                "leagues": [
+                    {"name": "BP Premiere League", "id": 3},
+                    {"name": "BP Second League", "id": 4},
+                ],
+            }
+        ],
     )
+
 
 @fixture
 def dummy_leagues_secondary() -> LeagueTypes:
     yield LeagueTypes(
-        international=[{
-            "name": "INT",
-            "leagues": [
-                {
-                    "name": "World Cup",
-                    "id": 2
-                },
-                {
-                    "name": "Euro Cup",
-                    "id": 1
-                },
-            ]
-        }],
-        countries=[{
-            "name": "Wakanda",
-            "leagues": [
-                {
-                    "name": "BP Premiere League",
-                    "id": 57
-                },
-                {
-                    "name": "BP Second League",
-                    "id": 4
-                },
-            ]
-        }]
+        international=[
+            {
+                "name": "INT",
+                "leagues": [
+                    {"name": "World Cup", "id": 2},
+                    {"name": "Euro Cup", "id": 1},
+                ],
+            }
+        ],
+        countries=[
+            {
+                "name": "Wakanda",
+                "leagues": [
+                    {"name": "BP Premiere League", "id": 57},
+                    {"name": "BP Second League", "id": 4},
+                ],
+            }
+        ],
     )
 
 
@@ -127,16 +113,25 @@ def dummy_broadcast(dummy_broadcast_dict) -> GameBroadcast:
 
 
 def test_assemble_matchup(dummy_broadcast, dummy_leagues_primary):
-    assert SoccerAssembler(dummy_broadcast, dummy_leagues_primary).assemble_matchup() == "Ajax vs Sparta Rotterdam"
+    assert (
+        SoccerAssembler(dummy_broadcast, dummy_leagues_primary).assemble_matchup()
+        == "Ajax vs Sparta Rotterdam"
+    )
 
 
 def test_format_date(dummy_broadcast, dummy_leagues_primary):
     # todo: make this timezone and DST proof
-    assert SoccerAssembler(dummy_broadcast, dummy_leagues_primary).format_date() == "2023-02-19T10:45:00"
+    assert (
+        SoccerAssembler(dummy_broadcast, dummy_leagues_primary).format_date()
+        == "2023-02-19T10:45:00"
+    )
 
 
 def test_format_network(dummy_broadcast, dummy_leagues_primary):
-    assert SoccerAssembler(dummy_broadcast, dummy_leagues_primary).format_network() == "ESPN+ USA"
+    assert (
+        SoccerAssembler(dummy_broadcast, dummy_leagues_primary).format_network()
+        == "ESPN+ USA"
+    )
 
 
 def test_format_sport(dummy_broadcast, dummy_leagues_primary):
@@ -144,7 +139,14 @@ def test_format_sport(dummy_broadcast, dummy_leagues_primary):
 
 
 def test_fetch_league_by_primary_league_id(dummy_broadcast, dummy_leagues_primary):
-    assert SoccerAssembler(dummy_broadcast, dummy_leagues_primary).fetch_league() == "Euro Cup"
+    assert (
+        SoccerAssembler(dummy_broadcast, dummy_leagues_primary).fetch_league()
+        == "Euro Cup"
+    )
+
 
 def test_fetch_league_by_parent_league_id(dummy_broadcast, dummy_leagues_secondary):
-    assert SoccerAssembler(dummy_broadcast, dummy_leagues_secondary).fetch_league() == "BP Premiere League - Wakanda"
+    assert (
+        SoccerAssembler(dummy_broadcast, dummy_leagues_secondary).fetch_league()
+        == "BP Premiere League - Wakanda"
+    )

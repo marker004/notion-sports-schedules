@@ -18,10 +18,10 @@ YEAR = 2022
 url_2022_2023_schedule = f"https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/{YEAR}/league/00_full_schedule.json"
 
 
-print('fetching schedule...')
+print("fetching schedule...")
 response: Response = get(url_2022_2023_schedule)
 schedule: dict = response.json()
-print('done')
+print("done")
 
 league_schedule = LeagueSchedule(
     month_schedule=[month["mscd"] for month in schedule["lscd"]]
@@ -64,9 +64,10 @@ def recursive_fetch_and_delete(next_cursor=None):
 def clear_db_totally():
     recursive_fetch_and_delete()
 
-print('deleting existing games starting after yesterday...')
+
+print("deleting existing games starting after yesterday...")
 clear_db_totally()
-print('Done')
+print("Done")
 
 
 watchable_games: list[Game] = [

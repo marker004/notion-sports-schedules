@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 
 BROADCASTER_BADLIST = ["NBA TV"]
 
+
 class Team(BaseModel):
     tid: int
     record: str = Field(alias="re")
@@ -51,11 +52,17 @@ class Game(BaseModel):
     game_time_utc: time = Field(alias="utctm")
 
     def watchable(self) -> bool:
-        return any([broadcaster.watchable() for broadcaster in self.broadcasting.broadcast])
+        return any(
+            [broadcaster.watchable() for broadcaster in self.broadcasting.broadcast]
+        )
 
     @property
     def watchable_broadcaster(self) -> Broadcaster:
-        return [broadcaster for broadcaster in self.broadcasting.broadcast if broadcaster.watchable()][0]
+        return [
+            broadcaster
+            for broadcaster in self.broadcasting.broadcast
+            if broadcaster.watchable()
+        ][0]
 
 
 class MonthSchedule(BaseModel):
