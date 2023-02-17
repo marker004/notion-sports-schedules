@@ -1,3 +1,4 @@
 {
     "python.defaultInterpreterPath": "/Users/mark/Library/Caches/pypoetry/virtualenvs/sports-schedules-10zX25Yy-py3.9/bin/python",
+    "python.formatting.provider": "black",
 }
