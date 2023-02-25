@@ -6,11 +6,9 @@ from shared_items.utils import measure_execution
 from models.nba import Game, LeagueSchedule
 
 from shared import (
-    SCHEDULE_DATABASE_ID,
     ElligibleSportsEnum,
-    beginning_of_today,
-    fetch_all_games_by_sport,
-    fetch_only_future_games_by_sport,
+    clear_db_for_sport,
+    insert_to_database,
 )
 from utils.assemblers import NbaAssembler
 
@@ -31,26 +29,10 @@ league_schedule = LeagueSchedule(
     month_schedule=[month["mscd"] for month in schedule["lscd"]]
 )
 
-
-@measure_execution("deleting existing NBA games")
-def clear_db_totally():
-    fetch_only_nba_games = fetch_all_games_by_sport(ElligibleSportsEnum.NBA.value)
-    delete_nba_games = notion.recursive_fetch_and_delete(fetch_only_nba_games)
-    delete_nba_games()
-
-
-clear_db_totally()
-
-
-watchable_games: list[Game] = [
-    game
-    for month in league_schedule.month_schedule
-    for game in month.games
-    if game.eastern_time > beginning_of_today and game.watchable()
-]
+usable_games = league_schedule.usable_games()
 
 assembed_items = [
-    NbaAssembler(game).notion_sports_schedule_item() for game in watchable_games
+    NbaAssembler(game).notion_sports_schedule_item() for game in usable_games
 ]
 
 all_props = [
@@ -59,9 +41,17 @@ all_props = [
 ]
 
 
+@measure_execution("deleting existing NBA games")
+def delete_existing_games():
+    clear_db_for_sport(ElligibleSportsEnum.NBA.value)
+
+
+delete_existing_games()
+
+
 @measure_execution("inserting NBA games")
 def insert_games():
-    for props in all_props:
-        notion.client.pages.create(
-            parent={"database_id": SCHEDULE_DATABASE_ID}, properties=props
-        )
+    insert_to_database(all_props)
+
+
+insert_games()

@@ -1,15 +1,12 @@
-from itertools import groupby
 from shared_items.utils import pp, measure_execution
 from shared_items.interfaces import Notion
 from requests import Response, get
-from constants import SOCCER_BROADCAST_BADLIST
 
-from models.soccer import GameBroadcast, LeagueTypes
+from models.soccer import GameBroadcast, GameBroadcastCollection, LeagueTypes
 from shared import (
-    SCHEDULE_DATABASE_ID,
     ElligibleSportsEnum,
-    fetch_all_games_by_sport,
-    fetch_only_future_games_by_sport,
+    clear_db_for_sport,
+    insert_to_database,
 )
 from utils.assemblers import SoccerAssembler
 
@@ -27,50 +24,19 @@ leagues_json: dict = leagues_response.json()
 
 league_types = LeagueTypes(**leagues_json)
 
-game_broadcasts: list[GameBroadcast] = [
-    GameBroadcast(**game_broadcast)
-    for sublist in schedule_json.values()
-    for game_broadcast in sublist
-]
+game_broadcasts = GameBroadcastCollection(
+    game_broadcasts=[
+        GameBroadcast(**game_broadcast)
+        for sublist in schedule_json.values()
+        for game_broadcast in sublist
+    ]
+)
 
-broadcasts = [
-    broadcast
-    for broadcast in game_broadcasts
-    if broadcast.station.name not in SOCCER_BROADCAST_BADLIST
-    and "live" in broadcast.tags
-]
-
-
-broadcasts.sort(key=lambda b: b.startTime)
-
-
-def unique_broadcasts_by_match_id(
-    broadcasts: list[GameBroadcast],
-) -> list[GameBroadcast]:
-    broadcast_groups: list[list[GameBroadcast]] = []
-    uniquekeys = []
-
-    for k, v in groupby(broadcasts, key=lambda b: b.matchId):
-        broadcast_groups.append(list(v))
-        uniquekeys.append(k)
-
-    unique_broadcasts: list[GameBroadcast] = []
-    for broadcast_group in broadcast_groups:
-        first_broadcast = broadcast_group[0]
-        networks: list[str] = []
-        for broadcast in broadcast_group:
-            networks.append(broadcast.station.name)
-        first_broadcast.station.name = ", ".join(networks)
-        unique_broadcasts.append(first_broadcast)
-    return unique_broadcasts
-
-
-unique_broadcasts = unique_broadcasts_by_match_id(broadcasts)
-
+usable_games = game_broadcasts.usable_games()
 
 assembed_items = [
     SoccerAssembler(broadcast, league_types).notion_sports_schedule_item()
-    for broadcast in unique_broadcasts
+    for broadcast in usable_games
 ]
 
 
@@ -81,21 +47,16 @@ all_props = [
 
 
 @measure_execution("deleting existing soccer games")
-def clear_db_totally():
-    fetch_only_soccer_games = fetch_all_games_by_sport(ElligibleSportsEnum.SOCCER.value)
-    delete_soccer_games = notion.recursive_fetch_and_delete(fetch_only_soccer_games)
-    delete_soccer_games()
+def delete_existing_games():
+    clear_db_for_sport(ElligibleSportsEnum.SOCCER.value)
 
 
-clear_db_totally()
+delete_existing_games()
 
 
 @measure_execution("inserting soccer games")
 def insert_games():
-    for props in all_props:
-        notion.client.pages.create(
-            parent={"database_id": SCHEDULE_DATABASE_ID}, properties=props
-        )
+    insert_to_database(all_props)
 
 
 insert_games()

@@ -1,8 +1,10 @@
 from datetime import datetime
-from typing import Optional, TypedDict, Union
+from typing import Optional, TypedDict
 from pydantic import BaseModel, validator
 from dataclasses import InitVar
 from pydantic.dataclasses import dataclass
+from constants import SOCCER_BROADCAST_BADLIST
+from itertools import groupby
 
 
 def normalize_dates(raw_date_string: str) -> datetime:
@@ -63,6 +65,49 @@ class GameBroadcast(BaseModel):
         if isinstance(value, str):
             return normalize_dates(value)
         return value
+
+
+class GameBroadcastCollection(BaseModel):
+    game_broadcasts: list[GameBroadcast]
+
+    @staticmethod
+    def watchable_broadcasts(broadcasts: list[GameBroadcast]) -> list[GameBroadcast]:
+        return [
+            broadcast
+            for broadcast in broadcasts
+            if broadcast.station.name not in SOCCER_BROADCAST_BADLIST
+            and "live" in broadcast.tags
+        ]
+
+    @staticmethod
+    def sorted_broadcasts(broadcasts: list[GameBroadcast]) -> list[GameBroadcast]:
+        return sorted(broadcasts, key=lambda b: b.startTime)
+
+    @staticmethod
+    def unique_broadcasts_by_match_id(
+        broadcasts: list[GameBroadcast],
+    ) -> list[GameBroadcast]:
+        broadcast_groups: list[list[GameBroadcast]] = []
+        uniquekeys = []
+
+        for k, v in groupby(broadcasts, key=lambda b: b.matchId):
+            broadcast_groups.append(list(v))
+            uniquekeys.append(k)
+
+        unique_broadcasts: list[GameBroadcast] = []
+        for broadcast_group in broadcast_groups:
+            first_broadcast = broadcast_group[0]
+            networks: list[str] = []
+            for broadcast in broadcast_group:
+                networks.append(broadcast.station.name)
+            first_broadcast.station.name = ", ".join(networks)
+            unique_broadcasts.append(first_broadcast)
+        return unique_broadcasts
+
+    def usable_games(self) -> list[GameBroadcast]:
+        watchable = self.watchable_broadcasts(self.game_broadcasts)
+        sorted = self.sorted_broadcasts(watchable)
+        return self.unique_broadcasts_by_match_id(sorted)
 
 
 class League(BaseModel):

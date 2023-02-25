@@ -55,6 +55,19 @@ def fetch_only_future_games_by_sport(sport: ElligibleSports):
     return func
 
 
+def clear_db_for_sport(sport: ElligibleSports):
+    fetch_games = fetch_all_games_by_sport(sport)
+    delete_games = notion.recursive_fetch_and_delete(fetch_games)
+    delete_games()
+
+
+def insert_to_database(all_props: list[dict]):
+    for props in all_props:
+        notion.client.pages.create(
+            parent={"database_id": SCHEDULE_DATABASE_ID}, properties=props
+        )
+
+
 @dataclass
 class NotionSportsScheduleItem:
     matchup: str

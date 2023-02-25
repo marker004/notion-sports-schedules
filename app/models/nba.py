@@ -1,7 +1,8 @@
-from datetime import date, time, datetime
-from typing import Literal, Optional
+from datetime import datetime
+from typing import Literal
 
 from pydantic import BaseModel, Field
+from shared import beginning_of_today
 
 BROADCASTER_BADLIST = ["NBA TV"]
 
@@ -72,6 +73,14 @@ class MonthSchedule(BaseModel):
 
 class LeagueSchedule(BaseModel):
     month_schedule: list[MonthSchedule] = Field(alias="mscd")
+
+    def usable_games(self) -> list[Game]:
+        return [
+            game
+            for month in self.month_schedule
+            for game in month.games
+            if game.eastern_time > beginning_of_today and game.watchable()
+        ]
 
     class Config:
         allow_population_by_field_name = True
