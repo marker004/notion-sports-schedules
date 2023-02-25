@@ -51,7 +51,7 @@ class GameBroadcast(BaseModel):
     parentLeagueId: int
     program: Program
     tags: list[str]
-    # endTime: Optional[datetime]
+    endTime: Optional[datetime]
     # qualifiers: list[str]
     # stationId: str
     # bet365MatchId: int
