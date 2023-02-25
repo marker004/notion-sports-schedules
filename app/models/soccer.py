@@ -13,50 +13,50 @@ def normalize_dates(raw_date_string: str) -> datetime:
 
 
 class Station(BaseModel):
-    callSign: Optional[str]
-    stationId: str
-    affiliateId: Optional[str]
-    affiliateCallSign: Optional[str]
     name: str
-    type: Optional[str]
-    blockedCountryCodes: Optional[list[Union[str, int]]]
+    # callSign: Optional[str]
+    # stationId: str
+    # affiliateId: Optional[str]
+    # affiliateCallSign: Optional[str]
+    ## type: Optional[str] # mypy needs 2 comment hashes here, "type" is a reserved word
+    # blockedCountryCodes: Optional[list[Union[str, int]]]
 
 
 class Team(BaseModel):
     name: str
     isHome: bool
-    teamBrandId: str
+    # teamBrandId: str
 
 
 class Program(BaseModel):
-    rootId: str
     teams: list[Team]
+    # rootId: str
 
 
-class Affiliate(BaseModel):
-    langCode: str
-    title: str
-    subtitle: str
-    link: str  # convert to URL if I care
-    callToAction: str
-    imageUrl: str  # convert to URL if I care
-    disclaimer: str
+# class Affiliate(BaseModel):
+#     langCode: str
+#     title: str
+#     subtitle: str
+#     link: str  # convert to URL if I care
+#     callToAction: str
+#     imageUrl: str  # convert to URL if I care
+#     disclaimer: str
 
 
 class GameBroadcast(BaseModel):
     startTime: datetime
-    endTime: Optional[datetime]
-    qualifiers: list[str]
     station: Station
-    stationId: str
     matchId: int
     leagueId: int
     parentLeagueId: int
     program: Program
-    bet365MatchId: int
-    externalId: Optional[str]
-    affiliates: list[Affiliate]
     tags: list[str]
+    # endTime: Optional[datetime]
+    # qualifiers: list[str]
+    # stationId: str
+    # bet365MatchId: int
+    # externalId: Optional[str]
+    # affiliates: list[Affiliate]
 
     @validator("startTime", "endTime", pre=True)
     def normalize_dates(cls, value):
