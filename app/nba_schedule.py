@@ -5,7 +5,13 @@ from shared_items.utils import measure_execution
 
 from models.nba import Game, LeagueSchedule
 
-from shared import SCHEDULE_DATABASE_ID, ElligibleSportsEnum, beginning_of_today, fetch_all_games_by_sport, fetch_only_future_games_by_sport
+from shared import (
+    SCHEDULE_DATABASE_ID,
+    ElligibleSportsEnum,
+    beginning_of_today,
+    fetch_all_games_by_sport,
+    fetch_only_future_games_by_sport,
+)
 from utils.assemblers import NbaAssembler
 
 # SEASON_DATE_BOOKENDS = ["2022-10-18", "2023-06-18"]
@@ -25,16 +31,15 @@ league_schedule = LeagueSchedule(
     month_schedule=[month["mscd"] for month in schedule["lscd"]]
 )
 
-@measure_execution('deleting existing NBA games')
+
+@measure_execution("deleting existing NBA games")
 def clear_db_totally():
     fetch_only_nba_games = fetch_all_games_by_sport(ElligibleSportsEnum.NBA.value)
     delete_nba_games = notion.recursive_fetch_and_delete(fetch_only_nba_games)
     delete_nba_games()
 
-# deleting_start_time = time.time()
-# print("deleting existing NBA games")
+
 clear_db_totally()
-# print(f"Done. Took {time.time() - deleting_start_time} seconds")
 
 
 watchable_games: list[Game] = [
@@ -53,7 +58,8 @@ all_props = [
     for schedule_item in assembed_items
 ]
 
-@measure_execution('inserting NBA games')
+
+@measure_execution("inserting NBA games")
 def insert_games():
     for props in all_props:
         notion.client.pages.create(

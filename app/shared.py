@@ -13,6 +13,7 @@ beginning_of_today = datetime.combine(datetime.now(), time())
 
 ElligibleSports = Literal["🏀", "⚽"]
 
+
 class ElligibleSportsEnum(Enum):
     NBA = "🏀"
     SOCCER = "⚽"
@@ -27,10 +28,12 @@ def fetch_all_games_by_sport(sport: ElligibleSports):
         return notion.client.databases.query(
             database_id=SCHEDULE_DATABASE_ID, filter=filter, next_cursor=next_cursor
         )
+
     return func
 
+
 def fetch_only_future_games_by_sport(sport: ElligibleSports):
-    def func(next_cursor: Optional[str]=None):
+    def func(next_cursor: Optional[str] = None):
         filter = {
             "and": [
                 {
@@ -48,6 +51,7 @@ def fetch_only_future_games_by_sport(sport: ElligibleSports):
         return notion.client.databases.query(
             database_id=SCHEDULE_DATABASE_ID, filter=filter, next_cursor=next_cursor
         )
+
     return func
 
 
