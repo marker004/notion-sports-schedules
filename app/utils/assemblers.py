@@ -2,7 +2,7 @@ from abc import ABC
 from zoneinfo import ZoneInfo
 from models.soccer import GameBroadcast, LeagueTypes
 from models.nba import Game as NbaGame
-from shared import NotionSportsScheduleItem
+from shared import ElligibleSportsEnum, NotionSportsScheduleItem
 
 
 class Assembler(ABC):
@@ -61,7 +61,7 @@ class NbaAssembler(Assembler):
         return "NBA"
 
     def format_sport(self) -> str:
-        return "🏀"
+        return ElligibleSportsEnum.NBA.value
 
 
 class SoccerAssembler(Assembler):
@@ -92,4 +92,4 @@ class SoccerAssembler(Assembler):
         ).name
 
     def format_sport(self) -> str:
-        return "⚽"
+        return ElligibleSportsEnum.SOCCER.value

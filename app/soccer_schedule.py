@@ -1,12 +1,13 @@
 from itertools import groupby
-from shared_items.utils import pp
+from shared_items.utils import pp, measure_execution
 from shared_items.interfaces import Notion
 from requests import Response, get
 from constants import SOCCER_BROADCAST_BADLIST
 
 from models.soccer import GameBroadcast, LeagueTypes
-from shared import SCHEDULE_DATABASE_ID
+from shared import SCHEDULE_DATABASE_ID, ElligibleSportsEnum, fetch_all_games_by_sport, fetch_only_future_games_by_sport
 from utils.assemblers import SoccerAssembler
+
 
 notion = Notion()
 
@@ -36,7 +37,6 @@ broadcasts = [
 
 
 broadcasts.sort(key=lambda b: b.startTime)
-
 
 def unique_broadcasts_by_match_id(
     broadcasts: list[GameBroadcast],
@@ -73,11 +73,20 @@ all_props = [
     for schedule_item in assembed_items
 ]
 
-pp(all_props)
+@measure_execution('deleting existing soccer games')
+def clear_db_totally():
+    fetch_only_soccer_games = fetch_all_games_by_sport(ElligibleSportsEnum.SOCCER.value)
+    delete_soccer_games = notion.recursive_fetch_and_delete(fetch_only_soccer_games)
+    delete_soccer_games()
 
-exit()
+clear_db_totally()
 
-for props in all_props:
-    notion.client.pages.create(
-        parent={"database_id": SCHEDULE_DATABASE_ID}, properties=props
-    )
+
+@measure_execution('inserting soccer games')
+def insert_games():
+    for props in all_props:
+        notion.client.pages.create(
+            parent={"database_id": SCHEDULE_DATABASE_ID}, properties=props
+        )
+
+insert_games()

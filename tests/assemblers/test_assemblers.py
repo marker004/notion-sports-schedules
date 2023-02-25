@@ -1,4 +1,5 @@
 from models.soccer import GameBroadcast, LeagueTypes, League, Matches
+from shared import ElligibleSportsEnum
 
 from utils.assemblers import SoccerAssembler
 
@@ -135,7 +136,7 @@ def test_format_network(dummy_broadcast, dummy_leagues_primary):
 
 
 def test_format_sport(dummy_broadcast, dummy_leagues_primary):
-    assert SoccerAssembler(dummy_broadcast, dummy_leagues_primary).format_sport() == "⚽"
+    assert SoccerAssembler(dummy_broadcast, dummy_leagues_primary).format_sport() == ElligibleSportsEnum.SOCCER.value
 
 
 def test_fetch_league_by_primary_league_id(dummy_broadcast, dummy_leagues_primary):
