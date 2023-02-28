@@ -3,7 +3,7 @@ from typing import Optional, TypedDict
 from pydantic import BaseModel, validator
 from dataclasses import InitVar
 from pydantic.dataclasses import dataclass
-from constants import SOCCER_BROADCAST_BADLIST
+from constants import NATIONAL_FLAGS, SOCCER_BROADCAST_BADLIST
 from itertools import groupby
 
 
@@ -104,6 +104,7 @@ class GameBroadcastCollection(BaseModel):
             unique_broadcasts.append(first_broadcast)
         return unique_broadcasts
 
+    # todo: test this
     def usable_games(self) -> list[GameBroadcast]:
         watchable = self.watchable_broadcasts(self.game_broadcasts)
         sorted = self.sorted_broadcasts(watchable)
@@ -146,7 +147,11 @@ class LeagueTypes:
 
         for country in countries:
             for league in country["leagues"]:
-                league["name"] = f"{league['name']} - {country['name']}"
+                if NATIONAL_FLAGS.get(country['name']):
+                    league["name"] += f" {NATIONAL_FLAGS.get(country['name'])}"
+                else:
+                    league["name"] += f" - {country['name']}"
+
                 leagues.append(League(**league))
 
         self.leagues = leagues
