@@ -63,10 +63,9 @@ def clear_db_for_sport(sport: ElligibleSports):
 
 
 def insert_to_database(all_props: list[dict]):
+    row_creator = notion.create_row_for_database(SCHEDULE_DATABASE_ID)
     for props in all_props:
-        notion.client.pages.create(
-            parent={"database_id": SCHEDULE_DATABASE_ID}, properties=props
-        )
+        row_creator(props)
 
 
 @dataclass
