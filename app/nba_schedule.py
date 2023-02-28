@@ -20,10 +20,8 @@ YEAR = 2022
 url_2022_2023_schedule = f"https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/{YEAR}/league/00_full_schedule.json"
 
 
-print("fetching schedule...")
 response: Response = get(url_2022_2023_schedule)
 schedule: dict = response.json()
-print("done")
 
 league_schedule = LeagueSchedule(
     month_schedule=[month["mscd"] for month in schedule["lscd"]]
