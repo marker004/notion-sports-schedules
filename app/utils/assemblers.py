@@ -1,11 +1,10 @@
-from abc import ABC
 from zoneinfo import ZoneInfo
 from models.soccer import GameBroadcast, LeagueTypes
 from models.nba import Game as NbaGame
 from shared import ElligibleSportsEnum, NotionSportsScheduleItem
 
 
-class Assembler(ABC):
+class Assembler:
     def assemble_matchup(self) -> str:
         raise NotImplementedError
 
@@ -50,9 +49,7 @@ class NbaAssembler(Assembler):
         return joined_names
 
     def format_date(self) -> str:
-        return self.game.eastern_time.strftime(
-            "%Y-%m-%dT%H:%M:%S"
-        )  # todo fix this from saying UTC in Notion
+        return self.game.eastern_time.strftime("%Y-%m-%dT%H:%M:%S")
 
     def format_network(self) -> str:
         return self.game.watchable_broadcaster.disp
