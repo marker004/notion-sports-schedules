@@ -1,30 +1,39 @@
 from datetime import datetime
-from typing import Literal, TypedDict
-from pydantic import BaseModel, Field
+from typing import Literal, Optional, TypedDict
+from pydantic import BaseModel, validator
+
+from constants import NHL_BROADCAST_BADLIST
+
+
+def normalize_dates(raw_date_string: str) -> datetime:
+    unix_timestamp = (
+        int(raw_date_string.removeprefix("/Date(").removesuffix(")/")) / 1000
+    )
+    return datetime.utcfromtimestamp(unix_timestamp)
 
 
 # class RequestMetadata(TypedDict):
 #     timeStamp: datetime
 
-class Status(TypedDict):
-    abstractGameState: str
-    codedGameState: int
-    detailedState: str
-    statusCode: int
-    startTimeTBD: bool
+# class Status(TypedDict):
+#     abstractGameState: str
+#     codedGameState: int
+#     detailedState: str
+#     statusCode: int
+#     startTimeTBD: bool
 
 
 class Record(BaseModel):
     wins: int
     losses: int
-    ot: int
-    type: str # Literal if I care
+    ot: Optional[int]
+    type: str  # Literal if I care
 
 
 class TeamId(BaseModel):
     id: int
     name: str
-    link: str # url if I care
+    link: str  # url if I care
 
 
 class Team(BaseModel):
@@ -33,48 +42,69 @@ class Team(BaseModel):
     team: TeamId
 
 
-class Teams(TypedDict):
+class Teams(BaseModel):
     away: Team
     home: Team
 
 
-class Venue(TypedDict):
-    name: str
-    link: str # url if I care
+# class Venue(TypedDict):
+#     name: str
+#     link: str # url if I care
+
 
 class Broadcast(BaseModel):
     id: int
     name: str
     type: Literal["national", "home", "away"]
-    site: Literal["nhl"]
-    language: Literal["en"]
+    site: Literal["nhl", "nhlCA"]
+    language: Literal["en", "fr"]
 
-class Content(TypedDict):
-    link: str # url if I care
+    def watchable(self) -> bool:
+        return self.name not in NHL_BROADCAST_BADLIST
+
+
+# class Content(TypedDict):
+#     link: str # url if I care
+
 
 class Game(BaseModel):
     gamePk: int
-    link: str # todo if I care: type this to url
-    gameType: str # todo if I care: type this to Literal
+    link: str  # todo if I care: type this to url
+    gameType: str  # todo if I care: type this to Literal
     season: str
     gameDate: datetime
-    status: Status
+    # status: Status
     teams: Teams
-    venue: Venue
-    broadcasts: list[Broadcast]
-    content: Content
+    # venue: Venue
+    broadcasts: list[Broadcast] = []
+    # content: Content
+
+    def watchable_broadcasts(self) -> list[Broadcast]:
+        return [broadcast for broadcast in self.broadcasts if broadcast.watchable()]
+
+    def any_watchable_broadcasts(self) -> bool:
+        return any(self.watchable_broadcasts())
+
 
 class Date(BaseModel):
     date: datetime
-    totalItems: int
-    totalEvents: int
-    totalGames: int
-    totalMatches: int
     games: list[Game]
-    events: list[dict]
-    matches: list[dict]
+    # totalItems: int
+    # totalEvents: int
+    # totalGames: int
+    # totalMatches: int
+    # events: list[dict]
+    # matches: list[dict]
+
+    @validator("date", pre=True)
+    def normalize_dates(cls, value):
+        if isinstance(value, str):
+            return datetime.strptime(value, "%Y-%m-%d")
+        return value
+
 
 class LeagueBroadcastSchedule(BaseModel):
+    dates: list[Date]
     # copyright: str
     # totalItems: int
     # totalEvents: int
@@ -82,5 +112,18 @@ class LeagueBroadcastSchedule(BaseModel):
     # totalMatches: int
     # metaData: RequestMetadata
     # wait: int
-    dates: list[Date]
 
+    def watchable_games(self) -> list[Game]:
+        # if not self.broadcasts:
+        # import pdb; pdb.set_trace()
+        return [
+            game
+            for date in self.dates
+            for game in date.games
+            if game.any_watchable_broadcasts()
+        ]
+
+    def usable_games(self) -> list[Game]:
+        return self.watchable_games()
+        # sorted = self.sorted_broadcasts(watchable)
+        # return self.unique_broadcasts_by_match_id(sorted)
