@@ -81,18 +81,31 @@ class NotionSportsScheduleItem:
             {
                 "name": "Matchup",
                 "type": "title",
-                "content": self.matchup,
+                "content": {
+                    "content": self.matchup,
+                },
             },
-            {"name": "Date", "type": "date", "content": self.date},
+            {
+                "name": "Date",
+                "type": "date",
+                "content": {
+                    "start": self.date,
+                    "time_zone": "America/Indianapolis",
+                },
+            },
             {
                 "name": "Network",
                 "type": "rich_text",
-                "content": self.network,
+                "content": {
+                    "content": self.network,
+                },
             },
             {
                 "name": "League",
                 "type": "rich_text",
-                "content": self.league,
+                "content": {
+                    "content": self.league,
+                },
             },
-            {"name": "Sport", "type": "rich_text", "content": self.sport},
+            {"name": "Sport", "type": "rich_text", "content": {"content": self.sport}},
         ]
