@@ -2,6 +2,7 @@ from zoneinfo import ZoneInfo
 from models.soccer import GameBroadcast, LeagueTypes
 from models.nba import Game as NbaGame
 from models.nhl import Game as NhlGame
+from models.nhl_espn import Event as NhlEspnPlusGame
 from shared import ElligibleSportsEnum, NotionSportsScheduleItem
 
 
@@ -93,7 +94,15 @@ class SoccerAssembler(Assembler):
         return ElligibleSportsEnum.SOCCER.value
 
 
-class NhlAssembler(Assembler):
+class NhlBaseAssembler(Assembler):
+    def fetch_league(self) -> str:
+        return "NHL"
+
+    def format_sport(self) -> str:
+        return ElligibleSportsEnum.NHL.value
+
+
+class NhlAssembler(NhlBaseAssembler):
     def __init__(self, game: NhlGame):
         self.game = game
 
@@ -113,8 +122,19 @@ class NhlAssembler(Assembler):
         broadcasts = [broadcast.name for broadcast in self.game.watchable_broadcasts()]
         return ", ".join(broadcasts)
 
-    def fetch_league(self) -> str:
-        return "NHL"
 
-    def format_sport(self) -> str:
-        return ElligibleSportsEnum.NHL.value
+class NhlEspnPlusAssembler(NhlBaseAssembler):
+    def __init__(self, game: NhlEspnPlusGame):
+        self.game = game
+
+    def assemble_matchup(self) -> str:
+        return self.game.name.replace(" at ", " vs ")
+
+    def format_date(self) -> str:
+        utc_time = self.game.date
+        local_time = utc_time.astimezone(ZoneInfo("America/Indianapolis"))
+
+        return local_time.strftime("%Y-%m-%dT%H:%M:%S")
+
+    def format_network(self) -> str:
+        return self.game.broadcast
