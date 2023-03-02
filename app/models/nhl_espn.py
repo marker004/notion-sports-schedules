@@ -1,7 +1,6 @@
 from datetime import datetime
-from typing import Literal, Optional, cast
+from typing import Literal, Optional
 from pydantic import BaseModel
-from models.nhl import Game as NhlGame
 
 LOCAL_ZIP_CODE = "46203"
 
@@ -128,7 +127,7 @@ class DailyEspnPlusNhlSchedule(BaseModel):
                 id
                 for id in game.black_out_policy_ids()
                 if self.zipcodes.get(id)
-                and LOCAL_ZIP_CODE in self.zipcodes.get(cast(str, id))
+                and LOCAL_ZIP_CODE in (self.zipcodes.get(str, id) or [])
             ]
         )
 

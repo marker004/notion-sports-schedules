@@ -89,7 +89,7 @@ class Game(BaseModel):
         return value
 
     @property
-    def watchable_broadcasts(self) -> list[Broadcast]:
+    def watchable_broadcasts(self) -> list[str]:
         return list(
             set(
                 [
