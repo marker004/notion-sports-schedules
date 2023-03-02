@@ -11,13 +11,14 @@ notion = Notion()
 
 beginning_of_today = datetime.combine(datetime.now(), time())
 
-ElligibleSports = Literal["🏀", "⚽", "🏒"]
+ElligibleSports = Literal["🏀", "⚽", "🏒", "⚾"]
 
 
 class ElligibleSportsEnum(Enum):
     NBA = "🏀"
     SOCCER = "⚽"
     NHL = "🏒"
+    MLB = "⚾"
 
 
 def fetch_all_games_by_sport(sport: ElligibleSports):

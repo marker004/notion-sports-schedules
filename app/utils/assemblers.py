@@ -1,5 +1,7 @@
 from zoneinfo import ZoneInfo
+from constants import MLB_BROADCAST_BADLIST
 from models.soccer import GameBroadcast, LeagueTypes
+from models.mlb import Game as MlbGame
 from models.nba import Game as NbaGame
 from models.nhl import Game as NhlGame
 from models.nhl_espn import Event as NhlEspnPlusGame
@@ -138,3 +140,28 @@ class NhlEspnPlusAssembler(NhlBaseAssembler):
 
     def format_network(self) -> str:
         return self.game.broadcast
+
+
+class MlbAssembler(Assembler):
+    def __init__(self, game: MlbGame):
+        self.game = game
+
+    def assemble_matchup(self) -> str:
+        home_team = self.game.teams.home.team.name
+        away_team = self.game.teams.away.team.name
+
+        return f"{away_team} vs {home_team}"
+
+    def format_date(self) -> str:
+        return self.game.gameDate.strftime("%Y-%m-%dT%H:%M:%S")
+
+    def format_network(self) -> str:
+        return ", ".join(self.game.watchable_broadcasts)
+
+    def fetch_league(self) -> str:
+        if self.game.gameType != "R":
+            return f"MLB - {self.game.seriesDescription}"
+        return "MLB"
+
+    def format_sport(self) -> str:
+        return ElligibleSportsEnum.MLB.value
