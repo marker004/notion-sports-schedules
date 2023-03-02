@@ -34,7 +34,7 @@ game_broadcasts = GameBroadcastCollection(
 
 usable_games = game_broadcasts.usable_games()
 
-assembed_items = [
+assembled_items = [
     SoccerAssembler(broadcast, league_types).notion_sports_schedule_item()
     for broadcast in usable_games
 ]
@@ -42,7 +42,7 @@ assembed_items = [
 
 all_props = [
     notion.assemble_props(schedule_item.format_for_notion_interface())
-    for schedule_item in assembed_items
+    for schedule_item in assembled_items
 ]
 
 

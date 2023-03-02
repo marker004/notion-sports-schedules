@@ -46,14 +46,14 @@ class Program(BaseModel):
 
 
 class GameBroadcast(BaseModel):
-    startTime: datetime
+    startTime: datetime  # UTC time
     station: Station
     matchId: int
     leagueId: int
     parentLeagueId: int
     program: Program
     tags: list[str]
-    endTime: Optional[datetime]
+    endTime: Optional[datetime]  # UTC time
     # qualifiers: list[str]
     # stationId: str
     # bet365MatchId: int
@@ -147,7 +147,7 @@ class LeagueTypes:
 
         for country in countries:
             for league in country["leagues"]:
-                if NATIONAL_FLAGS.get(country['name']):
+                if NATIONAL_FLAGS.get(country["name"]):
                     league["name"] += f" {NATIONAL_FLAGS.get(country['name'])}"
                 else:
                     league["name"] += f" - {country['name']}"

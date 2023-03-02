@@ -84,7 +84,7 @@ class Event(BaseModel):
         if not self.airings:
             return []
 
-        policy_ids =  [
+        policy_ids = [
             airing.black_out_policy_ids()
             for airing in self.airings
             if airing.black_out_policy_ids()
@@ -123,11 +123,14 @@ class DailyEspnPlusNhlSchedule(BaseModel):
         return self.sports[0].leagues[0].events
 
     def is_game_blacked_out(self, game: Event) -> bool:
-        return any([
-            id
-            for id in game.black_out_policy_ids()
-            if self.zipcodes.get(id) and LOCAL_ZIP_CODE in self.zipcodes.get(cast(str, id))
-        ])
+        return any(
+            [
+                id
+                for id in game.black_out_policy_ids()
+                if self.zipcodes.get(id)
+                and LOCAL_ZIP_CODE in self.zipcodes.get(cast(str, id))
+            ]
+        )
 
     def usable_games(self) -> list[Event]:
         not_blacked_out_games: list[Event] = []

@@ -3,7 +3,7 @@ from requests import get, Response
 from shared_items.interfaces.notion import Notion
 from shared_items.utils import measure_execution
 
-from models.nba import Game, LeagueSchedule
+from models.nba import LeagueSchedule
 
 from shared import (
     ElligibleSportsEnum,
@@ -29,13 +29,13 @@ league_schedule = LeagueSchedule(
 
 usable_games = league_schedule.usable_games()
 
-assembed_items = [
+assembled_items = [
     NbaAssembler(game).notion_sports_schedule_item() for game in usable_games
 ]
 
 all_props = [
     notion.assemble_props(schedule_item.format_for_notion_interface())
-    for schedule_item in assembed_items
+    for schedule_item in assembled_items
 ]
 
 
