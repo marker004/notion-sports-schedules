@@ -8,10 +8,9 @@ from itertools import groupby
 
 
 def normalize_dates(raw_date_string: str) -> datetime:
-    unix_timestamp = (
-        int(raw_date_string.removeprefix("/Date(").removesuffix(")/")) / 1000
-    )
-    return datetime.utcfromtimestamp(unix_timestamp)
+    unix_timestamp = ( int(raw_date_string.removeprefix("/Date(").removesuffix(")/")) / 1000 )
+    adusted_timestamp = unix_timestamp if unix_timestamp > 0 else 0
+    return datetime.utcfromtimestamp(adusted_timestamp)
 
 
 class Station(BaseModel):
