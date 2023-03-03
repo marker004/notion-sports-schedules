@@ -579,14 +579,16 @@ category = "main"
 optional = false
 python-versions = "3.9.5"
 files = []
-develop = true
+develop = false
 
 [package.dependencies]
 notion-client = "^2.0.0"
 
 [package.source]
-type = "directory"
-url = "../shared-items"
+type = "git"
+url = "ssh://git@github.com/marker004/notion_shared_items.git"
+reference = "HEAD"
+resolved_reference = "0510a0dc9b172dbc626e15fef79517b4ec16eb37"
 
 [[package]]
 name = "sniffio"
@@ -671,4 +673,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "3.9.5"
-content-hash = "054554b411920cc204d9c56dddbc8108bc75092d86bab60ac244ff39e0c0d405"
+content-hash = "8a7f2abe3260f29b44447c0cd456cb9985d81faa9eda4e30caef0cb8a283a507"
