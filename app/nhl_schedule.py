@@ -51,7 +51,6 @@ power_play_schedule_params = (
     ("showAirings", "buy,live,replay"),
     ("showZipLookup", "true"),
     ("tz", "America/Indianapolis"),
-    ("buster", round(datetime.now().timestamp())),
 )
 assembled_power_play_schedule_url = power_play_schedule_base_url + parse.urlencode(
     power_play_schedule_params
