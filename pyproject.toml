@@ -6,7 +6,7 @@ authors = ["Mark Reckard <mark.reckard@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "3.9.5"
-shared-items = {git = "ssh://git@github.com/marker004/notion_shared_items.git"}
+shared-items = {git = "ssh://git@github.com/marker004/notion_shared_items.git", tag = "0.0.2" }
 # shared-items = {path = "../shared-items/dist/shared_items-0.0.1-py3-none-any.whl", develop = true}
 pydantic = "^1.10.5"
 requests = "^2.28.2"
