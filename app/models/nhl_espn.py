@@ -107,7 +107,7 @@ class League(BaseModel):
 class Sport(BaseModel):
     id: str
     uid: str
-    name: Literal["Ice Hockey"]
+    name: str
     slug: Literal["hockey"]
     leagues: list[League]
 
