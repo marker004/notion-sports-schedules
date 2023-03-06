@@ -1,0 +1,7 @@
+upsert strategy:
+fetch all games by Sport
+delete old games (yesterday or before)
+check if should update
+create if game not exists on day
+update if game exists on day but network/time has changed
+delete if not longer exists on day

@@ -1,3 +1,4 @@
+from typing import Optional
 from shared_items.utils import pp, measure_execution
 from shared_items.interfaces import Notion
 from requests import Response, get
@@ -5,7 +6,9 @@ from requests import Response, get
 from models.soccer import GameBroadcast, GameBroadcastCollection, LeagueTypes
 from shared import (
     ElligibleSportsEnum,
+    NotionSportsScheduleItem,
     clear_db_for_sport,
+    fetch_all_games_by_sport,
     insert_to_database,
 )
 from utils.assemblers import SoccerAssembler
@@ -46,17 +49,51 @@ all_props = [
 ]
 
 
-@measure_execution("deleting existing soccer games")
-def delete_existing_games():
-    clear_db_for_sport(ElligibleSportsEnum.SOCCER.value)
+def fetch_all_existing_notion_games() -> list[dict]:
+    game_fetcher = fetch_all_games_by_sport(ElligibleSportsEnum.SOCCER.value)
+
+    all_games: list[dict] = []
+    next_cursor: Optional[str] = None
+
+    while True:
+        response = game_fetcher(next_cursor)
+        next_cursor = response["next_cursor"]
+        all_games += response["results"]
+        if not response["has_more"]:
+            break
+
+    return all_games
 
 
-delete_existing_games()
+# NotionSportsScheduleItem
+all_existing_notion_games = fetch_all_existing_notion_games()
+
+# import pdb; pdb.set_trace()
+existing_schedule_items = [
+    NotionSportsScheduleItem.from_notion_interface(notion_game['properties'])
+    for notion_game in all_existing_notion_games
+]
+
+delete_list = set(existing_schedule_items) - set(assembled_items)
+do_nothing_list = list(set(assembled_items) & set(existing_schedule_items))
+add_list = set(assembled_items) - set(existing_schedule_items)
+
+import pdb
+
+pdb.set_trace()
 
 
-@measure_execution("inserting soccer games")
-def insert_games():
-    insert_to_database(all_props)
+# @measure_execution("deleting existing soccer games")
+# def delete_existing_games():
+#     clear_db_for_sport(ElligibleSportsEnum.SOCCER.value)
 
 
-insert_games()
+# delete_existing_games()
+
+
+# @measure_execution("inserting soccer games")
+# def insert_games():
+#     insert_to_database(all_props)
+
+
+# insert_games()

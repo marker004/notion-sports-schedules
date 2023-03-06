@@ -1,9 +1,12 @@
+from __future__ import annotations
 from datetime import datetime, time
 from enum import Enum
 from typing import Literal, Optional
 from pydantic.dataclasses import dataclass
 from shared_items.interfaces import Prop as NotionProp
 from shared_items.interfaces.notion import Notion
+from dateutil.parser import parser
+
 
 SCHEDULE_DATABASE_ID = "7890f1c1844444228b0016ad68c07d22"
 
@@ -22,13 +25,13 @@ class ElligibleSportsEnum(Enum):
 
 
 def fetch_all_games_by_sport(sport: ElligibleSports):
-    def func(next_cursor=None):
+    def func(start_cursor=None):
         filter = {
             "property": "Sport",
             "rich_text": {"equals": sport},
         }
         return notion.client.databases.query(
-            database_id=SCHEDULE_DATABASE_ID, filter=filter, next_cursor=next_cursor
+            database_id=SCHEDULE_DATABASE_ID, filter=filter, start_cursor=start_cursor
         )
 
     return func
@@ -76,6 +79,26 @@ class NotionSportsScheduleItem:
     network: str
     league: str
     sport: str
+
+    @classmethod
+    def from_notion_interface(self, dict) -> NotionSportsScheduleItem:
+        converted_date = parser().parse(dict["Date"]["date"]["start"])
+
+        matchup = dict["Matchup"]["title"][0]["plain_text"]
+        date = converted_date.strftime("%Y-%m-%dT%H:%M:%S")
+        network = dict["Network"]["rich_text"][0]["plain_text"]
+        league = dict["League"]["rich_text"][0]["plain_text"]
+        sport = dict["Sport"]["rich_text"][0]["plain_text"]
+
+        return NotionSportsScheduleItem(
+            matchup=matchup, date=date, network=network, league=league, sport=sport
+        )
+
+    def __eq__(self, other) -> bool:
+        return sorted(self.__dict__.items()) == sorted(other.__dict__.items())
+
+    def __hash__(self):
+        return hash(tuple(sorted(self.__dict__.items())))
 
     def format_for_notion_interface(self) -> list[NotionProp]:
         return [
