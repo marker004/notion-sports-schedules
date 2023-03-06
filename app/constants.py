@@ -172,6 +172,7 @@ NHL_BROADCAST_BADLIST = [
 SOCCER_BROADCAST_BADLIST = [
     "Antenna 20 Years",
     "CL beIN Sports English SD in Spanish",
+    "DAZN USA",
     "ESPN Deportes",
     "ESPN Deportes HD",
     "ESPN3",
