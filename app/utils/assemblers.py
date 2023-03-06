@@ -1,5 +1,6 @@
 from zoneinfo import ZoneInfo
-from constants import MLB_BROADCAST_BADLIST
+from models.f1 import F1Race
+from models.indycar import IndycarRace
 from models.soccer import GameBroadcast, LeagueTypes
 from models.mlb import Game as MlbGame
 from models.nba import Game as NbaGame
@@ -153,6 +154,7 @@ class MlbAssembler(Assembler):
         return f"{away_team} vs {home_team}"
 
     def format_date(self) -> str:
+        # todo: UTC problem
         return self.game.gameDate.strftime("%Y-%m-%dT%H:%M:%S")
 
     def format_network(self) -> str:
@@ -165,3 +167,53 @@ class MlbAssembler(Assembler):
 
     def format_sport(self) -> str:
         return ElligibleSportsEnum.MLB.value
+
+class IndycarAssembler(Assembler):
+    def __init__(self, race: IndycarRace):
+        self.race = race
+
+    def assemble_matchup(self) -> str:
+        return self.race.race_name
+
+    def format_date(self) -> str:
+        # todo: UTC problem
+        return self.race.race_datetime.strftime("%Y-%m-%dT%H:%M:%S")
+        utc_unaware = self.race.race_datetime
+        utc_aware = utc_unaware.replace(tzinfo=ZoneInfo("UTC"))
+        local_aware = utc_aware.astimezone(ZoneInfo("America/Indianapolis"))
+
+        return local_aware.strftime("%Y-%m-%dT%H:%M:%S")
+
+    def format_network(self) -> str:
+        return self.race.channel
+
+    def fetch_league(self) -> str:
+        return "IndyCar"
+
+    def format_sport(self) -> str:
+        return ElligibleSportsEnum.INDY_CAR.value
+
+class F1Assembler(Assembler):
+    def __init__(self, race: F1Race):
+        self.race = race
+
+    def assemble_matchup(self) -> str:
+        return self.race.race_name
+
+    def format_date(self) -> str:
+        # todo: UTC problem
+        return self.race.race_datetime.strftime("%Y-%m-%dT%H:%M:%S") if self.race.race_datetime else ''
+        utc_unaware = self.race.race_datetime
+        utc_aware = utc_unaware.replace(tzinfo=ZoneInfo("UTC"))
+        local_aware = utc_aware.astimezone(ZoneInfo("America/Indianapolis"))
+
+        return local_aware.strftime("%Y-%m-%dT%H:%M:%S")
+
+    def format_network(self) -> str:
+        return self.race.channel if self.race.channel else ''
+
+    def fetch_league(self) -> str:
+        return "Formula 1"
+
+    def format_sport(self) -> str:
+        return ElligibleSportsEnum.F1.value
