@@ -1,3 +1,15 @@
+INDYCAR_CHANNEL_GOODLIST = [
+    "NBC",
+    "USA Net",
+    "Peacock",
+]
+
+F1_CHANNEL_GOODLIST = [
+    "ESPN",
+    "ESPN2",
+    "ABC",
+]
+
 MLB_BROADCAST_BADLIST = [
     "KOA 850 AM/94.1 FM ",
     "WMMS 100.7",
@@ -25,7 +37,6 @@ MLB_BROADCAST_BADLIST = [
     "NBC Sports App",
     "KBME 790 (delay)",
     "Bally Sports Arizona",
-    # "ESPN",
     "SNY",
     "WJFK 106.7 The Fan",
     "Bally Sports Great Lakes",
@@ -47,7 +58,6 @@ MLB_BROADCAST_BADLIST = [
     "Bally Sports Midwest",
     "Dodgers Radio AM570",
     "NBCSP",
-    # "NBCSCH",
     "KTNQ 1020",
     "MLBN (out-of-market only)",
     "KDKA-FM 93.7",
@@ -82,7 +92,6 @@ MLB_BROADCAST_BADLIST = [
     "Cardinals Radio Network",
     "Bally Sports North",
     "ROOTNW+",
-    # "TBS",
     "Bally Sports West",
     "WPIX",
     "KMOX 1120 AM/98.7 FM",
