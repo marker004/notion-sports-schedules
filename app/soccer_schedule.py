@@ -78,6 +78,8 @@ delete_list = set(existing_schedule_items) - set(assembled_items)
 do_nothing_list = list(set(assembled_items) & set(existing_schedule_items))
 add_list = set(assembled_items) - set(existing_schedule_items)
 
+# note: https://stackoverflow.com/questions/57126286/fastest-parallel-requests-in-python
+
 import pdb
 
 pdb.set_trace()
