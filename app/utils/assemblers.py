@@ -154,7 +154,6 @@ class MlbAssembler(Assembler):
         return f"{away_team} vs {home_team}"
 
     def format_date(self) -> str:
-        # todo: UTC problem
         return self.game.gameDate.strftime("%Y-%m-%dT%H:%M:%S")
 
     def format_network(self) -> str:
@@ -176,13 +175,7 @@ class IndycarAssembler(Assembler):
         return self.race.race_name
 
     def format_date(self) -> str:
-        # todo: UTC problem
         return self.race.race_datetime.strftime("%Y-%m-%dT%H:%M:%S")
-        utc_unaware = self.race.race_datetime
-        utc_aware = utc_unaware.replace(tzinfo=ZoneInfo("UTC"))
-        local_aware = utc_aware.astimezone(ZoneInfo("America/Indianapolis"))
-
-        return local_aware.strftime("%Y-%m-%dT%H:%M:%S")
 
     def format_network(self) -> str:
         return self.race.channel
@@ -201,13 +194,7 @@ class F1Assembler(Assembler):
         return self.race.race_name
 
     def format_date(self) -> str:
-        # todo: UTC problem
         return self.race.race_datetime.strftime("%Y-%m-%dT%H:%M:%S") if self.race.race_datetime else ''
-        utc_unaware = self.race.race_datetime
-        utc_aware = utc_unaware.replace(tzinfo=ZoneInfo("UTC"))
-        local_aware = utc_aware.astimezone(ZoneInfo("America/Indianapolis"))
-
-        return local_aware.strftime("%Y-%m-%dT%H:%M:%S")
 
     def format_network(self) -> str:
         return self.race.channel if self.race.channel else ''
