@@ -13,3 +13,9 @@ echo "Done"
 echo "MLB"
 poetry run python3 app/mlb_schedule.py >logs/mlb_schedule.log 2>&1
 echo "Done"
+echo "IndyCar"
+poetry run python3 app/indycar_schedule.py >logs/indycar_schedule.log 2>&1
+echo "Done"
+echo "Formula 1"
+poetry run python3 app/f1_schedule.py >logs/f1_schedule.log 2>&1
+echo "Done"
