@@ -3,53 +3,37 @@ from requests import get, Response
 from shared_items.interfaces.notion import Notion
 from shared_items.utils import measure_execution
 
-from models.nba import LeagueSchedule
+from models.nba import LeagueSchedule, Game as NbaGame
 
-from shared import (
-    ElligibleSportsEnum,
-    clear_db_for_sport,
-    insert_to_database,
-)
+from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
 from utils.assemblers import NbaAssembler
-
-# SEASON_DATE_BOOKENDS = ["2022-10-18", "2023-06-18"]
 
 notion = Notion()
 
 YEAR = 2022
-url_2022_2023_schedule = f"https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/{YEAR}/league/00_full_schedule.json"
 
 
-response: Response = get(url_2022_2023_schedule)
-schedule: dict = response.json()
-
-league_schedule = LeagueSchedule(
-    month_schedule=[month["mscd"] for month in schedule["lscd"]]
-)
-
-usable_games = league_schedule.usable_games()
-
-assembled_items = [
-    NbaAssembler(game).notion_sports_schedule_item() for game in usable_games
-]
-
-all_props = [
-    notion.assemble_props(schedule_item.format_for_notion_interface())
-    for schedule_item in assembled_items
-]
+@measure_execution("fetching new NBA schedule")
+def fetch_schedule_json() -> dict:
+    url_2022_2023_schedule = f"https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/{YEAR}/league/00_full_schedule.json"
+    schedule_response: Response = get(url_2022_2023_schedule)
+    return schedule_response.json()
 
 
-@measure_execution("deleting existing NBA games")
-def delete_existing_games():
-    clear_db_for_sport(ElligibleSportsEnum.NBA.value)
+def assemble_usable_games(schedule_json: dict) -> list[NbaGame]:
+    league_schedule = LeagueSchedule(
+        month_schedule=[month["mscd"] for month in schedule_json["lscd"]]
+    )
+
+    return league_schedule.usable_games()
 
 
-delete_existing_games()
+def assemble_notion_items(games: list[NbaGame]) -> list[NotionSportsScheduleItem]:
+    return [NbaAssembler(game).notion_sports_schedule_item() for game in games]
 
 
-@measure_execution("inserting NBA games")
-def insert_games():
-    insert_to_database(all_props)
+schedule_json = fetch_schedule_json()
+usable_games = assemble_usable_games(schedule_json)
+fresh_items = assemble_notion_items(usable_games)
 
-
-insert_games()
+NotionScheduler(ElligibleSportsEnum.NBA.value, fresh_items).schedule_them_shits()

@@ -2,61 +2,58 @@ from shared_items.utils import pp, measure_execution
 from shared_items.interfaces import Notion
 from requests import Response, get
 
+from shared_items.utils import pp, measure_execution
+from shared_items.interfaces import Notion
+
 from models.soccer import GameBroadcast, GameBroadcastCollection, LeagueTypes
-from shared import (
-    ElligibleSportsEnum,
-    clear_db_for_sport,
-    insert_to_database,
-)
+from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
 from utils.assemblers import SoccerAssembler
 
 
 notion = Notion()
 
-schedule_url = "https://www.fotmob.com/api/tvlistings?countryCode=US"
-leagues_url = "https://www.fotmob.com/api/allLeagues"
 
-schedule_response: Response = get(schedule_url)
-schedule_json: dict = schedule_response.json()
+@measure_execution("fetching new soccer schedule")
+def fetch_schedule_json() -> dict:
+    schedule_url = "https://www.fotmob.com/api/tvlistings?countryCode=US"
+    schedule_response: Response = get(schedule_url)
+    return schedule_response.json()
 
-leagues_response: Response = get(leagues_url)
-leagues_json: dict = leagues_response.json()
 
-league_types = LeagueTypes(**leagues_json)
+@measure_execution("fetching soccer leagues")
+def fetch_leagues_json() -> dict:
+    leagues_url = "https://www.fotmob.com/api/allLeagues"
+    leagues_response: Response = get(leagues_url)
+    return leagues_response.json()
 
-game_broadcasts = GameBroadcastCollection(
-    game_broadcasts=[
-        GameBroadcast(**game_broadcast)
-        for sublist in schedule_json.values()
-        for game_broadcast in sublist
+
+def assemble_usable_games(schedule_json: dict) -> list[GameBroadcast]:
+    game_broadcasts = GameBroadcastCollection(
+        game_broadcasts=[
+            GameBroadcast(**game_broadcast)
+            for sublist in schedule_json.values()
+            for game_broadcast in sublist
+        ]
+    )
+
+    return game_broadcasts.usable_games()
+
+
+def assemble_notion_items(
+    game_broadcasts: list[GameBroadcast], league_types: LeagueTypes
+) -> list[NotionSportsScheduleItem]:
+    return [
+        SoccerAssembler(broadcast, league_types).notion_sports_schedule_item()
+        for broadcast in game_broadcasts
     ]
-)
-
-usable_games = game_broadcasts.usable_games()
-
-assembled_items = [
-    SoccerAssembler(broadcast, league_types).notion_sports_schedule_item()
-    for broadcast in usable_games
-]
 
 
-all_props = [
-    notion.assemble_props(schedule_item.format_for_notion_interface())
-    for schedule_item in assembled_items
-]
+schedule_json = fetch_schedule_json()
+leagues_json = fetch_leagues_json()
+usable_games = assemble_usable_games(schedule_json)
+league_types = LeagueTypes(**leagues_json)
+fresh_schedule_items = assemble_notion_items(usable_games, league_types)
 
-
-@measure_execution("deleting existing soccer games")
-def delete_existing_games():
-    clear_db_for_sport(ElligibleSportsEnum.SOCCER.value)
-
-
-delete_existing_games()
-
-
-@measure_execution("inserting soccer games")
-def insert_games():
-    insert_to_database(all_props)
-
-
-insert_games()
+NotionScheduler(
+    ElligibleSportsEnum.SOCCER.value, fresh_schedule_items
+).schedule_them_shits()

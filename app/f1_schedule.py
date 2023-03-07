@@ -2,49 +2,38 @@ from requests import Response, get
 
 from bs4 import BeautifulSoup
 
-from models.f1 import F1Response
-from shared import ElligibleSportsEnum, clear_db_for_sport, insert_to_database
+from models.f1 import F1Race, F1Response
+from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
 from utils.assemblers import F1Assembler
 from shared_items.interfaces.notion import Notion
 from shared_items.utils import measure_execution
 
-
 notion = Notion()
 
-f1_url = "https://www.espn.com/f1/schedule"
 
-f1_response: Response = get(f1_url)
-
-f1_html_doc = f1_response.text
-
-soup = BeautifulSoup(f1_html_doc, "html.parser")
-
-response = F1Response(
-    race_elements_container=soup.find("table", {"class": "Table"})
-)
-
-usable_races = response.usable_races
-
-assembled_items = [
-    F1Assembler(race).notion_sports_schedule_item() for race in usable_races
-]
-
-all_props = [
-    notion.assemble_props(schedule_item.format_for_notion_interface())
-    for schedule_item in assembled_items
-]
-
-@measure_execution("deleting existing F1 races")
-def delete_existing_races():
-    clear_db_for_sport(ElligibleSportsEnum.F1.value)
+@measure_execution("fetching new F1 schedule")
+def fetch_schedule_response() -> Response:
+    f1_url = "https://www.espn.com/f1/schedule"
+    return get(f1_url)
 
 
-delete_existing_races()
+def assemble_usable_games(response: Response) -> list[F1Race]:
+    f1_html_doc = response.text
+
+    soup = BeautifulSoup(f1_html_doc, "html.parser")
+
+    f1_response = F1Response(
+        race_elements_container=soup.find("table", {"class": "Table"})
+    )
+    return f1_response.usable_races
 
 
-@measure_execution("inserting F1 races")
-def insert_games():
-    insert_to_database(all_props)
+def assemble_notion_items(races: list[F1Race]) -> list[NotionSportsScheduleItem]:
+    return [F1Assembler(race).notion_sports_schedule_item() for race in usable_races]
 
 
-insert_games()
+response = fetch_schedule_response()
+usable_races = assemble_usable_games(response)
+fresh_items = assemble_notion_items(usable_races)
+
+NotionScheduler(ElligibleSportsEnum.F1.value, fresh_items).schedule_them_shits()

@@ -5,6 +5,7 @@ from typing import Literal, Optional
 from pydantic.dataclasses import dataclass
 from shared_items.interfaces import Prop as NotionProp
 from shared_items.interfaces.notion import Notion
+from shared_items.utils import measure_execution
 from dateutil.parser import parser
 
 
@@ -25,9 +26,25 @@ class ElligibleSportsEnum(Enum):
     INDY_CAR = "🏁"
     F1 = "🏎️"
 
+def fetch_all_existing_notion_games_by_sport(sport: ElligibleSports) -> list[dict]:
+    game_fetcher = fetch_games_by_sport(sport)
 
-def fetch_all_games_by_sport(sport: ElligibleSports):
-    def func(start_cursor=None):
+    all_games: list[dict] = []
+    next_cursor: Optional[str] = None
+
+    while True:
+        response = game_fetcher(next_cursor)
+        next_cursor = response["next_cursor"]
+        all_games += response["results"]
+        if not response["has_more"]:
+            break
+
+    return all_games
+
+def fetch_games_by_sport(
+    sport: Optional[ElligibleSports] = None, override_filter: Optional[dict] = None
+):
+    def func(start_cursor: Optional[str] = None):
         filter = {
             "property": "Sport",
             "rich_text": {"equals": sport},
@@ -62,8 +79,10 @@ def fetch_only_future_games_by_sport(sport: ElligibleSports):
     return func
 
 
-def clear_db_for_sport(sport: ElligibleSports):
-    fetch_games = fetch_all_games_by_sport(sport)
+def delete_db_items_for_sport(
+    sport: ElligibleSports, and_filter: Optional[dict] = None
+):
+    fetch_games = fetch_games_by_sport(sport, and_filter)
     delete_games = notion.recursive_fetch_and_delete(fetch_games)
     delete_games()
 
@@ -81,26 +100,40 @@ class NotionSportsScheduleItem:
     network: str
     league: str
     sport: str
+    notion_id: Optional[str] = None
 
     @classmethod
-    def from_notion_interface(self, dict) -> NotionSportsScheduleItem:
-        converted_date = parser().parse(dict["Date"]["date"]["start"])
+    def from_notion_interface(self, notion_row: dict) -> NotionSportsScheduleItem:
+        properties = notion_row["properties"]
+        converted_date = parser().parse(properties["Date"]["date"]["start"])
 
-        matchup = dict["Matchup"]["title"][0]["plain_text"]
+        matchup = properties["Matchup"]["title"][0]["plain_text"]
         date = converted_date.strftime("%Y-%m-%dT%H:%M:%S")
-        network = dict["Network"]["rich_text"][0]["plain_text"]
-        league = dict["League"]["rich_text"][0]["plain_text"]
-        sport = dict["Sport"]["rich_text"][0]["plain_text"]
+        network = properties["Network"]["rich_text"][0]["plain_text"]
+        league = properties["League"]["rich_text"][0]["plain_text"]
+        sport = properties["Sport"]["rich_text"][0]["plain_text"]
+
+        notion_id = notion_row["id"]
 
         return NotionSportsScheduleItem(
-            matchup=matchup, date=date, network=network, league=league, sport=sport
+            matchup=matchup,
+            date=date,
+            network=network,
+            league=league,
+            sport=sport,
+            notion_id=notion_id,
         )
 
     def __eq__(self, other) -> bool:
-        return sorted(self.__dict__.items()) == sorted(other.__dict__.items())
+        if isinstance(other, NotionSportsScheduleItem):
+            return self.__hash__() == other.__hash__()
+        else:
+            return False
 
     def __hash__(self):
-        return hash(tuple(sorted(self.__dict__.items())))
+        dicted = {**self.__dict__}
+        dicted.pop("notion_id", None)
+        return hash(tuple(sorted(dicted.items())))
 
     def format_for_notion_interface(self) -> list[NotionProp]:
         return [
@@ -135,3 +168,78 @@ class NotionSportsScheduleItem:
             },
             {"name": "Sport", "type": "rich_text", "content": {"content": self.sport}},
         ]
+
+class NotionScheduler:
+    def __init__(self, sport: ElligibleSports, fresh_schedule_items: list[NotionSportsScheduleItem]) -> None:
+        self.sport = sport
+        self.fresh_schedule_items = fresh_schedule_items
+
+    def schedule_them_shits(self) -> None:
+        all_existing_notion_games = self.fetch_existing_games()
+        existing_schedule_items = self.assemble_existing_schedule_items(all_existing_notion_games)
+
+        delete_list, do_nothing_list, add_list = self.group_schedule_items(
+            existing_schedule_items, self.fresh_schedule_items
+        )
+        self.operate_in_notion(delete_list, do_nothing_list, add_list)
+
+
+    @measure_execution(f"fetching existing games")
+    def fetch_existing_games(self):
+        return fetch_all_existing_notion_games_by_sport(self.sport)
+
+
+    def assemble_existing_schedule_items(self, notion_rows: list[dict]):
+        return [
+            NotionSportsScheduleItem.from_notion_interface(notion_game)
+            for notion_game in notion_rows
+        ]
+
+
+    def assemble_insertion_notion_props(self, insertion_list: list[NotionSportsScheduleItem]):
+        return [
+            notion.assemble_props(schedule_item.format_for_notion_interface())
+            for schedule_item in insertion_list
+        ]
+
+
+    def group_schedule_items(
+        self,
+        existing_items: list[NotionSportsScheduleItem],
+        fresh_items: list[NotionSportsScheduleItem],
+    ) -> tuple[
+        list[NotionSportsScheduleItem],
+        list[NotionSportsScheduleItem],
+        list[NotionSportsScheduleItem],
+    ]:
+        delete_list = list(set(existing_items) - set(fresh_items))
+        do_nothing_list = list(set(fresh_items) & set(existing_items))
+        add_list = list(set(fresh_items) - set(existing_items))
+
+        return (delete_list, do_nothing_list, add_list)
+
+
+    @measure_execution("deleting existing games")
+    def delete_unuseful_games(self, delete_list: list[NotionSportsScheduleItem]):
+        for item in delete_list:
+            if item.notion_id:  # should always be true
+                notion.client.blocks.delete(block_id=item.notion_id)
+        print(f"deleted {len(delete_list)} games")
+
+
+    @measure_execution("inserting fresh games")
+    def insert_new_games(self, insert_list: list[NotionSportsScheduleItem]):
+        insert_list_props = self.assemble_insertion_notion_props(insert_list)
+        insert_to_database(insert_list_props)
+        print(f"inserted {len(insert_list)} games")
+
+
+    def operate_in_notion(
+        self,
+        delete_list: list[NotionSportsScheduleItem],
+        do_nothing_list: list[NotionSportsScheduleItem],
+        add_list: list[NotionSportsScheduleItem],
+    ):
+        self.delete_unuseful_games(delete_list)
+        print(f"keeping {len(do_nothing_list)} games\n")
+        self.insert_new_games(add_list)
