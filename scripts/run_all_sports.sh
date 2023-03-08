@@ -1,6 +1,8 @@
 #!/bin/sh
 export PYENV_VERSION=3.9.5
 
+date
+
 echo "NBA"
 poetry run python3 app/nba_schedule.py >logs/nba_schedule.log 2>&1
 echo "Done"
@@ -19,3 +21,5 @@ echo "Done"
 echo "Formula 1"
 poetry run python3 app/f1_schedule.py >logs/f1_schedule.log 2>&1
 echo "Done"
+
+date

@@ -9,7 +9,6 @@ from models.soccer import GameBroadcast, GameBroadcastCollection, LeagueTypes
 from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
 from utils.assemblers import SoccerAssembler
 
-
 notion = Notion()
 
 
