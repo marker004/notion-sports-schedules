@@ -1,4 +1,6 @@
+from typing import Callable
 from zoneinfo import ZoneInfo
+from constants import MLB_FAVORITE_CRITERIA, NBA_FAVORITE_CRITERIA, NHL_FAVORITE_CRITERIA, SOCCER_FAVORITE_CRITERIA
 from models.f1 import F1Race
 from models.indycar import IndycarRace
 from models.soccer import GameBroadcast, LeagueTypes
@@ -6,11 +8,14 @@ from models.mlb import Game as MlbGame
 from models.nba import Game as NbaGame
 from models.nhl import Game as NhlGame
 from models.nhl_espn import Event as NhlEspnPlusGame
-from shared import ElligibleSportsEnum, NotionSportsScheduleItem
+from shared import ElligibleSportsEnum, FavoriteCriterion, NotionSportsScheduleItem
 
 
 class Assembler:
-    def assemble_matchup(self) -> str:
+    def __init__(self) -> None:
+        self.favorite_criteria: list[FavoriteCriterion] = []
+
+    def format_matchup(self) -> str:
         raise NotImplementedError
 
     def format_date(self) -> str:
@@ -19,27 +24,45 @@ class Assembler:
     def format_network(self) -> str:
         raise NotImplementedError
 
-    def fetch_league(self) -> str:
+    def format_league(self) -> str:
         raise NotImplementedError
 
     def format_sport(self) -> str:
         raise NotImplementedError
 
+    def format_favorite(self) -> str:
+        is_favorite: bool = False
+        for criterion in self.favorite_criteria:
+            property = criterion['property']
+            comparison = criterion['comparison']
+            value = criterion['value']
+            func: Callable[[], str] = getattr(self, f'format_{property}')
+            if comparison == "equals":
+                is_favorite = func() == value
+            elif comparison == "contains":
+                is_favorite = value in func()
+            if is_favorite:
+                break
+
+        return "Favorite" if is_favorite else "Other"
+
     def notion_sports_schedule_item(self) -> NotionSportsScheduleItem:
         return NotionSportsScheduleItem(
-            matchup=self.assemble_matchup(),
+            matchup=self.format_matchup(),
             date=self.format_date(),
             network=self.format_network(),
-            league=self.fetch_league(),
+            league=self.format_league(),
             sport=self.format_sport(),
+            favorite=self.format_favorite(),
         )
 
 
 class NbaAssembler(Assembler):
     def __init__(self, game: NbaGame):
         self.game = game
+        self.favorite_criteria = NBA_FAVORITE_CRITERIA
 
-    def assemble_matchup(self) -> str:
+    def format_matchup(self) -> str:
         SPECIAL_SYMBOLS: dict[str, str] = {"Celtics": "🍀", "Pacers": "🏎️"}
 
         team_names = [self.game.visiting_team.team_name, self.game.home_team.team_name]
@@ -59,19 +82,19 @@ class NbaAssembler(Assembler):
     def format_network(self) -> str:
         return self.game.watchable_broadcaster.disp
 
-    def fetch_league(self) -> str:
+    def format_league(self) -> str:
         return "NBA"
 
     def format_sport(self) -> str:
         return ElligibleSportsEnum.NBA.value
 
-
 class SoccerAssembler(Assembler):
     def __init__(self, broadcast: GameBroadcast, league_types: LeagueTypes):
         self.broadcast = broadcast
         self.league_types = league_types
+        self.favorite_criteria = SOCCER_FAVORITE_CRITERIA
 
-    def assemble_matchup(self) -> str:
+    def format_matchup(self) -> str:
         teams = sorted(
             self.broadcast.program.teams, key=lambda t: t.isHome, reverse=True
         )
@@ -88,7 +111,7 @@ class SoccerAssembler(Assembler):
     def format_network(self) -> str:
         return self.broadcast.station.name
 
-    def fetch_league(self) -> str:
+    def format_league(self) -> str:
         return self.league_types.find_by_ids(
             self.broadcast.leagueId, self.broadcast.parentLeagueId
         ).name
@@ -98,7 +121,10 @@ class SoccerAssembler(Assembler):
 
 
 class NhlBaseAssembler(Assembler):
-    def fetch_league(self) -> str:
+    def __init__(self) -> None:
+        self.favorite_criteria = NHL_FAVORITE_CRITERIA
+
+    def format_league(self) -> str:
         return "NHL"
 
     def format_sport(self) -> str:
@@ -107,9 +133,10 @@ class NhlBaseAssembler(Assembler):
 
 class NhlAssembler(NhlBaseAssembler):
     def __init__(self, game: NhlGame):
+        super().__init__()
         self.game = game
 
-    def assemble_matchup(self) -> str:
+    def format_matchup(self) -> str:
         home_team = self.game.teams.home.team.name
         away_team = self.game.teams.away.team.name
 
@@ -128,9 +155,10 @@ class NhlAssembler(NhlBaseAssembler):
 
 class NhlEspnPlusAssembler(NhlBaseAssembler):
     def __init__(self, game: NhlEspnPlusGame):
+        super().__init__()
         self.game = game
 
-    def assemble_matchup(self) -> str:
+    def format_matchup(self) -> str:
         return self.game.name.replace(" at ", " vs ")
 
     def format_date(self) -> str:
@@ -146,8 +174,9 @@ class NhlEspnPlusAssembler(NhlBaseAssembler):
 class MlbAssembler(Assembler):
     def __init__(self, game: MlbGame):
         self.game = game
+        self.favorite_criteria = MLB_FAVORITE_CRITERIA
 
-    def assemble_matchup(self) -> str:
+    def format_matchup(self) -> str:
         home_team = self.game.teams.home.team.name
         away_team = self.game.teams.away.team.name
 
@@ -159,7 +188,7 @@ class MlbAssembler(Assembler):
     def format_network(self) -> str:
         return ", ".join(self.game.watchable_broadcasts)
 
-    def fetch_league(self) -> str:
+    def format_league(self) -> str:
         if self.game.gameType != "R":
             return f"MLB - {self.game.seriesDescription}"
         return "MLB"
@@ -169,9 +198,10 @@ class MlbAssembler(Assembler):
 
 class IndycarAssembler(Assembler):
     def __init__(self, race: IndycarRace):
+        super().__init__()
         self.race = race
 
-    def assemble_matchup(self) -> str:
+    def format_matchup(self) -> str:
         return self.race.race_name
 
     def format_date(self) -> str:
@@ -180,7 +210,7 @@ class IndycarAssembler(Assembler):
     def format_network(self) -> str:
         return self.race.channel
 
-    def fetch_league(self) -> str:
+    def format_league(self) -> str:
         return "IndyCar"
 
     def format_sport(self) -> str:
@@ -188,9 +218,10 @@ class IndycarAssembler(Assembler):
 
 class F1Assembler(Assembler):
     def __init__(self, race: F1Race):
+        super().__init__()
         self.race = race
 
-    def assemble_matchup(self) -> str:
+    def format_matchup(self) -> str:
         return self.race.race_name
 
     def format_date(self) -> str:
@@ -199,7 +230,7 @@ class F1Assembler(Assembler):
     def format_network(self) -> str:
         return self.race.channel if self.race.channel else ''
 
-    def fetch_league(self) -> str:
+    def format_league(self) -> str:
         return "Formula 1"
 
     def format_sport(self) -> str:

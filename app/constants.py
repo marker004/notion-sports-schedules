@@ -1,3 +1,6 @@
+from shared import ElligibleSportsEnum, FavoriteCriterion
+
+
 INDYCAR_CHANNEL_GOODLIST = [
     "NBC",
     "USA Net",
@@ -110,6 +113,10 @@ MLB_BROADCAST_BADLIST = [
     "ATT SportsNet-PIT",
     "MASN",
     "98 Rock FM/HD2 97.9, WBAL NewsRadio AM/FM",
+    "Sportsnet.ca",
+    "SNET NOW App",
+    "KHOV Univision 105.1",
+    "KIQI 1010"
 ]
 
 NHL_BROADCAST_BADLIST = [
@@ -505,3 +512,23 @@ NATIONAL_FLAGS = {
     "Scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
     "Wales": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
 }
+
+MLB_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
+    {"property": "matchup", "comparison": "contains", "value": "Red Sox"},
+]
+
+NBA_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
+    {"property": "sport", "comparison": "equals", "value": ElligibleSportsEnum.NBA.value},
+]
+
+NHL_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
+    {"property": "matchup", "comparison": "contains", "value": "Bruins"},
+]
+
+
+SOCCER_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
+    {"property": "league", "comparison": "equals", "value": "Premier League 🏴󠁧󠁢󠁥󠁮󠁧󠁿"},
+    {"property": "league", "comparison": "equals", "value": "MLS 🇺🇸"},
+    {"property": "league", "comparison": "equals", "value": "Champions League"},
+    {"property": "matchup", "comparison": "contains", "value": "Indy Eleven"},
+]

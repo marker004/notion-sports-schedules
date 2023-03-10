@@ -91,6 +91,7 @@ schedule_json = fetch_schedule_json()
 power_play_schedule_json = fetch_power_play_json()
 usable_games = assemble_usable_games()
 usable_power_play_games = assemble_usable_power_play_games()
+    # todo: these are not lists exclusive of each other
 combined_items = assemble_notion_items(usable_games, usable_power_play_games)
 
 NotionScheduler(ElligibleSportsEnum.NHL.value, combined_items).schedule_them_shits()
