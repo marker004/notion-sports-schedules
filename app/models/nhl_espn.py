@@ -127,7 +127,7 @@ class DailyEspnPlusNhlSchedule(BaseModel):
                 id
                 for id in game.black_out_policy_ids()
                 if self.zipcodes.get(id)
-                and LOCAL_ZIP_CODE in (self.zipcodes.get(str, id) or [])
+                and LOCAL_ZIP_CODE in (self.zipcodes.get(id) or [])
             ]
         )
 
