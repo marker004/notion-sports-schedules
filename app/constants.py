@@ -116,7 +116,7 @@ MLB_BROADCAST_BADLIST = [
     "Sportsnet.ca",
     "SNET NOW App",
     "KHOV Univision 105.1",
-    "KIQI 1010"
+    "KIQI 1010",
 ]
 
 NHL_BROADCAST_BADLIST = [
@@ -518,7 +518,19 @@ MLB_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
 ]
 
 NBA_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
-    {"property": "sport", "comparison": "equals", "value": ElligibleSportsEnum.NBA.value},
+    {
+        "property": "sport",
+        "comparison": "equals",
+        "value": ElligibleSportsEnum.NBA.value,
+    },
+]
+
+NCAA_TOURNAMENT_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
+    {
+        "property": "sport",
+        "comparison": "equals",
+        "value": ElligibleSportsEnum.BASKETBALL.value,
+    },
 ]
 
 NHL_FAVORITE_CRITERIA: list[FavoriteCriterion] = [

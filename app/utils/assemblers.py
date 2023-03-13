@@ -1,8 +1,15 @@
 from typing import Callable
 from zoneinfo import ZoneInfo
-from constants import MLB_FAVORITE_CRITERIA, NBA_FAVORITE_CRITERIA, NHL_FAVORITE_CRITERIA, SOCCER_FAVORITE_CRITERIA
+from constants import (
+    MLB_FAVORITE_CRITERIA,
+    NBA_FAVORITE_CRITERIA,
+    NCAA_TOURNAMENT_FAVORITE_CRITERIA,
+    NHL_FAVORITE_CRITERIA,
+    SOCCER_FAVORITE_CRITERIA,
+)
 from models.f1 import F1Race
 from models.indycar import IndycarRace
+from models.ncaa_bball import Game as NcaaGame
 from models.soccer import GameBroadcast, LeagueTypes
 from models.mlb import Game as MlbGame
 from models.nba import Game as NbaGame
@@ -33,10 +40,10 @@ class Assembler:
     def format_favorite(self) -> str:
         is_favorite: bool = False
         for criterion in self.favorite_criteria:
-            property = criterion['property']
-            comparison = criterion['comparison']
-            value = criterion['value']
-            func: Callable[[], str] = getattr(self, f'format_{property}')
+            property = criterion["property"]
+            comparison = criterion["comparison"]
+            value = criterion["value"]
+            func: Callable[[], str] = getattr(self, f"format_{property}")
             if comparison == "equals":
                 is_favorite = func() == value
             elif comparison == "contains":
@@ -55,6 +62,36 @@ class Assembler:
             sport=self.format_sport(),
             favorite=self.format_favorite(),
         )
+
+
+class NcaaTournamentAssembler(Assembler):
+    def __init__(self, game: NcaaGame):
+        self.game = game
+        self.favorite_criteria = NCAA_TOURNAMENT_FAVORITE_CRITERIA
+
+    def format_matchup(self) -> str:
+        home_team = self.game.team_collection.home_team()
+        away_team = self.game.team_collection.away_team()
+        if home_team and away_team:
+            return f"{away_team.nameShort} ({away_team.seed}) vs {home_team.nameShort} ({home_team.seed}) [{self.game.round.label}]"
+        elif home_team:
+            return f"TBD vs {home_team.nameShort} ({home_team.seed}) [{self.game.round.label}]"
+        elif away_team:
+            return f"{away_team.nameShort} ({away_team.seed}) vs TBD [{self.game.round.label}]"
+        else:
+            return ""
+
+    def format_date(self) -> str:
+        return self.game.start_time.strftime("%Y-%m-%dT%H:%M:%S")
+
+    def format_network(self) -> str:
+        return self.game.broadcaster.name if self.game.broadcaster else ""
+
+    def format_league(self) -> str:
+        return "NCAA Tournament"
+
+    def format_sport(self) -> str:
+        return ElligibleSportsEnum.BASKETBALL.value
 
 
 class NbaAssembler(Assembler):
@@ -87,6 +124,7 @@ class NbaAssembler(Assembler):
 
     def format_sport(self) -> str:
         return ElligibleSportsEnum.NBA.value
+
 
 class SoccerAssembler(Assembler):
     def __init__(self, broadcast: GameBroadcast, league_types: LeagueTypes):
@@ -196,6 +234,7 @@ class MlbAssembler(Assembler):
     def format_sport(self) -> str:
         return ElligibleSportsEnum.MLB.value
 
+
 class IndycarAssembler(Assembler):
     def __init__(self, race: IndycarRace):
         super().__init__()
@@ -216,6 +255,7 @@ class IndycarAssembler(Assembler):
     def format_sport(self) -> str:
         return ElligibleSportsEnum.INDY_CAR.value
 
+
 class F1Assembler(Assembler):
     def __init__(self, race: F1Race):
         super().__init__()
@@ -225,10 +265,14 @@ class F1Assembler(Assembler):
         return self.race.race_name
 
     def format_date(self) -> str:
-        return self.race.race_datetime.strftime("%Y-%m-%dT%H:%M:%S") if self.race.race_datetime else ''
+        return (
+            self.race.race_datetime.strftime("%Y-%m-%dT%H:%M:%S")
+            if self.race.race_datetime
+            else ""
+        )
 
     def format_network(self) -> str:
-        return self.race.channel if self.race.channel else ''
+        return self.race.channel if self.race.channel else ""
 
     def format_league(self) -> str:
         return "Formula 1"

@@ -15,7 +15,7 @@ notion = Notion()
 
 beginning_of_today = datetime.combine(datetime.now(), time())
 
-ElligibleSports = Literal["🏀", "⚽", "🏒", "⚾", "🏁", "🏎️"]
+ElligibleSports = Literal["🏀", "⚽", "🏒", "⚾", "🏁", "🏎️", "⛹️"]
 
 
 class ElligibleSportsEnum(Enum):
@@ -25,6 +25,7 @@ class ElligibleSportsEnum(Enum):
     MLB = "⚾"
     INDY_CAR = "🏁"
     F1 = "🏎️"
+    BASKETBALL = "⛹️"
 
 
 def fetch_all_existing_notion_games_by_sport(sport: ElligibleSports) -> list[dict]:
