@@ -18,11 +18,12 @@ def convert_date(element: Tag) -> str:
     decoded_text = unidecode(spaced_text)
     return decoded_text.replace("Noon ET", "12:00 PM")
 
+
 def convert_race_name(element: Tag) -> str:
-    title = element.find('b')
+    title = element.find("b")
     if isinstance(title, Tag):
         return title.text
-    else: #this should never happen
+    else:  # this should never happen
         return element.text
 
 

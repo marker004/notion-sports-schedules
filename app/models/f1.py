@@ -7,7 +7,6 @@ from constants import F1_CHANNEL_GOODLIST
 from shared import beginning_of_today
 
 
-
 def is_date(possible_date: str) -> bool:
     try:
         parse(possible_date, fuzzy=True)
@@ -16,11 +15,12 @@ def is_date(possible_date: str) -> bool:
     except ValueError:
         return False
 
+
 def convert_race_name(element: Tag) -> str:
-    title = element.find('a')
+    title = element.find("a")
     if isinstance(title, Tag):
         return title.text
-    else: #this should never happen
+    else:  # this should never happen
         return element.text
 
 
@@ -71,5 +71,6 @@ class F1Response(BaseModel):
             race
             for race in self.races
             if race.channel in F1_CHANNEL_GOODLIST
-            and race.race_datetime and race.race_datetime > beginning_of_today
+            and race.race_datetime
+            and race.race_datetime > beginning_of_today
         ]
