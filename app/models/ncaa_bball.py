@@ -58,5 +58,7 @@ class GameCollection(BaseModel):
         return [
             game
             for game in self.games
-            if game.team_collection.teams and game.broadcaster
+            if game.team_collection.teams
+            and game.broadcaster
+            and game.start_time.replace(tzinfo=None) > datetime.now()
         ]
