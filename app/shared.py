@@ -44,9 +44,7 @@ def fetch_all_existing_notion_games_by_sport(sport: ElligibleSports) -> list[dic
     return all_games
 
 
-def fetch_games_by_sport(
-    sport: Optional[ElligibleSports] = None, override_filter: Optional[dict] = None
-):
+def fetch_games_by_sport(sport: Optional[ElligibleSports] = None):
     def func(start_cursor: Optional[str] = None):
         filter = {
             "property": "Sport",
@@ -82,10 +80,8 @@ def fetch_only_future_games_by_sport(sport: ElligibleSports):
     return func
 
 
-def delete_db_items_for_sport(
-    sport: ElligibleSports, and_filter: Optional[dict] = None
-):
-    fetch_games = fetch_games_by_sport(sport, and_filter)
+def delete_db_items_for_sport(sport: ElligibleSports):
+    fetch_games = fetch_games_by_sport(sport)
     delete_games = notion.recursive_fetch_and_delete(fetch_games)
     delete_games()
 
