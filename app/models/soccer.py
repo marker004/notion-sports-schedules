@@ -105,7 +105,6 @@ class GameBroadcastCollection(BaseModel):
             unique_broadcasts.append(first_broadcast)
         return unique_broadcasts
 
-    # todo: test this
     def usable_games(self) -> list[GameBroadcast]:
         watchable = self.watchable_broadcasts(self.game_broadcasts)
         sorted = self.sorted_broadcasts(watchable)

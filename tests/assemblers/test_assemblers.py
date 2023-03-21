@@ -121,7 +121,6 @@ def test_assemble_matchup(dummy_broadcast, dummy_leagues_primary):
 
 
 def test_format_date(dummy_broadcast, dummy_leagues_primary):
-    # todo: make this timezone and DST proof
     assert (
         SoccerAssembler(dummy_broadcast, dummy_leagues_primary).format_date()
         == "2023-02-19T10:45:00"

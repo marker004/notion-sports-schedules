@@ -69,8 +69,8 @@ class Broadcast(BaseModel):
 
 class Game(BaseModel):
     # gamePk: int
-    # link: str  # todo if I care: type this to url
-    # gameType: str  # todo if I care: type this to Literal
+    # link: str
+    # gameType: str
     # season: str
     gameDate: datetime
     # status: Status
