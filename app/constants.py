@@ -199,6 +199,7 @@ SOCCER_BROADCAST_BADLIST = [
     "Fox Soccer Plus HD",
     "Fox Sports 2 HD",
     "GOL TV",
+    "In Demand PPVHD (HD Events)",
     "MLS Season Pass on Apple TV",
     "NBC Sports California SAT",
     "NBC Sports California SAT HD",
@@ -542,5 +543,6 @@ SOCCER_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
     {"property": "league", "comparison": "equals", "value": "Premier League 🏴󠁧󠁢󠁥󠁮󠁧󠁿"},
     {"property": "league", "comparison": "equals", "value": "MLS 🇺🇸"},
     {"property": "league", "comparison": "equals", "value": "Champions League"},
+    {"property": "league", "comparison": "equals", "value": "EURO"},
     {"property": "matchup", "comparison": "contains", "value": "Indy Eleven"},
 ]
