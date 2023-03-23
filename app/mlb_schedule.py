@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 from urllib import parse
-from shared_items.interfaces.notion import Notion
 from shared_items.utils import pp, measure_execution
 
 from requests import Response, get
@@ -9,8 +8,6 @@ from models.mlb import MlbResponse, Game as MlbGame
 from utils.assemblers import MlbAssembler
 
 from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
-
-notion = Notion()
 
 BOOKENDS = ["2023-03-30", "2023-10-01"]
 

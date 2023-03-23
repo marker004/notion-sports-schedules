@@ -1,15 +1,11 @@
 from shared_items.utils import pp, measure_execution
-from shared_items.interfaces import Notion
 from requests import Response, get
 
 from shared_items.utils import pp, measure_execution
-from shared_items.interfaces import Notion
 
 from models.soccer import GameBroadcast, GameBroadcastCollection, LeagueTypes
 from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
 from utils.assemblers import SoccerAssembler
-
-notion = Notion()
 
 
 @measure_execution("fetching new soccer schedule")

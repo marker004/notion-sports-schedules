@@ -1,14 +1,11 @@
 from requests import get, Response
 
-from shared_items.interfaces.notion import Notion
 from shared_items.utils import measure_execution
 
 from models.nba import LeagueSchedule, Game as NbaGame
 
 from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
 from utils.assemblers import NbaAssembler
-
-notion = Notion()
 
 YEAR = 2022
 

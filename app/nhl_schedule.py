@@ -3,14 +3,11 @@ from urllib import parse
 from requests import Response, get
 
 from shared_items.utils import pp, measure_execution
-from shared_items.interfaces import Notion
 
 from models.nhl import LeagueBroadcastSchedule, Game as LeagueGame
 from models.nhl_espn import DailyEspnPlusNhlSchedule, Event as PowerPlayGame
 from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
 from utils.assemblers import NhlAssembler, NhlEspnPlusAssembler
-
-notion = Notion()
 
 BOOKENDS = ["2022-10-07", "2023-4-13"]
 

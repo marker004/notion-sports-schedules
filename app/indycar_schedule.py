@@ -1,14 +1,11 @@
 from requests import Response, get
 from bs4 import BeautifulSoup
 
-from shared_items.interfaces.notion import Notion
 from shared_items.utils import measure_execution
 
 from models.indycar import IndycarRace, IndycarResponse
 from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
 from utils.assemblers import IndycarAssembler
-
-notion = Notion()
 
 
 @measure_execution("fetching new IndyCar schedule")
