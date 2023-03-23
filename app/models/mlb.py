@@ -12,13 +12,13 @@ class TeamId(BaseModel):
 
 
 class Team(BaseModel):
-    isContextTeam: bool
-    isFollowed: bool
-    isFavorite: bool
-    leagueRecord: dict
+    # isContextTeam: bool
+    # isFollowed: bool
+    # isFavorite: bool
+    # leagueRecord: dict
     team: TeamId
-    splitSquad: bool
-    seriesNumber: Optional[int]
+    # splitSquad: bool
+    # seriesNumber: Optional[int]
 
 
 class Teams(BaseModel):
@@ -44,42 +44,42 @@ class Broadcast(BaseModel):
 
 
 class Game(BaseModel):
-    sortIndex1: int
-    sortIndex2: int
-    sortIndex3: int
-    sortIndex4: int
-    sortIndex5: int
+    # sortIndex1: int
+    # sortIndex2: int
+    # sortIndex3: int
+    # sortIndex4: int
+    # sortIndex5: int
     teams: Teams
-    gamePk: int
-    link: str
+    # gamePk: int
+    # link: str
     gameType: Literal["S", "R", "E"]
-    season: str
+    # season: str
     gameDate: datetime
     officialDate: datetime
-    status: dict
-    venue: dict
+    # status: dict
+    # venue: dict
     broadcasts: list[Broadcast] = []
-    content: dict
-    gameNumber: int
-    publicFacing: bool
-    doubleHeader: str
-    gamedayType: str
-    tiebreaker: str
-    calendarEventID: str
-    seasonDisplay: str
-    dayNight: str
-    scheduledInnings: int
-    reverseHomeAwayStatus: bool
-    inningBreakLength: int
-    gamesInSeries: Optional[int]
-    seriesGameNumber: Optional[int]
+    # content: dict
+    # gameNumber: int
+    # publicFacing: bool
+    # doubleHeader: str
+    # gamedayType: str
+    # tiebreaker: str
+    # calendarEventID: str
+    # seasonDisplay: str
+    # dayNight: str
+    # scheduledInnings: int
+    # reverseHomeAwayStatus: bool
+    # inningBreakLength: int
+    # gamesInSeries: Optional[int]
+    # seriesGameNumber: Optional[int]
     seriesDescription: Literal["Spring Training", "Regular Season", "Exhibition"]
-    flags: dict
-    recordSource: str
-    ifNecessary: str
-    ifNecessaryDescription: str
-    gameUtils: dict
-    linescore: dict
+    # flags: dict
+    # recordSource: str
+    # ifNecessary: str
+    # ifNecessaryDescription: str
+    # gameUtils: dict
+    # linescore: dict
 
     @validator("officialDate", pre=True)
     def official_date(cls, value):
