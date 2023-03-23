@@ -67,4 +67,11 @@ schedule_json = fetch_schedule_json()
 usable_games = assemble_usable_games(schedule_json)
 fresh_items = assemble_notion_items(usable_games)
 
+
+all_good_networks = []
+for item in fresh_items:
+    all_good_networks.append(item.network)
+
+print(set(all_good_networks))
+
 NotionScheduler(ElligibleSportsEnum.MLB.value, fresh_items).schedule_them_shits()
