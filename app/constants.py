@@ -117,6 +117,18 @@ MLB_BROADCAST_BADLIST = [
     "SNET NOW App",
     "KHOV Univision 105.1",
     "KIQI 1010",
+    "Bloomberg 960 AM/103.7 HD2",
+    "MLBN",
+    "TUDN WRTO 1200",
+    "WTTM 1680",
+    "TeleXitos",
+    "NBC 10",
+    "WIJR AM 880 (En Espanol)",
+    "WCCM 1490 AM",
+    "WAMG 890 AM",
+    "twinsbeisbol.com",
+    "Bally Sports North Extra",
+    "MASN 2"
 ]
 
 NHL_BROADCAST_BADLIST = [
