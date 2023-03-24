@@ -49,6 +49,14 @@ usable_games = assemble_usable_games(schedule_json)
 league_types = LeagueTypes(**leagues_json)
 fresh_schedule_items = assemble_notion_items(usable_games, league_types)
 
+all_good_networks: list[str] = []
+for item in fresh_schedule_items:
+    all_good_networks.append(item.network)
+
+flat_list = [item for sublist in all_good_networks for item in sublist.split(", ")]
+
+print(set(flat_list))
+
 NotionScheduler(
     ElligibleSportsEnum.SOCCER.value, fresh_schedule_items
 ).schedule_them_shits()
