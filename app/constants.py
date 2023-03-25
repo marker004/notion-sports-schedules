@@ -129,6 +129,8 @@ MLB_BROADCAST_BADLIST = [
     "twinsbeisbol.com",
     "Bally Sports North Extra",
     "MASN 2",
+    "WAMG 890 AM (SP)",
+    "WCCM 1490 AM (SP)",
 ]
 
 NHL_BROADCAST_BADLIST = [
@@ -283,6 +285,7 @@ SOCCER_BROADCAST_BADLIST = [
     "beIN Sports En Español",
     "beIN Sports En Español HD",
     "beIN Sports HD",
+    "beIN XTRA ESPAñOL",
     "iFollow",
 ]
 
@@ -602,4 +605,5 @@ SOCCER_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
     {"property": "league", "comparison": "equals", "value": "Champions League"},
     {"property": "league", "comparison": "equals", "value": "EURO"},
     {"property": "matchup", "comparison": "contains", "value": "Indy Eleven"},
+    {"property": "matchup", "comparison": "contains", "value": "USA"},
 ]
