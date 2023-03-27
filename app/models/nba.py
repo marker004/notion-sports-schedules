@@ -2,9 +2,8 @@ from datetime import datetime
 from typing import Literal
 
 from pydantic import BaseModel, Field
+from constants import NBA_BROADCASTER_BADLIST
 from shared import beginning_of_today
-
-BROADCASTER_BADLIST = ["NBA TV"]
 
 
 class Team(BaseModel):
@@ -28,7 +27,7 @@ class Broadcaster(BaseModel):
         return (
             self.type == "tv"
             and self.scope == "natl"
-            and self.disp not in BROADCASTER_BADLIST
+            and self.disp not in NBA_BROADCASTER_BADLIST
         )
 
 

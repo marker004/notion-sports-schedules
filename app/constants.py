@@ -199,6 +199,8 @@ NHL_BROADCAST_BADLIST = [
     "NBCSP",
 ]
 
+NBA_BROADCASTER_BADLIST = ["NBA TV"]
+
 SOCCER_BROADCAST_BADLIST = [
     "AT&T SportsNet Southwest Plus",
     "Antenna 20 Years",
