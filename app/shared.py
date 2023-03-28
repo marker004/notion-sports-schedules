@@ -15,7 +15,7 @@ notion = Notion()
 
 beginning_of_today = datetime.combine(datetime.now(), time())
 
-ElligibleSports = Literal["🏀", "⚽", "🏒", "⚾", "🏁", "🏎️", "⛹️"]
+ElligibleSports = Literal["🏀", "⚽", "🏒", "⚾", "🏁", "🏎️", "⛹️", "other"]
 
 
 class ElligibleSportsEnum(Enum):
@@ -44,12 +44,50 @@ def fetch_all_existing_notion_games_by_sport(sport: ElligibleSports) -> list[dic
     return all_games
 
 
+def fetch_all_existing_manually_added_notion_games() -> list[dict]:
+    game_fetcher = fetch_manually_added_games()
+
+    all_games: list[dict] = []
+    next_cursor: Optional[str] = None
+
+    while True:
+        response = game_fetcher(next_cursor)
+        next_cursor = response["next_cursor"]
+        all_games += response["results"]
+        if not response["has_more"]:
+            break
+
+    return all_games
+
+
 def fetch_games_by_sport(sport: Optional[ElligibleSports] = None):
     def func(start_cursor: Optional[str] = None):
         filter = {
             "property": "Sport",
             "rich_text": {"equals": sport},
         }
+        return notion.client.databases.query(
+            database_id=SCHEDULE_DATABASE_ID, filter=filter, start_cursor=start_cursor
+        )
+
+    return func
+
+
+def fetch_manually_added_games():
+    def func(start_cursor: Optional[str] = None):
+        filter: dict[Literal["and"], list[dict]] = {"and": []}
+
+        elligible_sports = [
+            sport.value for sport in ElligibleSportsEnum.__members__.values()
+        ]
+
+        for sport in elligible_sports:
+            filter_section = {
+                "property": "Sport",
+                "rich_text": {"does_not_equal": sport},
+            }
+            filter["and"].append(filter_section)
+
         return notion.client.databases.query(
             database_id=SCHEDULE_DATABASE_ID, filter=filter, start_cursor=start_cursor
         )
@@ -187,7 +225,7 @@ class NotionScheduler:
         sport: ElligibleSports,
         fresh_schedule_items: list[NotionSportsScheduleItem],
     ) -> None:
-        self.sport = sport
+        self.sport: ElligibleSports = sport
         self.fresh_schedule_items = fresh_schedule_items
 
     def schedule_them_shits(self) -> None:
@@ -203,6 +241,8 @@ class NotionScheduler:
 
     @measure_execution(f"fetching existing games")
     def fetch_existing_games(self):
+        if self.sport == "other":
+            return fetch_all_existing_manually_added_notion_games()
         return fetch_all_existing_notion_games_by_sport(self.sport)
 
     def assemble_existing_schedule_items(self, notion_rows: list[dict]):

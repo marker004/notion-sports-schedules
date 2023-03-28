@@ -10,6 +10,7 @@ from constants import (
 from models.f1 import F1Race
 from models.indycar import IndycarRace
 from models.ncaa_bball import Game as NcaaGame
+from models.notion_game import NotionGame
 from models.soccer import GameBroadcast, LeagueTypes
 from models.mlb import Game as MlbGame
 from models.nba import Game as NbaGame
@@ -62,6 +63,29 @@ class Assembler:
             sport=self.format_sport(),
             favorite=self.format_favorite(),
         )
+
+
+class ManualAssembler(Assembler):
+    def __init__(self, game: NotionGame):
+        self.game = game
+
+    def format_matchup(self) -> str:
+        return self.game.matchup
+
+    def format_date(self) -> str:
+        return self.game.date
+
+    def format_network(self) -> str:
+        return self.game.network
+
+    def format_league(self) -> str:
+        return self.game.league
+
+    def format_sport(self) -> str:
+        return self.game.sport
+
+    def format_favorite(self) -> str:
+        return "Favorite"
 
 
 class NcaaTournamentAssembler(Assembler):
