@@ -131,6 +131,9 @@ MLB_BROADCAST_BADLIST = [
     "MASN 2",
     "WAMG 890 AM (SP)",
     "WCCM 1490 AM (SP)",
+    "Guardians Radio Network",
+    "WADO 1280",
+    "WEPN 1050",
 ]
 
 NHL_BROADCAST_BADLIST = [
@@ -221,6 +224,7 @@ SOCCER_BROADCAST_BADLIST = [
     "In Demand PPVHD (HD Events)",
     "La 7",
     "MLS Season Pass on Apple TV",
+    "Next Level Sports HD",
     "NBC Sports California SAT",
     "NBC Sports California SAT HD",
     "NBC Sports Washington",
