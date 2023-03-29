@@ -134,6 +134,11 @@ MLB_BROADCAST_BADLIST = [
     "Guardians Radio Network",
     "WADO 1280",
     "WEPN 1050",
+    "KNRV 1150",
+    "Bally Sports Midwest Extra",
+    "TUDN 93.3 / KLAT 1010",
+    "XEMO 860",
+    "ATT SportsNet-PIT2",
 ]
 
 NHL_BROADCAST_BADLIST = [
@@ -277,6 +282,7 @@ SOCCER_BROADCAST_BADLIST = [
     "ViX+ Deportes 9",
     "Yes Network",
     "Yes Network HD",
+    "Zona TUDN",
     "beIN SPORTS 2",
     "beIN SPORTS 2 HD",
     "beIN SPORTS 3",
