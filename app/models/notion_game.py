@@ -14,7 +14,6 @@ class NotionGame(BaseModel):
     matchup: str = Field(alias="Matchup")
     notion_id: Optional[str] = None
 
-
     @validator("network", "league", "sport", "favorite", pre=True)
     def convert_rich_text_fields(cls, value: dict):
         return value["rich_text"][0]["plain_text"]
@@ -27,7 +26,6 @@ class NotionGame(BaseModel):
     def convert_date_fields(cls, value: dict):
         converted_date = parser().parse(value["date"]["start"])
         return converted_date.strftime("%Y-%m-%dT%H:%M:%S")
-
 
     def is_upcoming(self) -> bool:
         return parser().parse(self.date) > datetime.now()

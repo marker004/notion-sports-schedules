@@ -6,8 +6,10 @@ from shared import (
 from models.notion_game import NotionGame, NotionGames
 from utils.assemblers import ManualAssembler
 
+
 def fetch_games() -> list[dict]:
     return fetch_all_existing_manually_added_notion_games()
+
 
 def assemble_usable_games(games: list[dict]) -> list[NotionGame]:
     notion_games = NotionGames(
@@ -22,6 +24,7 @@ def assemble_usable_games(games: list[dict]) -> list[NotionGame]:
 
 def assemble_notion_items(games: list[NotionGame]) -> list[NotionSportsScheduleItem]:
     return [ManualAssembler(game).notion_sports_schedule_item() for game in games]
+
 
 games = fetch_games()
 usable_games = assemble_usable_games(games)
