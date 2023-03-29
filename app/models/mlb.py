@@ -37,7 +37,7 @@ class Broadcast(BaseModel):
     name: str
     type: Literal["TV", "AM", "FM"]
     language: Literal["en", "fr", "es"]
-    homeAway: Literal["home", "away"]
+    homeAway: Optional[Literal["home", "away"]]
     isNational: Optional[bool]
     callSign: Optional[str]
     videoResolution: Optional[VideoResolution]
