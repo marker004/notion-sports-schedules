@@ -7,7 +7,7 @@ from requests import Response, get
 from models.mlb import MlbResponse, Game as MlbGame
 from utils.assemblers import MlbAssembler
 
-from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
+from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem, log_good_networks
 
 BOOKENDS = ["2023-03-30", "2023-10-01"]
 
@@ -64,13 +64,6 @@ schedule_json = fetch_schedule_json()
 usable_games = assemble_usable_games(schedule_json)
 fresh_items = assemble_notion_items(usable_games)
 
-
-all_good_networks: list[str] = []
-for item in fresh_items:
-    all_good_networks.append(item.network)
-
-flat_list = [item for sublist in all_good_networks for item in sublist.split(", ")]
-
-print(set(flat_list))
+log_good_networks(fresh_items)
 
 NotionScheduler(ElligibleSportsEnum.MLB.value, fresh_items).schedule_them_shits()

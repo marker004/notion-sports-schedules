@@ -302,3 +302,13 @@ class FavoriteCriterion(TypedDict):
     property: Literal["sport", "league", "matchup"]
     comparison: Literal["equals", "contains"]
     value: str
+
+
+def log_good_networks(items: list[NotionSportsScheduleItem]) -> None:
+    all_good_networks: list[str] = []
+    for item in items:
+        all_good_networks.append(item.network)
+
+    flat_list = [item for sublist in all_good_networks for item in sublist.split(", ")]
+
+    print(set(flat_list))
