@@ -139,6 +139,13 @@ MLB_BROADCAST_BADLIST = [
     "TUDN 93.3 / KLAT 1010",
     "XEMO 860",
     "ATT SportsNet-PIT2",
+    "La Mejor 1600/1460/1130 AM",
+    "Bally Sports Arizona Extra",
+    "680 AM/93.7 FM The Fan",
+    "NBCS BA+",
+    "KWKW 1330",
+    "WQBN/1300AM",
+    "KFLC 1270"
 ]
 
 NHL_BROADCAST_BADLIST = [
