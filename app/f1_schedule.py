@@ -26,7 +26,7 @@ def assemble_usable_games(response: Response) -> list[F1Race]:
 
 
 def assemble_notion_items(races: list[F1Race]) -> list[NotionSportsScheduleItem]:
-    return [F1Assembler(race).notion_sports_schedule_item() for race in usable_races]
+    return [F1Assembler(race).notion_sports_schedule_item() for race in races]
 
 
 response = fetch_schedule_response()
