@@ -1,10 +1,11 @@
 from datetime import datetime
 from typing import Optional, TypedDict
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, Field, validator
 from dataclasses import InitVar
 from pydantic.dataclasses import dataclass
 from constants import NATIONAL_FLAGS, SOCCER_BROADCAST_BADLIST
 from itertools import groupby
+from dateutil.parser import parser
 
 
 def normalize_dates(raw_date_string: str) -> datetime:
@@ -168,3 +169,12 @@ class LeagueTypes:
             ),
             default,
         )
+
+
+class AppleTVFreeSoccer(BaseModel):
+    date: datetime = Field(alias="relative_date")
+    matchup: str
+
+    @validator("date", pre=True)
+    def convert_dates(cls, value):
+        return parser().parse(value)

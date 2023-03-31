@@ -1,7 +1,7 @@
 from __future__ import annotations
 from datetime import datetime, time
 from enum import Enum
-from typing import Literal, Optional, TypedDict
+from typing import Literal, NamedTuple, Optional, TypedDict
 from pydantic.dataclasses import dataclass
 from shared_items.interfaces import Prop as NotionProp
 from shared_items.interfaces.notion import Notion
@@ -302,6 +302,12 @@ class FavoriteCriterion(TypedDict):
     property: Literal["sport", "league", "matchup"]
     comparison: Literal["equals", "contains"]
     value: str
+
+
+class AppleTVGameInfo(NamedTuple):
+    relative_date: str
+    matchup: str
+    league: str
 
 
 def log_good_networks(items: list[NotionSportsScheduleItem]) -> None:
