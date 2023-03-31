@@ -12,6 +12,7 @@ shared-items = {git = "ssh://git@github.com/marker004/notion_shared_items.git", 
 python-dateutil = "^2.8.2"
 beautifulsoup4 = "^4.11.2"
 unidecode = "^1.3.6"
+playwright = "^1.32.1"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.0.0"
