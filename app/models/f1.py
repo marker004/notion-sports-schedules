@@ -1,10 +1,11 @@
 from datetime import datetime
 from typing import Optional, cast
 from bs4 import Tag
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 from dateutil.parser import parse
 from constants import F1_CHANNEL_GOODLIST
 from shared import beginning_of_today
+from dateutil.tz import tzlocal
 
 
 def is_date(possible_date: str) -> bool:
@@ -27,14 +28,12 @@ def convert_race_name(element: Tag) -> str:
 class F1Race(BaseModel):
     date_range: str
     race_name: str
-    winner_lights_out: str
+    start_datetime: Optional[datetime]
     channel: Optional[str]
 
-    @property
-    def race_datetime(self) -> Optional[datetime]:
-        return (
-            parse(self.winner_lights_out) if is_date(self.winner_lights_out) else None
-        )
+    @validator("start_datetime", pre=True)
+    def convert_datetime(cls, value):
+        return parse(value).astimezone(tzlocal()) if is_date(value) else None
 
 
 class F1Response(BaseModel):
@@ -42,9 +41,13 @@ class F1Response(BaseModel):
         arbitrary_types_allowed = True
 
     race_elements_container: Tag
+    races: list[F1Race] = []
 
-    @property
-    def races(self) -> list[F1Race]:
+    def __init__(self, **data):
+        super().__init__(**data)
+        self.races = self.convert_races()
+
+    def convert_races(self) -> list[F1Race]:
         races: list[F1Race] = []
         table_body = self.race_elements_container.find("tbody")
 
@@ -58,7 +61,7 @@ class F1Response(BaseModel):
                     F1Race(
                         date_range=cols[0].text,
                         race_name=convert_race_name(cols[1]),
-                        winner_lights_out=cols[2].text,
+                        start_datetime=cols[2].text,
                         channel=cols[3].text,
                     )
                 )
@@ -71,6 +74,6 @@ class F1Response(BaseModel):
             race
             for race in self.races
             if race.channel in F1_CHANNEL_GOODLIST
-            and race.race_datetime
-            and race.race_datetime > beginning_of_today
+            and race.start_datetime
+            and race.start_datetime > beginning_of_today
         ]

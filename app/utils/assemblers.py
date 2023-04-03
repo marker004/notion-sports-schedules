@@ -139,7 +139,7 @@ class NbaAssembler(Assembler):
         return joined_names
 
     def format_date(self) -> str:
-        return self.game.eastern_time.strftime("%Y-%m-%dT%H:%M:%S")
+        return self.game.start_datetime.strftime("%Y-%m-%dT%H:%M:%S")
 
     def format_network(self) -> str:
         return self.game.watchable_broadcaster.disp
@@ -294,7 +294,7 @@ class IndycarAssembler(Assembler):
         return self.race.race_name
 
     def format_date(self) -> str:
-        return self.race.race_datetime.strftime("%Y-%m-%dT%H:%M:%S")
+        return self.race.start_datetime.strftime("%Y-%m-%dT%H:%M:%S")
 
     def format_network(self) -> str:
         return self.race.channel
@@ -316,8 +316,8 @@ class F1Assembler(Assembler):
 
     def format_date(self) -> str:
         return (
-            self.race.race_datetime.strftime("%Y-%m-%dT%H:%M:%S")
-            if self.race.race_datetime
+            self.race.start_datetime.strftime("%Y-%m-%dT%H:%M:%S")
+            if self.race.start_datetime
             else ""
         )
 

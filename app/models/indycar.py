@@ -1,10 +1,11 @@
 from datetime import datetime
 from typing import cast
 from bs4 import Tag
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 from dateutil.parser import parse
 from unidecode import unidecode
 from shared import beginning_of_today
+from dateutil.tz import tzlocal
 
 
 from constants import INDYCAR_CHANNEL_GOODLIST
@@ -16,7 +17,7 @@ def convert_date(element: Tag) -> str:
         line_break.replaceWith(" ")
     spaced_text = element.text
     decoded_text = unidecode(spaced_text)
-    return decoded_text.replace("Noon ET", "12:00 PM")
+    return decoded_text.replace("Noon", "12:00 PM").replace(" ET", "")
 
 
 def convert_race_name(element: Tag) -> str:
@@ -28,13 +29,13 @@ def convert_race_name(element: Tag) -> str:
 
 
 class IndycarRace(BaseModel):
-    date: str
+    start_datetime: datetime
     race_name: str
     channel: str
 
-    @property
-    def race_datetime(self) -> datetime:
-        return parse(self.date)
+    @validator('start_datetime', pre=True)
+    def convert_datetime(cls, value):
+        return parse(value).astimezone(tzlocal())
 
 
 class IndycarResponse(BaseModel):
@@ -42,9 +43,13 @@ class IndycarResponse(BaseModel):
         arbitrary_types_allowed = True
 
     race_elements_container: Tag
+    races: list[IndycarRace] = []
 
-    @property
-    def races(self) -> list[IndycarRace]:
+    def __init__(self, **data):
+        super().__init__(**data)
+        self.races = self.convert_races()
+
+    def convert_races(self) -> list[IndycarRace]:
         races: list[IndycarRace] = []
         rows = self.race_elements_container.find_all(
             True, {"class": ["oddrow", "evenrow"]}
@@ -55,7 +60,7 @@ class IndycarResponse(BaseModel):
 
             races.append(
                 IndycarRace(
-                    date=convert_date(cols[0]),
+                    start_datetime=convert_date(cols[0]),
                     race_name=convert_race_name(cols[1]),
                     channel=cols[2].text,
                 )
@@ -69,5 +74,5 @@ class IndycarResponse(BaseModel):
             race
             for race in self.races
             if race.channel in INDYCAR_CHANNEL_GOODLIST
-            and race.race_datetime > beginning_of_today
+            and race.start_datetime > beginning_of_today
         ]
