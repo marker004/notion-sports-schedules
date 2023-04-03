@@ -74,7 +74,6 @@ MLB_BROADCAST_BADLIST = [
     "KCSP 610",
     "WXYT 1270",
     "WCNN 680/93.7",
-    "NBCSCH+",
     "1510 AM - KSFN",
     "WCBS 880",
     "WSAI-1360",
@@ -145,7 +144,8 @@ MLB_BROADCAST_BADLIST = [
     "NBCS BA+",
     "KWKW 1330",
     "WQBN/1300AM",
-    "KFLC 1270"
+    "KFLC 1270",
+    "SNET-1",
 ]
 
 NHL_BROADCAST_BADLIST = [
@@ -300,6 +300,10 @@ SOCCER_BROADCAST_BADLIST = [
     "beIN SPORTS 5 HD",
     "beIN SPORTS 6",
     "beIN SPORTS 6 HD",
+    "beIN SPORTS 7",
+    "beIN SPORTS 7 HD",
+    "beIN SPORTS 8",
+    "beIN SPORTS 8 HD",
     "beIN Sports",
     "beIN Sports En Español",
     "beIN Sports En Español HD",
