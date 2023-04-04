@@ -1,7 +1,8 @@
 #!/bin/sh
 export PYENV_VERSION=3.9.5
 
-date
+echo "Starting:" >logs/meta.log
+date >>logs/meta.log
 
 echo "NBA"
 poetry run python3 app/nba_schedule.py >logs/nba_schedule.log 2>&1
@@ -27,4 +28,6 @@ echo "Done"
 echo "Manually added games"
 poetry run python3 app/manual_additions.py >logs/manual_additions.log 2>&1
 echo "Done"
-date
+
+echo "Finished:" >>logs/meta.log
+date >>logs/meta.log 2>&1
