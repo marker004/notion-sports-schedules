@@ -21,9 +21,9 @@ echo "Done"
 echo "Formula 1"
 poetry run python3 app/f1_schedule.py >logs/f1_schedule.log 2>&1
 echo "Done"
-echo "NCAA Basketball Tournament"
-poetry run python3 app/ncaa_bball_tournament_schedule.py >logs/ncaa_bball_tournament_schedule.log 2>&1
-echo "Done"
+# echo "NCAA Basketball Tournament"
+# poetry run python3 app/ncaa_bball_tournament_schedule.py >logs/ncaa_bball_tournament_schedule.log 2>&1
+# echo "Done"
 echo "Manually added games"
 poetry run python3 app/manual_additions.py >logs/manual_additions.log 2>&1
 echo "Done"
