@@ -13,7 +13,7 @@ from models.indycar import IndycarRace
 from models.ncaa_bball import Game as NcaaGame
 from models.notion_game import NotionGame
 from models.soccer import AppleTVFreeSoccer, GameBroadcast, LeagueTypes
-from models.mlb import Game as MlbGame
+from models.mlb import Game as MlbGame, MlbEspnPlusInfo
 from models.nba import Game as NbaGame
 from models.nhl import Game as NhlGame
 from models.nhl_espn import Event as NhlEspnPlusGame
@@ -187,6 +187,7 @@ class AppleTVFreeGamesSoccerAssembler(Assembler):
     def __init__(self, game: AppleTVFreeSoccer) -> None:
         super().__init__()
         self.game = game
+        self.favorite_criteria = SOCCER_FAVORITE_CRITERIA
 
     def format_matchup(self) -> str:
         return self.game.matchup
@@ -199,7 +200,7 @@ class AppleTVFreeGamesSoccerAssembler(Assembler):
         return local_aware.strftime("%Y-%m-%dT%H:%M:%S")
 
     def format_network(self) -> str:
-        return 'Apple TV+'
+        return "Apple TV+"
 
     def format_league(self) -> str:
         return f'MLS {NATIONAL_FLAGS["United States"]}'
@@ -279,6 +280,27 @@ class MlbAssembler(Assembler):
     def format_league(self) -> str:
         if self.game.gameType != "R":
             return f"MLB - {self.game.seriesDescription}"
+        return "MLB"
+
+    def format_sport(self) -> str:
+        return ElligibleSportsEnum.MLB.value
+
+
+class MlbEspnPlusAssembler(Assembler):
+    def __init__(self, game: MlbEspnPlusInfo):
+        self.game = game
+        self.favorite_criteria = MLB_FAVORITE_CRITERIA
+
+    def format_matchup(self) -> str:
+        return self.game.matchup
+
+    def format_date(self) -> str:
+        return self.game.time.strftime("%Y-%m-%dT%H:%M:%S") if self.game.time else ""
+
+    def format_network(self) -> str:
+        return "ESPN+"
+
+    def format_league(self) -> str:
         return "MLB"
 
     def format_sport(self) -> str:

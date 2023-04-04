@@ -3,6 +3,10 @@ from typing import Literal, Optional
 from pydantic import BaseModel, validator
 
 from constants import MLB_BROADCAST_BADLIST
+from dateutil.parser import parse
+from dateutil.tz import tzlocal
+
+from shared import is_date
 
 
 class TeamId(BaseModel):
@@ -143,3 +147,42 @@ class MlbResponse(BaseModel):
                 good_games.append(game)
         # unique_names = list(set([broadcast.name for game in self.games() for broadcast in game.broadcasts]))
         return good_games
+
+
+# espn below
+
+
+class MlbEspnPlusInfo(BaseModel):
+    time: Optional[datetime] = None
+    matchup: str
+    channel: str
+
+    @validator("time", pre=True)
+    def convert_time(cls, value: str):
+        return parse(value).astimezone(tzlocal()) if is_date(value) else None
+
+    def __eq__(self, other) -> bool:
+        return (
+            isinstance(other, MlbEspnPlusInfo) and self.__hash__() == other.__hash__()
+        )
+
+    def __hash__(self):
+        return hash(tuple(sorted(self.__dict__.items())))
+
+
+class MlbEspnPlusInfoCollection(BaseModel):
+    games: list[MlbEspnPlusInfo]
+
+    def usable_games(self) -> list[MlbEspnPlusInfo]:
+        return list(
+            set(
+                [
+                    game
+                    for game in self.games
+                    if game.time
+                    and "ESPN+" in game.channel
+                    and "vs." in game.matchup
+                    and "Español" not in game.matchup
+                ]
+            )
+        )
