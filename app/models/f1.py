@@ -4,17 +4,8 @@ from bs4 import Tag
 from pydantic import BaseModel, validator
 from dateutil.parser import parse
 from constants import F1_CHANNEL_GOODLIST
-from shared import beginning_of_today
+from shared import beginning_of_today, is_date
 from dateutil.tz import tzlocal
-
-
-def is_date(possible_date: str) -> bool:
-    try:
-        parse(possible_date, fuzzy=True)
-        return True
-
-    except ValueError:
-        return False
 
 
 def convert_race_name(element: Tag) -> str:

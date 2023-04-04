@@ -6,7 +6,7 @@ from pydantic.dataclasses import dataclass
 from shared_items.interfaces import Prop as NotionProp
 from shared_items.interfaces.notion import Notion
 from shared_items.utils import measure_execution
-from dateutil.parser import parser
+from dateutil.parser import parse
 from dateutil.tz import tzlocal
 
 
@@ -144,7 +144,7 @@ class NotionSportsScheduleItem:
     @classmethod
     def from_notion_interface(self, notion_row: dict) -> NotionSportsScheduleItem:
         properties = notion_row["properties"]
-        converted_date = parser().parse(properties["Date"]["date"]["start"])
+        converted_date = parse(properties["Date"]["date"]["start"])
 
         matchup = properties["Matchup"]["title"][0]["plain_text"]
         date = converted_date.strftime("%Y-%m-%dT%H:%M:%S")
@@ -319,3 +319,12 @@ def log_good_networks(items: list[NotionSportsScheduleItem]) -> None:
     flat_list = [item for sublist in all_good_networks for item in sublist.split(", ")]
 
     print(set(flat_list))
+
+
+def is_date(possible_date: str) -> bool:
+    try:
+        parse(possible_date, fuzzy=True)
+        return True
+
+    except ValueError:
+        return False
