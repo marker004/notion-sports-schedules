@@ -1,14 +1,16 @@
 from shared import (
     NotionScheduler,
     NotionSportsScheduleItem,
-    fetch_all_existing_manually_added_notion_games,
+    filter_existing_manually_added_notion_games,
+    recursively_fetch_existing_notion_games,
 )
 from models.notion_game import NotionGame, NotionGames
 from utils.assemblers import ManualAssembler
 
 
 def fetch_games() -> list[dict]:
-    return fetch_all_existing_manually_added_notion_games()
+    filter = filter_existing_manually_added_notion_games()
+    return recursively_fetch_existing_notion_games(filter)
 
 
 def assemble_usable_games(games: list[dict]) -> list[NotionGame]:

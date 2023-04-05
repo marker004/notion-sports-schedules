@@ -1,10 +1,14 @@
 from __future__ import annotations
+import asyncio
 from datetime import datetime, time
 from enum import Enum
-from typing import Literal, NamedTuple, Optional, TypedDict
+from typing import Any, Coroutine, Literal, NamedTuple, Optional, TypedDict, cast
 from pydantic.dataclasses import dataclass
 from shared_items.interfaces import Prop as NotionProp
-from shared_items.interfaces.notion import Notion
+from shared_items.interfaces.notion import (
+    Notion,
+    collect_paginated_api,
+)
 from shared_items.utils import measure_execution
 from dateutil.parser import parse
 from dateutil.tz import tzlocal
@@ -29,71 +33,34 @@ class ElligibleSportsEnum(Enum):
     BASKETBALL = "⛹️"
 
 
-def fetch_all_existing_notion_games_by_sport(sport: ElligibleSports) -> list[dict]:
-    game_fetcher = fetch_games_by_sport(sport)
-
-    all_games: list[dict] = []
-    next_cursor: Optional[str] = None
-
-    while True:
-        response = game_fetcher(next_cursor)
-        next_cursor = response["next_cursor"]
-        all_games += response["results"]
-        if not response["has_more"]:
-            break
-
-    return all_games
+def filter_existing_notion_games_by_sport(sport: ElligibleSports) -> dict:
+    return {
+        "property": "Sport",
+        "rich_text": {"equals": sport},
+    }
 
 
-def fetch_all_existing_manually_added_notion_games() -> list[dict]:
-    game_fetcher = fetch_manually_added_games()
+def filter_existing_manually_added_notion_games() -> dict:
+    filter: dict[Literal["and"], list[dict]] = {"and": []}
 
-    all_games: list[dict] = []
-    next_cursor: Optional[str] = None
+    elligible_sports = [
+        sport.value for sport in ElligibleSportsEnum.__members__.values()
+    ]
 
-    while True:
-        response = game_fetcher(next_cursor)
-        next_cursor = response["next_cursor"]
-        all_games += response["results"]
-        if not response["has_more"]:
-            break
-
-    return all_games
-
-
-def fetch_games_by_sport(sport: Optional[ElligibleSports] = None):
-    def func(start_cursor: Optional[str] = None):
-        filter = {
+    for sport in elligible_sports:
+        filter_section = {
             "property": "Sport",
-            "rich_text": {"equals": sport},
+            "rich_text": {"does_not_equal": sport},
         }
-        return notion.client.databases.query(
-            database_id=SCHEDULE_DATABASE_ID, filter=filter, start_cursor=start_cursor
-        )
+        filter["and"].append(filter_section)
 
-    return func
+    return filter
 
 
-def fetch_manually_added_games():
-    def func(start_cursor: Optional[str] = None):
-        filter: dict[Literal["and"], list[dict]] = {"and": []}
-
-        elligible_sports = [
-            sport.value for sport in ElligibleSportsEnum.__members__.values()
-        ]
-
-        for sport in elligible_sports:
-            filter_section = {
-                "property": "Sport",
-                "rich_text": {"does_not_equal": sport},
-            }
-            filter["and"].append(filter_section)
-
-        return notion.client.databases.query(
-            database_id=SCHEDULE_DATABASE_ID, filter=filter, start_cursor=start_cursor
-        )
-
-    return func
+def recursively_fetch_existing_notion_games(filter: dict) -> list[dict]:
+    return collect_paginated_api(
+        notion.client.databases.query, filter=filter, database_id=SCHEDULE_DATABASE_ID
+    )
 
 
 def fetch_only_future_games_by_sport(sport: ElligibleSports):
@@ -117,12 +84,6 @@ def fetch_only_future_games_by_sport(sport: ElligibleSports):
         )
 
     return func
-
-
-def delete_db_items_for_sport(sport: ElligibleSports):
-    fetch_games = fetch_games_by_sport(sport)
-    delete_games = notion.recursive_fetch_and_delete(fetch_games)
-    delete_games()
 
 
 def insert_to_database(all_props: list[dict]):
@@ -242,9 +203,13 @@ class NotionScheduler:
 
     @measure_execution(f"fetching existing games")
     def fetch_existing_games(self):
-        if self.sport == "other":
-            return fetch_all_existing_manually_added_notion_games()
-        return fetch_all_existing_notion_games_by_sport(self.sport)
+        filter = (
+            filter_existing_manually_added_notion_games()
+            if self.sport == "other"
+            else filter_existing_notion_games_by_sport(self.sport)
+        )
+
+        return recursively_fetch_existing_notion_games(filter)
 
     def assemble_existing_schedule_items(self, notion_rows: list[dict]):
         return [
@@ -275,11 +240,22 @@ class NotionScheduler:
 
         return (delete_list, do_nothing_list, add_list)
 
+    async def async_delete_block(self, block_id: str) -> asyncio.Future:
+        return await notion.async_client.blocks.delete(block_id=block_id)
+
+    async def async_delete_all_blocks(self, block_ids: list[str]):
+        return await asyncio.gather(
+            *[self.async_delete_block(block_id) for block_id in block_ids]
+        )
+
     @measure_execution("deleting existing games")
     def delete_unuseful_games(self, delete_list: list[NotionSportsScheduleItem]):
-        for item in delete_list:
-            if item.notion_id:  # should always be true
-                notion.client.blocks.delete(block_id=item.notion_id)
+        # these items should all have notion_ids
+        asyncio.run(
+            self.async_delete_all_blocks(
+                [cast(str, item.notion_id) for item in delete_list]
+            )
+        )
         print(f"deleted {len(delete_list)} games")
 
     @measure_execution("inserting fresh games")
