@@ -118,10 +118,7 @@ def assemble_notion_items(games: list[MlbGame]) -> list[NotionSportsScheduleItem
 def assemble_espn_plus_notion_items(
     games: list[MlbEspnPlusInfo],
 ) -> list[NotionSportsScheduleItem]:
-    return [
-        MlbEspnPlusAssembler(game).notion_sports_schedule_item()
-        for game in games
-    ]
+    return [MlbEspnPlusAssembler(game).notion_sports_schedule_item() for game in games]
 
 
 schedule_json = fetch_schedule_json()

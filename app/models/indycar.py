@@ -33,7 +33,7 @@ class IndycarRace(BaseModel):
     race_name: str
     channel: str
 
-    @validator('start_datetime', pre=True)
+    @validator("start_datetime", pre=True)
     def convert_datetime(cls, value):
         return parse(value).astimezone(tzlocal())
 
