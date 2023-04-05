@@ -37,10 +37,10 @@ class Policy(BaseModel):
 
 class Airing(BaseModel):
     # note: an Airing represents either the home or away broadcast being shown on ESPN+
-    policy: Policy
+    policy: Optional[Policy]
 
     def black_out_policy_ids(self) -> list[Optional[str]]:
-        return self.policy.black_out_policy_ids()
+        return self.policy.black_out_policy_ids() if self.policy else []
 
 
 class Event(BaseModel):
