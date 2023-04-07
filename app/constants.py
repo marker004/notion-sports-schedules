@@ -232,6 +232,7 @@ SOCCER_BROADCAST_BADLIST = [
     "Fox Soccer Plus",
     "Fox Soccer Plus HD",
     "Fox Sports 2 HD",
+    "Globo",
     "GOL TV",
     "In Demand PPVHD (HD Events)",
     "La 7",
