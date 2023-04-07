@@ -2,13 +2,10 @@ from __future__ import annotations
 import asyncio
 from datetime import datetime, time
 from enum import Enum
-from typing import Any, Coroutine, Literal, NamedTuple, Optional, TypedDict, cast
+from typing import Literal, NamedTuple, Optional, TypedDict, cast
 from pydantic.dataclasses import dataclass
 from shared_items.interfaces import Prop as NotionProp
-from shared_items.interfaces.notion import (
-    Notion,
-    collect_paginated_api,
-)
+from shared_items.interfaces.notion import Notion, collect_paginated_api
 from shared_items.utils import measure_execution
 from dateutil.parser import parse
 from dateutil.tz import tzlocal
@@ -61,35 +58,6 @@ def recursively_fetch_existing_notion_games(filter: dict) -> list[dict]:
     return collect_paginated_api(
         notion.client.databases.query, filter=filter, database_id=SCHEDULE_DATABASE_ID
     )
-
-
-def fetch_only_future_games_by_sport(sport: ElligibleSports):
-    def func(next_cursor: Optional[str] = None):
-        filter = {
-            "and": [
-                {
-                    "property": "Date",
-                    "date": {
-                        "on_or_after": beginning_of_today.strftime("%Y-%m-%dT%H:%M:%S")
-                    },
-                },
-                {
-                    "property": "Sport",
-                    "rich_text": {"equals": sport},
-                },
-            ]
-        }
-        return notion.client.databases.query(
-            database_id=SCHEDULE_DATABASE_ID, filter=filter, next_cursor=next_cursor
-        )
-
-    return func
-
-
-def insert_to_database(all_props: list[dict]):
-    row_creator = notion.create_row_for_database(SCHEDULE_DATABASE_ID)
-    for props in all_props:
-        row_creator(props)
 
 
 @dataclass
@@ -240,19 +208,11 @@ class NotionScheduler:
 
         return (delete_list, do_nothing_list, add_list)
 
-    async def async_delete_block(self, block_id: str) -> asyncio.Future:
-        return await notion.async_client.blocks.delete(block_id=block_id)
-
-    async def async_delete_all_blocks(self, block_ids: list[str]):
-        return await asyncio.gather(
-            *[self.async_delete_block(block_id) for block_id in block_ids]
-        )
-
     @measure_execution("deleting existing games")
     def delete_unuseful_games(self, delete_list: list[NotionSportsScheduleItem]):
         # these items should all have notion_ids
         asyncio.run(
-            self.async_delete_all_blocks(
+            notion.async_delete_all_blocks(
                 [cast(str, item.notion_id) for item in delete_list]
             )
         )
@@ -261,7 +221,7 @@ class NotionScheduler:
     @measure_execution("inserting fresh games")
     def insert_new_games(self, insert_list: list[NotionSportsScheduleItem]):
         insert_list_props = self.assemble_insertion_notion_props(insert_list)
-        insert_to_database(insert_list_props)
+        asyncio.run(notion.async_add_all_pages(SCHEDULE_DATABASE_ID, insert_list_props))
         print(f"inserted {len(insert_list)} games")
 
     def operate_in_notion(
