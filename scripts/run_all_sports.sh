@@ -1,6 +1,7 @@
 #!/bin/sh
 export PYENV_VERSION=3.9.5
 
+echo "Starting: $(date)"
 echo "Starting:" >logs/meta.log
 date >>logs/meta.log
 
@@ -31,3 +32,5 @@ echo "Done"
 
 echo "Finished:" >>logs/meta.log
 date >>logs/meta.log 2>&1
+
+echo "Finished: $(date)"
