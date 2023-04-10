@@ -139,7 +139,11 @@ class NbaAssembler(Assembler):
         return joined_names
 
     def format_date(self) -> str:
-        return self.game.start_datetime.strftime("%Y-%m-%dT%H:%M:%S")
+        return (
+            self.game.start_datetime.strftime("%Y-%m-%dT%H:%M:%S")
+            if self.game.start_datetime
+            else ""
+        )
 
     def format_network(self) -> str:
         return self.game.watchable_broadcaster.disp

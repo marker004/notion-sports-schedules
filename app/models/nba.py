@@ -1,11 +1,11 @@
 from datetime import datetime
-from typing import Literal
+from typing import Literal, Optional, Union
 from dateutil.parser import parse
 from dateutil.tz import tzlocal
 
 from pydantic import BaseModel, Field, validator
 from constants import NBA_BROADCASTER_BADLIST
-from shared import beginning_of_today
+from shared import beginning_of_today, is_date
 
 
 class Team(BaseModel):
@@ -38,7 +38,7 @@ class Broadcast(BaseModel):
 
 
 class Game(BaseModel):
-    start_datetime: datetime = Field(alias="etm")
+    start_datetime: Optional[datetime] = Field(alias="etm")
     broadcasting: Broadcast = Field(alias="bd")
     visiting_team: Team = Field(alias="v")
     home_team: Team = Field(alias="h")
@@ -55,7 +55,7 @@ class Game(BaseModel):
 
     @validator("start_datetime", pre=True)
     def convert_datetime(cls, value):
-        return parse(value).astimezone(tzlocal())
+        return parse(value).astimezone(tzlocal()) if is_date(value) else None
 
     def watchable(self) -> bool:
         return any(
@@ -84,7 +84,9 @@ class LeagueSchedule(BaseModel):
             game
             for month in self.month_schedule
             for game in month.games
-            if game.start_datetime > beginning_of_today and game.watchable()
+            if game.start_datetime
+            and game.start_datetime > beginning_of_today
+            and game.watchable()
         ]
 
     class Config:
