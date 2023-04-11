@@ -220,6 +220,8 @@ SOCCER_BROADCAST_BADLIST = [
     "AT&T SportsNet Southwest Plus",
     "Antenna 20 Years",
     "BEINX",
+    "Bally Sports SoCal",
+    "Bally Sports SoCal HD",
     "CL beIN Sports English SD in Spanish",
     "Caracol TV Canal 1",
     "DAZN USA",
