@@ -17,7 +17,7 @@ def assemble_league_schedule_url() -> str:
     todays_date = datetime.today().strftime("%Y-%m-%d")
     league_schedule_params = (
         ("startDate", todays_date),
-        ("endDate", BOOKENDS[1]),
+        ("endDate", "2023-6-30"),
         ("hydrate", "broadcasts(all)"),
         ("site", "en_nhl"),
         ("teamId", ""),
