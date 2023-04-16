@@ -197,11 +197,7 @@ class AppleTVFreeGamesSoccerAssembler(Assembler):
         return self.game.matchup
 
     def format_date(self) -> str:
-        utc_unaware = self.game.date
-        utc_aware = utc_unaware.replace(tzinfo=ZoneInfo("UTC"))
-        local_aware = utc_aware.astimezone(ZoneInfo("America/Indianapolis"))
-
-        return local_aware.strftime("%Y-%m-%dT%H:%M:%S")
+        return self.game.date.strftime("%Y-%m-%dT%H:%M:%S")
 
     def format_network(self) -> str:
         return "Apple TV+"
