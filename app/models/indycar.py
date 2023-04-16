@@ -12,12 +12,14 @@ from constants import INDYCAR_CHANNEL_GOODLIST
 
 
 def convert_date(element: Tag) -> str:
-    line_break = element.find("br")
-    if isinstance(line_break, Tag):
-        line_break.replaceWith(" ")
-    spaced_text = element.text
-    decoded_text = unidecode(spaced_text)
-    return decoded_text.replace("Noon", "12:00 PM").replace(" ET", "")
+    br_tag = element.find("br")
+    if isinstance(br_tag, Tag):
+        time = br_tag.text
+        br_tag.replaceWith(" ")
+    day = element.text
+    assembled_datetime_str = f'{day} {time}' if time else day
+    decoded_text = unidecode(assembled_datetime_str)
+    return decoded_text.replace("Noon", " 12:00 PM").replace(" ET", "")
 
 
 def convert_race_name(element: Tag) -> str:
