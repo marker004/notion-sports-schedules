@@ -4,7 +4,7 @@ from enum import Enum
 from typing import Literal, NamedTuple, Optional, TypedDict
 from pydantic.dataclasses import dataclass
 from shared_items.interfaces import Prop as NotionProp
-from shared_items.interfaces.notion import Notion, collect_paginated_api
+from shared_items.interfaces.notion import Notion
 from dateutil.parser import parse
 from dateutil.tz import tzlocal
 
@@ -26,36 +26,6 @@ class ElligibleSportsEnum(Enum):
     INDY_CAR = "🏁"
     F1 = "🏎️"
     BASKETBALL = "⛹️"
-
-
-# def filter_existing_notion_games_by_sport(sport: ElligibleSports) -> dict:
-#     return {
-#         "property": "Sport",
-#         "rich_text": {"equals": sport},
-#     }
-
-
-# def filter_existing_manually_added_notion_games() -> dict:
-#     filter: dict[Literal["and"], list[dict]] = {"and": []}
-
-#     elligible_sports = [
-#         sport.value for sport in ElligibleSportsEnum.__members__.values()
-#     ]
-
-#     for sport in elligible_sports:
-#         filter_section = {
-#             "property": "Sport",
-#             "rich_text": {"does_not_equal": sport},
-#         }
-#         filter["and"].append(filter_section)
-
-#     return filter
-
-
-# def recursively_fetch_existing_notion_games(filter: dict) -> list[dict]:
-#     return collect_paginated_api(
-#         notion.client.databases.query, filter=filter, database_id=SCHEDULE_DATABASE_ID
-#     )
 
 
 @dataclass
