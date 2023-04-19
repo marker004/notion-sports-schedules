@@ -6,7 +6,8 @@ from shared_items.utils import pp, measure_execution
 
 from models.nhl import LeagueBroadcastSchedule, Game as LeagueGame
 from models.nhl_espn import DailyEspnPlusNhlSchedule, Event as PowerPlayGame
-from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
+from shared import ElligibleSportsEnum, NotionSportsScheduleItem
+from utils import NotionScheduler
 from utils.assemblers import NhlAssembler, NhlEspnPlusAssembler
 
 BOOKENDS = ["2022-10-07", "2023-4-13"]

@@ -12,11 +12,11 @@ from models.mlb import (
     MlbResponse,
     Game as MlbGame,
 )
+from utils import NotionScheduler
 from utils.assemblers import MlbAssembler, MlbEspnPlusAssembler
 
 from shared import (
     ElligibleSportsEnum,
-    NotionScheduler,
     NotionSportsScheduleItem,
     log_good_networks,
 )

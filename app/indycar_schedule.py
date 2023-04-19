@@ -4,7 +4,9 @@ from bs4 import BeautifulSoup
 from shared_items.utils import measure_execution
 
 from models.indycar import IndycarRace, IndycarResponse
-from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
+from shared import ElligibleSportsEnum, NotionSportsScheduleItem
+from utils import NotionScheduler
+
 from utils.assemblers import IndycarAssembler
 
 

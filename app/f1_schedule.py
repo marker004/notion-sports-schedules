@@ -3,7 +3,8 @@ from requests import Response, get
 from bs4 import BeautifulSoup
 
 from models.f1 import F1Race, F1Response
-from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
+from shared import ElligibleSportsEnum, NotionSportsScheduleItem
+from utils import NotionScheduler
 from utils.assemblers import F1Assembler
 from shared_items.utils import measure_execution
 

@@ -9,7 +9,8 @@ from requests import Response, get
 from shared_items.utils import pp, measure_execution
 
 from models.soccer import GameBroadcast, GameBroadcastCollection, LeagueTypes
-from shared import ElligibleSportsEnum, NotionScheduler, NotionSportsScheduleItem
+from shared import ElligibleSportsEnum, NotionSportsScheduleItem
+from utils import NotionScheduler
 from utils.assemblers import SoccerAssembler
 
 apple_url = "https://tv.apple.com/us/collection/free-matches/edt.col.63e868dd-8b2a-4a50-9cf5-0bd992c03f20"

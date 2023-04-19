@@ -1,10 +1,10 @@
-from shared import (
+from shared import NotionSportsScheduleItem
+from models.notion_game import NotionGame, NotionGames
+from utils import (
     NotionScheduler,
-    NotionSportsScheduleItem,
     filter_existing_manually_added_notion_games,
     recursively_fetch_existing_notion_games,
 )
-from models.notion_game import NotionGame, NotionGames
 from utils.assemblers import ManualAssembler
 
 

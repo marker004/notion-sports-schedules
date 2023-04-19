@@ -2,7 +2,8 @@ from requests import Response, get
 from shared_items.utils import pp, measure_execution
 
 from models.ncaa_bball import Game as NcaaGame, GameCollection
-from shared import ElligibleSportsEnum, NotionScheduler
+from shared import ElligibleSportsEnum, NotionSportsScheduleItem
+from utils import NotionScheduler
 from utils.assemblers import NcaaTournamentAssembler
 
 
@@ -21,7 +22,7 @@ def assemble_usable_games(schedule_json: dict) -> list[NcaaGame]:
     return GameCollection(games=schedule_json["data"]["mmlContests"]).usable_games()
 
 
-def assemble_notion_items(games: list[NcaaGame]):
+def assemble_notion_items(games: list[NcaaGame]) -> list[NotionSportsScheduleItem]:
     return [
         NcaaTournamentAssembler(game).notion_sports_schedule_item() for game in games
     ]
