@@ -150,6 +150,8 @@ MLB_BROADCAST_BADLIST = [
     "KTMZ 1220",
     "Bally Sports Wisconsin Extra",
     "ESPN Deportes 1050",
+    "NBC Bay Area",
+    "Bally Sports Florida Extra",
 ]
 
 MLB_GOODLIST = [
