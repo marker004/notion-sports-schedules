@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Literal, Optional
 from pydantic import BaseModel, validator
 
-from constants import MLB_BROADCAST_BADLIST
+from constants import MLB_GOODLIST
 from dateutil.parser import parse
 from dateutil.tz import tzlocal
 
@@ -99,7 +99,7 @@ class Game(BaseModel):
                 [
                     broadcast.name
                     for broadcast in self.broadcasts
-                    if broadcast.name not in MLB_BROADCAST_BADLIST
+                    if broadcast.name in MLB_GOODLIST
                 ]
             )
         )
@@ -141,7 +141,7 @@ class MlbResponse(BaseModel):
                 [
                     broadcast
                     for broadcast in game.broadcasts
-                    if broadcast.name not in MLB_BROADCAST_BADLIST
+                    if broadcast.name in MLB_GOODLIST
                 ]
             ):
                 good_games.append(game)
