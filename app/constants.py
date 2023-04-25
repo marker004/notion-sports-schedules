@@ -268,6 +268,7 @@ SOCCER_BROADCAST_BADLIST = [
     "NWSLsoccer.com",
     "Nuestra Tele Internacional",
     "Premiere 4 HD",
+    "Premiere 8 HD",
     "Premiere Clubes HD",
     "REDEGL",
     "RREC",
