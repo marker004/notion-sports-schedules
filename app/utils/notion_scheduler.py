@@ -38,6 +38,7 @@ def recursively_fetch_existing_notion_games(filter: dict) -> list[dict]:
         notion.client.databases.query, filter=filter, database_id=SCHEDULE_DATABASE_ID
     )
 
+
 class NotionScheduler:
     def __init__(
         self,
@@ -47,6 +48,7 @@ class NotionScheduler:
         self.sport: ElligibleSports = sport
         self.fresh_schedule_items = fresh_schedule_items
 
+    @measure_execution(f"schedulin them shits")
     def schedule_them_shits(self) -> None:
         all_existing_notion_games = self.fetch_existing_games()
         existing_schedule_items = self.assemble_existing_schedule_items(
@@ -56,7 +58,7 @@ class NotionScheduler:
         delete_list, do_nothing_list, add_list = self.group_schedule_items(
             existing_schedule_items, self.fresh_schedule_items
         )
-        self.operate_in_notion(delete_list, do_nothing_list, add_list)
+        asyncio.run(self.operate_in_notion(delete_list, do_nothing_list, add_list))
 
     @measure_execution(f"fetching existing games")
     def fetch_existing_games(self):
@@ -97,28 +99,24 @@ class NotionScheduler:
 
         return (delete_list, do_nothing_list, add_list)
 
-    @measure_execution("deleting existing games")
-    def delete_unuseful_games(self, delete_list: list[NotionSportsScheduleItem]):
+    async def delete_unuseful_games(self, delete_list: list[NotionSportsScheduleItem]):
+        print(f"deleting {len(delete_list)} games")
         # these items should all have notion_ids
-        asyncio.run(
-            notion.async_delete_all_blocks(
-                [cast(str, item.notion_id) for item in delete_list]
-            )
+        await notion.async_delete_all_blocks(
+            [cast(str, item.notion_id) for item in delete_list]
         )
-        print(f"deleted {len(delete_list)} games")
 
-    @measure_execution("inserting fresh games")
-    def insert_new_games(self, insert_list: list[NotionSportsScheduleItem]):
+    async def insert_new_games(self, insert_list: list[NotionSportsScheduleItem]):
         insert_list_props = self.assemble_insertion_notion_props(insert_list)
-        asyncio.run(notion.async_add_all_pages(SCHEDULE_DATABASE_ID, insert_list_props))
-        print(f"inserted {len(insert_list)} games")
+        print(f"inserting {len(insert_list)} games")
+        await notion.async_add_all_pages(SCHEDULE_DATABASE_ID, insert_list_props)
 
-    def operate_in_notion(
+    async def operate_in_notion(
         self,
         delete_list: list[NotionSportsScheduleItem],
         do_nothing_list: list[NotionSportsScheduleItem],
         add_list: list[NotionSportsScheduleItem],
     ):
-        self.delete_unuseful_games(delete_list)
+        await self.delete_unuseful_games(delete_list)
         print(f"keeping {len(do_nothing_list)} games\n")
-        self.insert_new_games(add_list)
+        await self.insert_new_games(add_list)
