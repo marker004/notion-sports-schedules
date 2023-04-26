@@ -357,28 +357,11 @@ SOCCER_GOODLIST = [
     "FS1",
     "USA Network HD",
     "Paramount+",
+    "CBS All Access",
+    "ESPNU HD",
+    "ESPNU",
 ]
 
-# BROADCAST_GOODLIST = [
-#     "CBS",
-#     "CBS Sports Network",
-#     "CBS Sports Network HD",
-#     "ESPN+ USA",
-#     "FS2",
-#     "NBC",
-#     "NBC Sports Chicago",
-#     "NBC Sports Chicago HD",
-#     "Paramount+",
-#     "Peacock",
-#     "TNT",
-#     "TNT HD",
-#     "TNT HD (Pacific)",
-#     "Telemundo Television Network",
-#     "UNIVERSO",
-#     "UNIVERSO HD",
-#     "USA Network",
-#     "USA Network HD",
-# ]
 
 NATIONAL_FLAGS = {
     "Ascension Island": "🇦🇨",
