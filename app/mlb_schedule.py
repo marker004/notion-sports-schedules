@@ -44,17 +44,18 @@ def assemble_schedule_url() -> str:
         ("startDate", todays_date_string),
         ("endDate", end_date_string),
         ("gameType", "E"),
+        ("gameType", "S"),
+        ("gameType", "R"),
         ("gameType", "F"),
         ("gameType", "D"),
         ("gameType", "L"),
         ("gameType", "W"),
         ("gameType", "A"),
-        ("gameType", "S"),  # spring training
-        ("gameType", "R"),  # regular season
         ("language", "en"),
         ("leagueId", 104),
+        ("leagueId", 103),
+        ("leagueId", 160),
         ("contextTeamId", ""),
-        ("hydrate", "broadcasts"),
     )
 
     return base_url + parse.urlencode(params)
