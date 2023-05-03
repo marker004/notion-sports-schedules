@@ -125,18 +125,9 @@ class NbaAssembler(Assembler):
         self.favorite_criteria = NBA_FAVORITE_CRITERIA
 
     def format_matchup(self) -> str:
-        SPECIAL_SYMBOLS: dict[str, str] = {"Celtics": "🍀", "Pacers": "🏎️"}
-
         team_names = [self.game.visiting_team.team_name, self.game.home_team.team_name]
 
-        for n, team_name in enumerate(team_names):
-            if SPECIAL_SYMBOLS.get(team_name):
-                team_name = f"{team_name} {SPECIAL_SYMBOLS[team_name]}"
-            team_names[n] = team_name
-
-        joined_names = " @ ".join(team_names)
-
-        return joined_names
+        return " vs ".join(team_names)
 
     def format_date(self) -> str:
         return (

@@ -161,6 +161,10 @@ class MlbEspnPlusInfo(BaseModel):
     def convert_time(cls, value: str):
         return parse(value).astimezone(tzlocal()) if is_date(value) else None
 
+    @validator("matchup", pre=True)
+    def convert_matchup(cls, value: str):
+        return value.replace("vs.", "vs")
+
     def __eq__(self, other) -> bool:
         return (
             isinstance(other, MlbEspnPlusInfo) and self.__hash__() == other.__hash__()
@@ -181,7 +185,7 @@ class MlbEspnPlusInfoCollection(BaseModel):
                     for game in self.games
                     if game.time
                     and "ESPN+" in game.channel
-                    and "vs." in game.matchup
+                    and "vs" in game.matchup
                     and "Español" not in game.matchup
                 ]
             )
