@@ -56,7 +56,7 @@ class Game(BaseModel):
     teams: Teams
     # gamePk: int
     # link: str
-    gameType: Literal["S", "R", "E"]
+    gameType: Literal["S", "R", "E", "A"]
     # season: str
     gameDate: datetime
     officialDate: datetime
@@ -77,7 +77,7 @@ class Game(BaseModel):
     # inningBreakLength: int
     # gamesInSeries: Optional[int]
     # seriesGameNumber: Optional[int]
-    seriesDescription: Literal["Spring Training", "Regular Season", "Exhibition"]
+    seriesDescription: Literal["Spring Training", "Regular Season", "Exhibition", "All-Star Game"]
     # flags: dict
     # recordSource: str
     # ifNecessary: str

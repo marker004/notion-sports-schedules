@@ -284,6 +284,7 @@ SOCCER_BROADCAST_BADLIST = [
     "TUDN",
     "TV5MONDE Etats Unis",
     "TV5MONDE Etats Unis HD",
+    "Telecentro TV",
     "Telemundo Satellite Feed",
     "Telemundo Satellite Feed Pacific",
     "Twitch",
