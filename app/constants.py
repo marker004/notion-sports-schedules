@@ -11,6 +11,9 @@ F1_CHANNEL_GOODLIST = [
     "ESPN",
     "ESPN2",
     "ABC",
+    "ESPN/ESPN+",
+    "ABC/ESPN+",
+    "ESPN2/ESPN+"
 ]
 
 MLB_BROADCAST_BADLIST = [
