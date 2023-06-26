@@ -238,6 +238,8 @@ NHL_BROADCAST_BADLIST = [
 NBA_BROADCASTER_BADLIST = ["NBA TV"]
 
 SOCCER_BROADCAST_BADLIST = [
+    "AT&T SportsNet Southwest",
+    "AT&T SportsNet Southwest HD",
     "AT&T SportsNet Southwest Plus",
     "Antenna 20 Years",
     "BEINX",
@@ -245,6 +247,8 @@ SOCCER_BROADCAST_BADLIST = [
     "Bally Sports Oklahoma HD",
     "Bally Sports SoCal",
     "Bally Sports SoCal HD",
+    "Bally Sports South - Main Feed",
+    "Bally Sports South HD(Full Time)",
     "Bally Sports Southwest HD",
     "Bally Sports Southwest (Main Feed)",
     "CL beIN Sports English SD in Spanish",
@@ -357,6 +361,7 @@ SOCCER_BROADCAST_BADLIST = [
     "beIN Sports En Español HD",
     "beIN Sports HD",
     "beIN XTRA ESPAñOL",
+    "fuboTV",
     "iFollow",
 ]
 
