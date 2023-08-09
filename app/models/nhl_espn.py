@@ -70,10 +70,10 @@ class Event(BaseModel):
     link: str
     links: list[dict]
     onWatch: bool
-    broadcasts: list[dict]
-    broadcast: str
+    broadcasts: Optional[list[dict]]
+    broadcast: Optional[str]
     seriesSummary: Optional[str]
-    odds: dict
+    odds: Optional[dict]
     competitors: list[dict]
     situation: Optional[dict]
     appLinks: list[dict]
