@@ -248,7 +248,7 @@ class NhlEspnPlusAssembler(NhlBaseAssembler):
         return local_time.strftime("%Y-%m-%dT%H:%M:%S")
 
     def format_network(self) -> str:
-        return self.game.broadcast
+        return self.game.broadcast if self.game.broadcast else ""
 
 
 class MlbAssembler(Assembler):
