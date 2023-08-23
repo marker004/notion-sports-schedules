@@ -13,7 +13,11 @@ from utils.assemblers import IndycarAssembler
 @measure_execution("fetching new IndyCar schedule")
 def fetch_schedule_response() -> Response:
     indycar_url = "https://www.espn.com/racing/schedule/_/series/indycar"
-    return get(indycar_url)
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0',
+    }
+
+    return get(indycar_url, headers=headers)
 
 
 def assemble_usable_games(response: Response) -> list[IndycarRace]:

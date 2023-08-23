@@ -12,7 +12,10 @@ from shared_items.utils import measure_execution
 @measure_execution("fetching new F1 schedule")
 def fetch_schedule_response() -> Response:
     f1_url = "https://www.espn.com/f1/schedule"
-    return get(f1_url)
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0',
+    }
+    return get(f1_url, headers=headers)
 
 
 def assemble_usable_games(response: Response) -> list[F1Race]:
