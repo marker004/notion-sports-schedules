@@ -306,6 +306,7 @@ SOCCER_BROADCAST_BADLIST = [
     "ViX",
     "ViX Deportes 21",
     "ViX Deportes 22",
+    "ViX Deportes 23",
     "ViX+ Deportes 1",
     "ViX+ Deportes 10",
     "ViX+ Deportes 11",
@@ -363,6 +364,7 @@ SOCCER_BROADCAST_BADLIST = [
     "beIN XTRA ESPAñOL",
     "fuboTV",
     "iFollow",
+    "Paramount+",
 ]
 
 SOCCER_GOODLIST = [
@@ -383,7 +385,6 @@ SOCCER_GOODLIST = [
     "UNIVERSO",
     "FS1",
     "USA Network HD",
-    "Paramount+",
     "CBS All Access",
     "ESPNU HD",
     "ESPNU",
