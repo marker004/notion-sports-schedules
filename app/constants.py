@@ -7,14 +7,7 @@ INDYCAR_CHANNEL_GOODLIST = [
     "Peacock",
 ]
 
-F1_CHANNEL_GOODLIST = [
-    "ESPN",
-    "ESPN2",
-    "ABC",
-    "ESPN/ESPN+",
-    "ABC/ESPN+",
-    "ESPN2/ESPN+"
-]
+F1_CHANNEL_GOODLIST = ["ESPN", "ESPN2", "ABC", "ESPN/ESPN+", "ABC/ESPN+", "ESPN2/ESPN+"]
 
 MLB_BROADCAST_BADLIST = [
     "KOA 850 AM/94.1 FM ",

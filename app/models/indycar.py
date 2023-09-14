@@ -17,7 +17,7 @@ def convert_date(element: Tag) -> str:
         time = br_tag.text
         br_tag.replaceWith(" ")
     day = element.text
-    assembled_datetime_str = f'{day} {time}' if time else day
+    assembled_datetime_str = f"{day} {time}" if time else day
     decoded_text = unidecode(assembled_datetime_str)
     return decoded_text.replace("Noon", " 12:00 PM").replace(" ET", "")
 
