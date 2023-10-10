@@ -226,6 +226,11 @@ NHL_BROADCAST_BADLIST = [
     "NBCSP+",
     "BSSO",
     "NBCSP",
+    "NESNplus",
+    "SCRIPPS",
+    "MNMT",
+    "ROOT-NW+",
+    "SN-PIT"
 ]
 
 NBA_BROADCASTER_BADLIST = ["NBA TV"]

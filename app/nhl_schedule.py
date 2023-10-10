@@ -75,8 +75,10 @@ def assemble_usable_power_play_games() -> list[PowerPlayGame]:
 def assemble_notion_items(
     league_games: list[LeagueGame], power_play_games: list[PowerPlayGame]
 ) -> list[NotionSportsScheduleItem]:
+    today = datetime.combine(datetime.today(), datetime.min.time()).astimezone()
+
     assembled_items = [
-        NhlAssembler(game).notion_sports_schedule_item() for game in league_games
+        NhlAssembler(game).notion_sports_schedule_item() for game in league_games if game.gameDate > today
     ]
     assembled_power_play_items = [
         NhlEspnPlusAssembler(game).notion_sports_schedule_item()
