@@ -93,4 +93,4 @@ usable_games = assemble_usable_games()
 usable_power_play_games = assemble_usable_power_play_games()
 combined_items = assemble_notion_items(usable_games, usable_power_play_games)
 
-NotionScheduler(ElligibleSportsEnum.NHL.value, combined_items).schedule_them_shits()
+NotionScheduler(ElligibleSportsEnum.NHL.value, combined_items).schedule()

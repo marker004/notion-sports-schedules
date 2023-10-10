@@ -32,4 +32,4 @@ schedule_json = fetch_schedule_json()
 usable_games = assemble_usable_games(schedule_json)
 fresh_games = assemble_notion_items(usable_games)
 
-NotionScheduler(ElligibleSportsEnum.BASKETBALL.value, fresh_games).schedule_them_shits()
+NotionScheduler(ElligibleSportsEnum.BASKETBALL.value, fresh_games).schedule()

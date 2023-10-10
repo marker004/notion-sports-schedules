@@ -32,4 +32,4 @@ games = fetch_games()
 usable_games = assemble_usable_games(games)
 fresh_items = assemble_notion_items(usable_games)
 
-NotionScheduler("other", fresh_items).schedule_them_shits()
+NotionScheduler("other", fresh_items).schedule()

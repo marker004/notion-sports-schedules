@@ -37,4 +37,4 @@ response = fetch_schedule_response()
 usable_races = assemble_usable_games(response)
 fresh_items = assemble_notion_items(usable_races)
 
-NotionScheduler(ElligibleSportsEnum.F1.value, fresh_items).schedule_them_shits()
+NotionScheduler(ElligibleSportsEnum.F1.value, fresh_items).schedule()

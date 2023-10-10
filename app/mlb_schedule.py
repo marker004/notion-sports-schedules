@@ -134,4 +134,4 @@ fresh_espn_plus_items = assemble_espn_plus_notion_items(usable_espn_plus_games)
 
 combined_games = fresh_items + fresh_espn_plus_items
 
-NotionScheduler(ElligibleSportsEnum.MLB.value, combined_games).schedule_them_shits()
+NotionScheduler(ElligibleSportsEnum.MLB.value, combined_games).schedule()

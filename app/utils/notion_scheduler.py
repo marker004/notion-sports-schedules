@@ -48,8 +48,8 @@ class NotionScheduler:
         self.sport: ElligibleSports = sport
         self.fresh_schedule_items = fresh_schedule_items
 
-    @measure_execution(f"schedulin them shits")
-    def schedule_them_shits(self) -> None:
+    @measure_execution(f"scheduling")
+    def schedule(self) -> None:
         all_existing_notion_games = self.fetch_existing_games()
         existing_schedule_items = self.assemble_existing_schedule_items(
             all_existing_notion_games

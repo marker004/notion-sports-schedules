@@ -102,4 +102,4 @@ fresh_apple_tv_items = assemble_apple_tv_notion_items(usable_apple_tv_games)
 
 combined_games = fresh_schedule_items + fresh_apple_tv_items
 
-NotionScheduler(ElligibleSportsEnum.SOCCER.value, combined_games).schedule_them_shits()
+NotionScheduler(ElligibleSportsEnum.SOCCER.value, combined_games).schedule()
