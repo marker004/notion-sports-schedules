@@ -20,7 +20,7 @@ def fetch_schedule_response() -> Response:
     return get(indycar_url, headers=headers)
 
 
-def assemble_usable_games(response: Response) -> list[IndycarRace]:
+def assemble_usable_events(response: Response) -> list[IndycarRace]:
     indycar_html_doc = response.text
 
     soup = BeautifulSoup(indycar_html_doc, "html.parser")
@@ -28,7 +28,7 @@ def assemble_usable_games(response: Response) -> list[IndycarRace]:
     indycar_response = IndycarResponse(
         race_elements_container=soup.find("table", {"class": "tablehead"})
     )
-    return indycar_response.usable_races
+    return indycar_response.usable_events
 
 
 def assemble_notion_items(races: list[IndycarRace]) -> list[NotionSportsScheduleItem]:
@@ -36,8 +36,8 @@ def assemble_notion_items(races: list[IndycarRace]) -> list[NotionSportsSchedule
 
 
 response = fetch_schedule_response()
-usable_races = assemble_usable_games(response)
-fresh_items = assemble_notion_items(usable_races)
+usable_events = assemble_usable_events(response)
+fresh_items = assemble_notion_items(usable_events)
 
 log_good_networks(fresh_items)
 

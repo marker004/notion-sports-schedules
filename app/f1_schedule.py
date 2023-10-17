@@ -18,7 +18,7 @@ def fetch_schedule_response() -> Response:
     return get(f1_url, headers=headers)
 
 
-def assemble_usable_games(response: Response) -> list[F1Race]:
+def assemble_usable_events(response: Response) -> list[F1Race]:
     f1_html_doc = response.text
 
     soup = BeautifulSoup(f1_html_doc, "html.parser")
@@ -26,7 +26,7 @@ def assemble_usable_games(response: Response) -> list[F1Race]:
     f1_response = F1Response(
         race_elements_container=soup.find("table", {"class": "Table"})
     )
-    return f1_response.usable_races
+    return f1_response.usable_events
 
 
 def assemble_notion_items(races: list[F1Race]) -> list[NotionSportsScheduleItem]:
@@ -34,8 +34,8 @@ def assemble_notion_items(races: list[F1Race]) -> list[NotionSportsScheduleItem]
 
 
 response = fetch_schedule_response()
-usable_races = assemble_usable_games(response)
-fresh_items = assemble_notion_items(usable_races)
+usable_events = assemble_usable_events(response)
+fresh_items = assemble_notion_items(usable_events)
 
 log_good_networks(fresh_items)
 

@@ -107,7 +107,7 @@ class GameBroadcastCollection(BaseModel):
             unique_broadcasts.append(first_broadcast)
         return unique_broadcasts
 
-    def usable_games(self) -> list[GameBroadcast]:
+    def usable_events(self) -> list[GameBroadcast]:
         watchable = self.watchable_broadcasts(self.game_broadcasts)
         sorted = self.sorted_broadcasts(watchable)
         return self.unique_broadcasts_by_match_id(sorted)

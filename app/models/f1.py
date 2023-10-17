@@ -64,7 +64,7 @@ class F1Response(BaseModel):
         return races
 
     @property
-    def usable_races(self) -> list[F1Race]:
+    def usable_events(self) -> list[F1Race]:
         return [
             race
             for race in self.races

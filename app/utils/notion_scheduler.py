@@ -101,7 +101,7 @@ class NotionScheduler:
 
     async def delete_unuseful_games(self, delete_list: list[NotionSportsScheduleItem]):
         print(f"deleting {len(delete_list)} games")
-        # these items should all have notion_ids
+        # these items should all have notion_ids as they have been fetched from Notion
         await notion.async_delete_all_blocks(
             [cast(str, item.notion_id) for item in delete_list]
         )

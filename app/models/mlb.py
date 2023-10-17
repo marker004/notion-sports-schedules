@@ -143,7 +143,7 @@ class MlbResponse(BaseModel):
     def games(self) -> list[Game]:
         return [game for date in self.dates for game in date.games]
 
-    def usable_games(self) -> list[Game]:
+    def usable_events(self) -> list[Game]:
         good_games: list[Game] = []
         for game in self.games():
             if any(
@@ -185,7 +185,7 @@ class MlbEspnPlusInfo(BaseModel):
 class MlbEspnPlusInfoCollection(BaseModel):
     games: list[MlbEspnPlusInfo]
 
-    def usable_games(self) -> list[MlbEspnPlusInfo]:
+    def usable_events(self) -> list[MlbEspnPlusInfo]:
         return list(
             set(
                 [

@@ -122,7 +122,7 @@ class LeagueBroadcastSchedule(BaseModel):
             if game.any_watchable_broadcasts()
         ]
 
-    def usable_games(self) -> list[Game]:
+    def usable_events(self) -> list[Game]:
         return self.watchable_games()
         # sorted = self.sorted_broadcasts(watchable)
         # return self.unique_broadcasts_by_match_id(sorted)

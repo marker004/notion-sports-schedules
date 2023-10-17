@@ -34,5 +34,5 @@ class NotionGame(BaseModel):
 class NotionGames(BaseModel):
     games: list[NotionGame]
 
-    def usable_games(self) -> list[NotionGame]:
+    def usable_events(self) -> list[NotionGame]:
         return [game for game in self.games if game.is_upcoming()]

@@ -131,7 +131,7 @@ class DailyEspnPlusNhlSchedule(BaseModel):
             ]
         )
 
-    def usable_games(self) -> list[Event]:
+    def usable_events(self) -> list[Event]:
         not_blacked_out_games: list[Event] = []
         for game in self.games:
             blacked_out = self.is_game_blacked_out(game)

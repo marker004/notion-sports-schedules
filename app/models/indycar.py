@@ -71,7 +71,7 @@ class IndycarResponse(BaseModel):
         return races
 
     @property
-    def usable_races(self) -> list[IndycarRace]:
+    def usable_events(self) -> list[IndycarRace]:
         return [
             race
             for race in self.races

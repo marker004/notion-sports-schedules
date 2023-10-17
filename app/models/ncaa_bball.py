@@ -54,7 +54,7 @@ class Game(BaseModel):
 class GameCollection(BaseModel):
     games: list[Game]
 
-    def usable_games(self) -> list[Game]:
+    def usable_events(self) -> list[Game]:
         return [
             game
             for game in self.games

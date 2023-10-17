@@ -13,7 +13,7 @@ def fetch_games() -> list[dict]:
     return recursively_fetch_existing_notion_games(filter)
 
 
-def assemble_usable_games(games: list[dict]) -> list[NotionGame]:
+def assemble_usable_events(games: list[dict]) -> list[NotionGame]:
     notion_games = NotionGames(
         games=[
             NotionGame.parse_obj({**game["properties"], "notion_id": game["id"]})
@@ -21,7 +21,7 @@ def assemble_usable_games(games: list[dict]) -> list[NotionGame]:
         ]
     )
 
-    return notion_games.usable_games()
+    return notion_games.usable_events()
 
 
 def assemble_notion_items(games: list[NotionGame]) -> list[NotionSportsScheduleItem]:
@@ -29,7 +29,7 @@ def assemble_notion_items(games: list[NotionGame]) -> list[NotionSportsScheduleI
 
 
 games = fetch_games()
-usable_games = assemble_usable_games(games)
-fresh_items = assemble_notion_items(usable_games)
+usable_events = assemble_usable_events(games)
+fresh_items = assemble_notion_items(usable_events)
 
 NotionScheduler("other", fresh_items).schedule()

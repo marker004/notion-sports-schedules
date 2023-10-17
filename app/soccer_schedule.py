@@ -46,7 +46,7 @@ def fetch_leagues_json() -> dict:
     return leagues_response.json()
 
 
-def assemble_usable_games(schedule_json: dict) -> list[GameBroadcast]:
+def assemble_usable_events(schedule_json: dict) -> list[GameBroadcast]:
     game_broadcasts = GameBroadcastCollection(
         game_broadcasts=[
             GameBroadcast(**game_broadcast)
@@ -55,7 +55,7 @@ def assemble_usable_games(schedule_json: dict) -> list[GameBroadcast]:
         ]
     )
 
-    return game_broadcasts.usable_games()
+    return game_broadcasts.usable_events()
 
 
 def assemble_usable_apple_tv_games(response: list[str]) -> list[AppleTVFreeSoccer]:
@@ -90,9 +90,9 @@ def assemble_apple_tv_notion_items(
 
 schedule_json = fetch_schedule_json()
 leagues_json = fetch_leagues_json()
-usable_games = assemble_usable_games(schedule_json)
+usable_events = assemble_usable_events(schedule_json)
 league_types = LeagueTypes(**leagues_json)
-fresh_schedule_items = assemble_notion_items(usable_games, league_types)
+fresh_schedule_items = assemble_notion_items(usable_events, league_types)
 
 apple_tv_response = asyncio.run(fetch_apple_tv_schedule_response())
 usable_apple_tv_games = assemble_usable_apple_tv_games(apple_tv_response)

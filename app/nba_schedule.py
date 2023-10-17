@@ -18,12 +18,12 @@ def fetch_schedule_json() -> dict:
     return schedule_response.json()
 
 
-def assemble_usable_games(schedule_json: dict) -> list[NbaGame]:
+def assemble_usable_events(schedule_json: dict) -> list[NbaGame]:
     league_schedule = LeagueSchedule(
         month_schedule=[month["mscd"] for month in schedule_json["lscd"]]
     )
 
-    return league_schedule.usable_games()
+    return league_schedule.usable_events()
 
 
 def assemble_notion_items(games: list[NbaGame]) -> list[NotionSportsScheduleItem]:
@@ -31,8 +31,8 @@ def assemble_notion_items(games: list[NbaGame]) -> list[NotionSportsScheduleItem
 
 
 schedule_json = fetch_schedule_json()
-usable_games = assemble_usable_games(schedule_json)
-fresh_items = assemble_notion_items(usable_games)
+usable_events = assemble_usable_events(schedule_json)
+fresh_items = assemble_notion_items(usable_events)
 
 log_good_networks(fresh_items)
 

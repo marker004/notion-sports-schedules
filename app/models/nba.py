@@ -79,7 +79,7 @@ class MonthSchedule(BaseModel):
 class LeagueSchedule(BaseModel):
     month_schedule: list[MonthSchedule] = Field(alias="mscd")
 
-    def usable_games(self) -> list[Game]:
+    def usable_events(self) -> list[Game]:
         return [
             game
             for month in self.month_schedule

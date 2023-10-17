@@ -94,9 +94,9 @@ async def fetch_espn_plus_schedule_response() -> tuple[list[str], list[str], lis
         return game_infos
 
 
-def assemble_usable_games(schedule_json: dict) -> list[MlbGame]:
+def assemble_usable_events(schedule_json: dict) -> list[MlbGame]:
     mlb_response = MlbResponse(**schedule_json)
-    return mlb_response.usable_games()
+    return mlb_response.usable_events()
 
 
 def assemble_usable_espn_plus_games(
@@ -109,7 +109,7 @@ def assemble_usable_espn_plus_games(
         ]
     )
 
-    return collection.usable_games()
+    return collection.usable_events()
 
 
 def assemble_notion_items(games: list[MlbGame]) -> list[NotionSportsScheduleItem]:
@@ -123,8 +123,8 @@ def assemble_espn_plus_notion_items(
 
 
 schedule_json = fetch_schedule_json()
-usable_games = assemble_usable_games(schedule_json)
-fresh_items = assemble_notion_items(usable_games)
+usable_events = assemble_usable_events(schedule_json)
+fresh_items = assemble_notion_items(usable_events)
 
 espn_plus_response = asyncio.run(fetch_espn_plus_schedule_response())
 usable_espn_plus_games = assemble_usable_espn_plus_games(espn_plus_response)

@@ -62,14 +62,14 @@ def fetch_power_play_json() -> dict:
     return power_play_schedule_response.json()
 
 
-def assemble_usable_games() -> list[LeagueGame]:
+def assemble_usable_events() -> list[LeagueGame]:
     league_broadcast_schedule = LeagueBroadcastSchedule(**schedule_json)
-    return league_broadcast_schedule.usable_games()
+    return league_broadcast_schedule.usable_events()
 
 
 def assemble_usable_power_play_games() -> list[PowerPlayGame]:
     power_play_nhl_schedule = DailyEspnPlusNhlSchedule(**power_play_schedule_json)
-    return power_play_nhl_schedule.usable_games()
+    return power_play_nhl_schedule.usable_events()
 
 
 def assemble_notion_items(
@@ -91,9 +91,9 @@ def assemble_notion_items(
 
 schedule_json = fetch_schedule_json()
 power_play_schedule_json = fetch_power_play_json()
-usable_games = assemble_usable_games()
+usable_events = assemble_usable_events()
 usable_power_play_games = assemble_usable_power_play_games()
-combined_items = assemble_notion_items(usable_games, usable_power_play_games)
+combined_items = assemble_notion_items(usable_events, usable_power_play_games)
 
 log_good_networks(combined_items)
 
