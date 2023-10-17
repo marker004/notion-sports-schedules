@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Literal, Optional
 from pydantic import BaseModel, validator
 
-from constants import MLB_GOODLIST
+from constants import MLB_GOODLIST, NO_HULU_BADLIST
 from dateutil.parser import parse
 from dateutil.tz import tzlocal
 
@@ -85,7 +85,7 @@ class Game(BaseModel):
         "Wild Card Game",
         "Division Series",
         "League Championship Series",
-        "World Series"
+        "World Series",
     ]
     # flags: dict
     # recordSource: str
@@ -108,7 +108,7 @@ class Game(BaseModel):
                 [
                     broadcast.name
                     for broadcast in self.broadcasts
-                    if broadcast.name in MLB_GOODLIST
+                    if broadcast.name in list(set(MLB_GOODLIST) - set(NO_HULU_BADLIST))
                 ]
             )
         )
@@ -150,11 +150,10 @@ class MlbResponse(BaseModel):
                 [
                     broadcast
                     for broadcast in game.broadcasts
-                    if broadcast.name in MLB_GOODLIST
+                    if broadcast.name in list(set(MLB_GOODLIST) - set(NO_HULU_BADLIST))
                 ]
             ):
                 good_games.append(game)
-        # unique_names = list(set([broadcast.name for game in self.games() for broadcast in game.broadcasts]))
         return good_games
 
 

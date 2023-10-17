@@ -3,7 +3,7 @@ from requests import Response, get
 from bs4 import BeautifulSoup
 
 from models.f1 import F1Race, F1Response
-from shared import ElligibleSportsEnum, NotionSportsScheduleItem
+from shared import ElligibleSportsEnum, NotionSportsScheduleItem, log_good_networks
 from utils import NotionScheduler
 from utils.assemblers import F1Assembler
 from shared_items.utils import measure_execution
@@ -36,5 +36,7 @@ def assemble_notion_items(races: list[F1Race]) -> list[NotionSportsScheduleItem]
 response = fetch_schedule_response()
 usable_races = assemble_usable_games(response)
 fresh_items = assemble_notion_items(usable_races)
+
+log_good_networks(fresh_items)
 
 NotionScheduler(ElligibleSportsEnum.F1.value, fresh_items).schedule()

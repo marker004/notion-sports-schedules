@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Literal, Optional, TypedDict
 from pydantic import BaseModel, validator
 
-from constants import NHL_BROADCAST_BADLIST
+from constants import NHL_BROADCAST_BADLIST, NO_HULU_BADLIST
 
 
 def normalize_dates(raw_date_string: str) -> datetime:
@@ -60,7 +60,7 @@ class Broadcast(BaseModel):
     language: Literal["en", "fr"]
 
     def watchable(self) -> bool:
-        return self.name not in NHL_BROADCAST_BADLIST
+        return self.name not in (NHL_BROADCAST_BADLIST + NO_HULU_BADLIST)
 
 
 # class Content(TypedDict):
@@ -115,7 +115,6 @@ class LeagueBroadcastSchedule(BaseModel):
 
     def watchable_games(self) -> list[Game]:
         # if not self.broadcasts:
-        # import pdb; pdb.set_trace()
         return [
             game
             for date in self.dates

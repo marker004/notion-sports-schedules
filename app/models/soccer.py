@@ -3,7 +3,7 @@ from typing import Optional, TypedDict
 from pydantic import BaseModel, Field, validator
 from dataclasses import InitVar
 from pydantic.dataclasses import dataclass
-from constants import NATIONAL_FLAGS, SOCCER_BROADCAST_BADLIST
+from constants import NATIONAL_FLAGS, NO_HULU_BADLIST, SOCCER_BROADCAST_BADLIST
 from itertools import groupby
 from dateutil.parser import parser
 
@@ -77,7 +77,8 @@ class GameBroadcastCollection(BaseModel):
         return [
             broadcast
             for broadcast in broadcasts
-            if broadcast.station.name not in SOCCER_BROADCAST_BADLIST
+            if broadcast.station.name
+            not in (SOCCER_BROADCAST_BADLIST + NO_HULU_BADLIST)
             and "live" in broadcast.tags
         ]
 

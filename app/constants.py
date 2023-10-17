@@ -1,5 +1,26 @@
 from shared import ElligibleSportsEnum, FavoriteCriterion
 
+NO_HULU_BADLIST = [
+    "FS1",
+    "TBS",
+    "TNT",
+    "ESPN",
+    "ESPN2",
+    "NBCSCH",
+    "HULU",
+    "USA Network HD",
+    "Telemundo Television Network",
+    "UNIVERSO HD",
+    "FS2 HD",
+    "USA Network",
+    "USA Net",
+    "FS2",
+    "TNT HD (Pacific)",
+    "TNT HD",
+    "UNIVERSO",
+    "FS1 HD",
+]
+
 
 INDYCAR_CHANNEL_GOODLIST = [
     "NBC",
@@ -230,7 +251,11 @@ NHL_BROADCAST_BADLIST = [
     "SCRIPPS",
     "MNMT",
     "ROOT-NW+",
-    "SN-PIT"
+    "SN-PIT",
+    "MNMT2",
+    "KCAL",
+    "TVAS-D",
+    "BSSD",
 ]
 
 NBA_BROADCASTER_BADLIST = ["NBA TV"]

@@ -94,12 +94,12 @@ usable_games = assemble_usable_games(schedule_json)
 league_types = LeagueTypes(**leagues_json)
 fresh_schedule_items = assemble_notion_items(usable_games, league_types)
 
-log_good_networks(fresh_schedule_items)
-
 apple_tv_response = asyncio.run(fetch_apple_tv_schedule_response())
 usable_apple_tv_games = assemble_usable_apple_tv_games(apple_tv_response)
 fresh_apple_tv_items = assemble_apple_tv_notion_items(usable_apple_tv_games)
 
 combined_games = fresh_schedule_items + fresh_apple_tv_items
+
+log_good_networks(combined_games)
 
 NotionScheduler(ElligibleSportsEnum.SOCCER.value, combined_games).schedule()

@@ -4,7 +4,7 @@ from dateutil.parser import parse
 from dateutil.tz import tzlocal
 
 from pydantic import BaseModel, Field, validator
-from constants import NBA_BROADCASTER_BADLIST
+from constants import NBA_BROADCASTER_BADLIST, NO_HULU_BADLIST
 from shared import beginning_of_today, is_date
 
 
@@ -29,7 +29,7 @@ class Broadcaster(BaseModel):
         return (
             self.type == "tv"
             and self.scope == "natl"
-            and self.disp not in NBA_BROADCASTER_BADLIST
+            and self.disp not in (NBA_BROADCASTER_BADLIST + NO_HULU_BADLIST)
         )
 
 

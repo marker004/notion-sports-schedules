@@ -4,7 +4,7 @@ from shared_items.utils import measure_execution
 
 from models.nba import LeagueSchedule, Game as NbaGame
 
-from shared import ElligibleSportsEnum, NotionSportsScheduleItem
+from shared import ElligibleSportsEnum, NotionSportsScheduleItem, log_good_networks
 from utils import NotionScheduler
 from utils.assemblers import NbaAssembler
 
@@ -33,5 +33,7 @@ def assemble_notion_items(games: list[NbaGame]) -> list[NotionSportsScheduleItem
 schedule_json = fetch_schedule_json()
 usable_games = assemble_usable_games(schedule_json)
 fresh_items = assemble_notion_items(usable_games)
+
+log_good_networks(fresh_items)
 
 NotionScheduler(ElligibleSportsEnum.NBA.value, fresh_items).schedule()

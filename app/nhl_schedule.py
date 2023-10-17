@@ -6,7 +6,7 @@ from shared_items.utils import pp, measure_execution
 
 from models.nhl import LeagueBroadcastSchedule, Game as LeagueGame
 from models.nhl_espn import DailyEspnPlusNhlSchedule, Event as PowerPlayGame
-from shared import ElligibleSportsEnum, NotionSportsScheduleItem
+from shared import ElligibleSportsEnum, NotionSportsScheduleItem, log_good_networks
 from utils import NotionScheduler
 from utils.assemblers import NhlAssembler, NhlEspnPlusAssembler
 
@@ -78,7 +78,9 @@ def assemble_notion_items(
     today = datetime.combine(datetime.today(), datetime.min.time()).astimezone()
 
     assembled_items = [
-        NhlAssembler(game).notion_sports_schedule_item() for game in league_games if game.gameDate > today
+        NhlAssembler(game).notion_sports_schedule_item()
+        for game in league_games
+        if game.gameDate > today
     ]
     assembled_power_play_items = [
         NhlEspnPlusAssembler(game).notion_sports_schedule_item()
@@ -92,5 +94,7 @@ power_play_schedule_json = fetch_power_play_json()
 usable_games = assemble_usable_games()
 usable_power_play_games = assemble_usable_power_play_games()
 combined_items = assemble_notion_items(usable_games, usable_power_play_games)
+
+log_good_networks(combined_items)
 
 NotionScheduler(ElligibleSportsEnum.NHL.value, combined_items).schedule()

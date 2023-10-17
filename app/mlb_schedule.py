@@ -126,12 +126,13 @@ schedule_json = fetch_schedule_json()
 usable_games = assemble_usable_games(schedule_json)
 fresh_items = assemble_notion_items(usable_games)
 
-log_good_networks(fresh_items)
-
 espn_plus_response = asyncio.run(fetch_espn_plus_schedule_response())
 usable_espn_plus_games = assemble_usable_espn_plus_games(espn_plus_response)
 fresh_espn_plus_items = assemble_espn_plus_notion_items(usable_espn_plus_games)
 
 combined_games = fresh_items + fresh_espn_plus_items
+
+log_good_networks(combined_games)
+
 
 NotionScheduler(ElligibleSportsEnum.MLB.value, combined_games).schedule()

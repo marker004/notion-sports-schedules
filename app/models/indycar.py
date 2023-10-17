@@ -8,7 +8,7 @@ from shared import beginning_of_today
 from dateutil.tz import tzlocal
 
 
-from constants import INDYCAR_CHANNEL_GOODLIST
+from constants import INDYCAR_CHANNEL_GOODLIST, NO_HULU_BADLIST
 
 
 def convert_date(element: Tag) -> str:
@@ -75,6 +75,7 @@ class IndycarResponse(BaseModel):
         return [
             race
             for race in self.races
-            if race.channel in INDYCAR_CHANNEL_GOODLIST
+            if race.channel
+            in list(set(INDYCAR_CHANNEL_GOODLIST) - set(NO_HULU_BADLIST))
             and race.start_datetime > beginning_of_today
         ]
