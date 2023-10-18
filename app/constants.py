@@ -19,6 +19,8 @@ NO_HULU_BADLIST = [
     "TNT HD",
     "UNIVERSO",
     "FS1 HD",
+    "CBS Sports Network",
+    "CBS Sports Network HD"
 ]
 
 
@@ -287,6 +289,8 @@ SOCCER_BROADCAST_BADLIST = [
     "Fox Soccer Plus",
     "Fox Soccer Plus HD",
     "Fox Sports 2 HD",
+    "Galavision Cable Network",
+    "Galavision Cable Network HD",
     "Globo",
     "GOL TV",
     "In Demand PPVHD (HD Events)",
@@ -363,6 +367,9 @@ SOCCER_BROADCAST_BADLIST = [
     "Vix Premium Deportes 11",
     "Vix Premium Deportes 12",
     "Vix Premium Deportes 13",
+    "Vix Premium Deportes 14",
+    "Vix Premium Deportes 15",
+    "Vix Premium Deportes 16",
     "Yes Network",
     "Yes Network HD",
     "Zona TUDN",
