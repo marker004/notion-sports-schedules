@@ -4,7 +4,7 @@ from dateutil.parser import parse
 from dateutil.tz import tzlocal
 
 from pydantic import BaseModel, Field, validator
-from constants import NBA_BROADCASTER_BADLIST, NO_HULU_BADLIST
+from constants import NBA_BROADCASTER_BADLIST, HARD_TIMES_BADLIST
 from shared import beginning_of_today, is_date
 
 
@@ -20,7 +20,7 @@ class Team(BaseModel):
 class Broadcaster(BaseModel):
     disp: str
     scope: Literal["home", "away", "can", "natl"]
-    type: Literal["tv", "radio"]
+    type: Literal["tv", "radio", 'ott', 'nss']
     # seq: int
     # language: Literal["English"] = Field(alias="lan")
     # url: Optional[str]  # urlparse into ParseResult?
@@ -29,7 +29,7 @@ class Broadcaster(BaseModel):
         return (
             self.type == "tv"
             and self.scope == "natl"
-            and self.disp not in (NBA_BROADCASTER_BADLIST + NO_HULU_BADLIST)
+            and self.disp not in (NBA_BROADCASTER_BADLIST + HARD_TIMES_BADLIST)
         )
 
 

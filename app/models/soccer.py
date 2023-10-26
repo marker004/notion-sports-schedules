@@ -3,7 +3,7 @@ from typing import Optional, TypedDict
 from pydantic import BaseModel, Field, validator
 from dataclasses import InitVar
 from pydantic.dataclasses import dataclass
-from constants import NATIONAL_FLAGS, NO_HULU_BADLIST, SOCCER_BROADCAST_BADLIST
+from constants import NATIONAL_FLAGS, HARD_TIMES_BADLIST, SOCCER_BROADCAST_BADLIST
 from itertools import groupby
 from dateutil.parser import parser
 
@@ -48,14 +48,14 @@ class Program(BaseModel):
 
 
 class GameBroadcast(BaseModel):
-    startTime: datetime  # UTC time
+    startTime: datetime
     station: Station
     matchId: int
     leagueId: int
     parentLeagueId: int
     program: Program
     tags: list[str]
-    endTime: Optional[datetime]  # UTC time
+    endTime: Optional[datetime]
     # qualifiers: list[str]
     # stationId: str
     # bet365MatchId: int
@@ -78,7 +78,7 @@ class GameBroadcastCollection(BaseModel):
             broadcast
             for broadcast in broadcasts
             if broadcast.station.name
-            not in (SOCCER_BROADCAST_BADLIST + NO_HULU_BADLIST)
+            not in (SOCCER_BROADCAST_BADLIST + HARD_TIMES_BADLIST)
             and "live" in broadcast.tags
         ]
 

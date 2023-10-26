@@ -1,11 +1,12 @@
 from shared import ElligibleSportsEnum, FavoriteCriterion
 
-NO_HULU_BADLIST = [
+HARD_TIMES_BADLIST = [
     "FS1",
     "TBS",
     "TNT",
     "ESPN",
     "ESPN2",
+    "ESPN2 HD",
     "NBCSCH",
     "HULU",
     "USA Network HD",
@@ -20,7 +21,10 @@ NO_HULU_BADLIST = [
     "UNIVERSO",
     "FS1 HD",
     "CBS Sports Network",
-    "CBS Sports Network HD"
+    "CBS Sports Network HD",
+    "TBS HD",
+    "TBS HD (Pacific)",
+    "Paramount+",
 ]
 
 
@@ -370,6 +374,8 @@ SOCCER_BROADCAST_BADLIST = [
     "Vix Premium Deportes 14",
     "Vix Premium Deportes 15",
     "Vix Premium Deportes 16",
+    "Vix Premium Deportes 17",
+    "Vix Premium Deportes 18",
     "Yes Network",
     "Yes Network HD",
     "Zona TUDN",
@@ -394,7 +400,7 @@ SOCCER_BROADCAST_BADLIST = [
     "beIN XTRA ESPAñOL",
     "fuboTV",
     "iFollow",
-    "Paramount+",
+    "Surya Movies"
 ]
 
 SOCCER_GOODLIST = [
@@ -717,4 +723,5 @@ SOCCER_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
     {"property": "league", "comparison": "equals", "value": "EURO"},
     {"property": "matchup", "comparison": "contains", "value": "Indy Eleven"},
     {"property": "matchup", "comparison": "contains", "value": "USA"},
+    {"property": "matchup", "comparison": "contains", "value": "Wrexham"},
 ]

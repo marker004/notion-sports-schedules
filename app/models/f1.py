@@ -3,7 +3,7 @@ from typing import Optional, cast
 from bs4 import Tag
 from pydantic import BaseModel, validator
 from dateutil.parser import parse
-from constants import F1_CHANNEL_GOODLIST, NO_HULU_BADLIST
+from constants import F1_CHANNEL_GOODLIST, HARD_TIMES_BADLIST
 from shared import beginning_of_today, is_date
 from dateutil.tz import tzlocal
 
@@ -68,7 +68,7 @@ class F1Response(BaseModel):
         return [
             race
             for race in self.races
-            if race.channel in list(set(F1_CHANNEL_GOODLIST) - set(NO_HULU_BADLIST))
+            if race.channel in list(set(F1_CHANNEL_GOODLIST) - set(HARD_TIMES_BADLIST))
             and race.start_datetime
             and race.start_datetime > beginning_of_today
         ]
