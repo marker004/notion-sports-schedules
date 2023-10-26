@@ -47,7 +47,7 @@ def fetch_leagues_json() -> dict:
 
 
 def assemble_usable_events(schedule_json: dict) -> list[GameBroadcast]:
-    game_broadcasts = GameBroadcastCollection(
+    game_broadcast_collection = GameBroadcastCollection(
         game_broadcasts=[
             GameBroadcast(**game_broadcast)
             for sublist in schedule_json.values()
@@ -55,7 +55,7 @@ def assemble_usable_events(schedule_json: dict) -> list[GameBroadcast]:
         ]
     )
 
-    return game_broadcasts.usable_events()
+    return game_broadcast_collection.usable_events()
 
 
 def assemble_usable_apple_tv_games(response: list[str]) -> list[AppleTVFreeSoccer]:
