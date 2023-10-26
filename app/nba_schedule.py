@@ -8,7 +8,7 @@ from shared import ElligibleSportsEnum, NotionSportsScheduleItem, log_good_netwo
 from utils import NotionScheduler
 from utils.assemblers import NbaAssembler
 
-YEAR = 2022
+YEAR = 2023
 
 
 @measure_execution("fetching new NBA schedule")
