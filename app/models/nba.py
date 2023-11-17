@@ -20,7 +20,7 @@ class Team(BaseModel):
 class Broadcaster(BaseModel):
     disp: str
     scope: Literal["home", "away", "can", "natl"]
-    type: Literal["tv", "radio", 'ott', 'nss']
+    type: Literal["tv", "radio", "ott", "nss"]
     # seq: int
     # language: Literal["English"] = Field(alias="lan")
     # url: Optional[str]  # urlparse into ParseResult?

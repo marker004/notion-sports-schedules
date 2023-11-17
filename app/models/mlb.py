@@ -108,7 +108,8 @@ class Game(BaseModel):
                 [
                     broadcast.name
                     for broadcast in self.broadcasts
-                    if broadcast.name in list(set(MLB_GOODLIST) - set(HARD_TIMES_BADLIST))
+                    if broadcast.name
+                    in list(set(MLB_GOODLIST) - set(HARD_TIMES_BADLIST))
                 ]
             )
         )
@@ -150,7 +151,8 @@ class MlbResponse(BaseModel):
                 [
                     broadcast
                     for broadcast in game.broadcasts
-                    if broadcast.name in list(set(MLB_GOODLIST) - set(HARD_TIMES_BADLIST))
+                    if broadcast.name
+                    in list(set(MLB_GOODLIST) - set(HARD_TIMES_BADLIST))
                 ]
             ):
                 good_games.append(game)
