@@ -1,11 +1,19 @@
 import asyncio
+import os
 from typing import Literal, cast
+from constants import TAB
 
 from shared import ElligibleSports, ElligibleSportsEnum, NotionSportsScheduleItem
 from shared_items.interfaces.notion import Notion, collect_paginated_api
 from shared_items.utils import measure_execution
 
-notion = Notion()
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv(find_dotenv())
+
+token = os.getenv("NOTION_TOKEN")
+
+notion = Notion(token)
 SCHEDULE_DATABASE_ID = "7890f1c1844444228b0016ad68c07d22"
 
 
@@ -48,7 +56,7 @@ class NotionScheduler:
         self.sport: ElligibleSports = sport
         self.fresh_schedule_items = fresh_schedule_items
 
-    @measure_execution(f"scheduling")
+    @measure_execution(f"{TAB}scheduling")
     def schedule(self) -> None:
         all_existing_notion_games = self.fetch_existing_games()
         existing_schedule_items = self.assemble_existing_schedule_items(
@@ -60,7 +68,7 @@ class NotionScheduler:
         )
         asyncio.run(self.operate_in_notion(delete_list, do_nothing_list, add_list))
 
-    @measure_execution(f"fetching existing games")
+    @measure_execution(f"{TAB}fetching existing games")
     def fetch_existing_games(self):
         filter = (
             filter_existing_manually_added_notion_games()
@@ -100,7 +108,7 @@ class NotionScheduler:
         return (delete_list, do_nothing_list, add_list)
 
     async def delete_unuseful_games(self, delete_list: list[NotionSportsScheduleItem]):
-        print(f"deleting {len(delete_list)} games")
+        print(f"{TAB}deleting {len(delete_list)} games")
         # these items should all have notion_ids as they have been fetched from Notion
         await notion.async_delete_all_blocks(
             [cast(str, item.notion_id) for item in delete_list]
@@ -108,7 +116,7 @@ class NotionScheduler:
 
     async def insert_new_games(self, insert_list: list[NotionSportsScheduleItem]):
         insert_list_props = self.assemble_insertion_notion_props(insert_list)
-        print(f"inserting {len(insert_list)} games")
+        print(f"{TAB}inserting {len(insert_list)} games")
         await notion.async_add_all_pages(SCHEDULE_DATABASE_ID, insert_list_props)
 
     async def operate_in_notion(
@@ -118,5 +126,5 @@ class NotionScheduler:
         add_list: list[NotionSportsScheduleItem],
     ):
         await self.delete_unuseful_games(delete_list)
-        print(f"keeping {len(do_nothing_list)} games\n")
+        print(f"{TAB}keeping {len(do_nothing_list)} games\n")
         await self.insert_new_games(add_list)

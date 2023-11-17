@@ -4,14 +4,11 @@ from enum import Enum
 from typing import Literal, NamedTuple, Optional, TypedDict
 from pydantic.dataclasses import dataclass
 from shared_items.interfaces import Prop as NotionProp
-from shared_items.interfaces.notion import Notion
 from dateutil.parser import parse
 from dateutil.tz import tzlocal
 
 
 SCHEDULE_DATABASE_ID = "7890f1c1844444228b0016ad68c07d22"
-
-notion = Notion()
 
 beginning_of_today = datetime.combine(datetime.now(), time()).astimezone(tzlocal())
 
