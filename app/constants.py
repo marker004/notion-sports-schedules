@@ -302,6 +302,7 @@ SOCCER_BROADCAST_BADLIST = [
     "GOL TV",
     "In Demand PPVHD (HD Events)",
     "La 7",
+    "LBC Beirut",
     "MLS Season Pass on Apple TV",
     "MSG Zone 1",
     "MSG HD Zone 1",
