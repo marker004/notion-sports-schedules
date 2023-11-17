@@ -1,12 +1,13 @@
 import asyncio
 from playwright.async_api import async_playwright
+from constants import TAB
 
 from models.soccer import AppleTVFreeSoccer
 from shared import AppleTVGameInfo, NotionSportsScheduleItem, log_good_networks
 from utils.assemblers import AppleTVFreeGamesSoccerAssembler
 from requests import Response, get
 
-from shared_items.utils import pp, measure_execution
+from shared_items.utils import pp, measure_execution, try_it
 
 from models.soccer import GameBroadcast, GameBroadcastCollection, LeagueTypes
 from shared import ElligibleSportsEnum, NotionSportsScheduleItem
@@ -16,7 +17,7 @@ from utils.assemblers import SoccerAssembler
 apple_url = "https://tv.apple.com/us/collection/free-matches/edt.col.63e868dd-8b2a-4a50-9cf5-0bd992c03f20"
 
 
-@measure_execution("fetching new soccer schedule")
+@measure_execution(f"{TAB}fetching new soccer schedule")
 def fetch_schedule_json() -> dict:
     schedule_url = "https://www.fotmob.com/api/tvlistings?countryCode=US"
     schedule_response: Response = get(schedule_url)
@@ -39,7 +40,7 @@ async def fetch_apple_tv_schedule_response() -> list[str]:
         return game_infos
 
 
-@measure_execution("fetching soccer leagues")
+@measure_execution(f"{TAB}fetching soccer leagues")
 def fetch_leagues_json() -> dict:
     leagues_url = "https://www.fotmob.com/api/allLeagues"
     leagues_response: Response = get(leagues_url)
@@ -87,19 +88,23 @@ def assemble_apple_tv_notion_items(
         for game in games
     ]
 
+@try_it
+def schedule_soccer():
+    schedule_json = fetch_schedule_json()
+    leagues_json = fetch_leagues_json()
+    usable_events = assemble_usable_events(schedule_json)
+    league_types = LeagueTypes(**leagues_json)
+    fresh_schedule_items = assemble_notion_items(usable_events, league_types)
 
-schedule_json = fetch_schedule_json()
-leagues_json = fetch_leagues_json()
-usable_events = assemble_usable_events(schedule_json)
-league_types = LeagueTypes(**leagues_json)
-fresh_schedule_items = assemble_notion_items(usable_events, league_types)
+    apple_tv_response = asyncio.run(fetch_apple_tv_schedule_response())
+    usable_apple_tv_games = assemble_usable_apple_tv_games(apple_tv_response)
+    fresh_apple_tv_items = assemble_apple_tv_notion_items(usable_apple_tv_games)
 
-apple_tv_response = asyncio.run(fetch_apple_tv_schedule_response())
-usable_apple_tv_games = assemble_usable_apple_tv_games(apple_tv_response)
-fresh_apple_tv_items = assemble_apple_tv_notion_items(usable_apple_tv_games)
+    combined_games = fresh_schedule_items + fresh_apple_tv_items
 
-combined_games = fresh_schedule_items + fresh_apple_tv_items
+    log_good_networks(combined_games)
 
-log_good_networks(combined_games)
+    NotionScheduler(ElligibleSportsEnum.SOCCER.value, combined_games).schedule()
 
-NotionScheduler(ElligibleSportsEnum.SOCCER.value, combined_games).schedule()
+if(__name__ == "__main__"):
+    schedule_soccer()

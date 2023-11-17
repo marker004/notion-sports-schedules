@@ -2,9 +2,10 @@ from datetime import datetime, timedelta
 from urllib import parse
 import asyncio
 from playwright.async_api import async_playwright
-from shared_items.utils import pp, measure_execution
+from shared_items.utils import pp, measure_execution, try_it
 
 from requests import Response, get
+from constants import TAB
 
 from models.mlb import (
     MlbEspnPlusInfo,
@@ -61,7 +62,7 @@ def assemble_schedule_url() -> str:
     return base_url + parse.urlencode(params)
 
 
-@measure_execution("fetching new MLB schedule")
+@measure_execution(f"{TAB}fetching new MLB schedule")
 def fetch_schedule_json() -> dict:
     url = assemble_schedule_url()
     schedule_response: Response = get(url)
@@ -121,18 +122,21 @@ def assemble_espn_plus_notion_items(
 ) -> list[NotionSportsScheduleItem]:
     return [MlbEspnPlusAssembler(game).notion_sports_schedule_item() for game in games]
 
+@try_it
+def schedule_mlb():
+    schedule_json = fetch_schedule_json()
+    usable_events = assemble_usable_events(schedule_json)
+    fresh_items = assemble_notion_items(usable_events)
 
-schedule_json = fetch_schedule_json()
-usable_events = assemble_usable_events(schedule_json)
-fresh_items = assemble_notion_items(usable_events)
+    espn_plus_response = asyncio.run(fetch_espn_plus_schedule_response())
+    usable_espn_plus_games = assemble_usable_espn_plus_games(espn_plus_response)
+    fresh_espn_plus_items = assemble_espn_plus_notion_items(usable_espn_plus_games)
 
-espn_plus_response = asyncio.run(fetch_espn_plus_schedule_response())
-usable_espn_plus_games = assemble_usable_espn_plus_games(espn_plus_response)
-fresh_espn_plus_items = assemble_espn_plus_notion_items(usable_espn_plus_games)
+    combined_games = fresh_items + fresh_espn_plus_items
 
-combined_games = fresh_items + fresh_espn_plus_items
+    log_good_networks(combined_games)
 
-log_good_networks(combined_games)
+    NotionScheduler(ElligibleSportsEnum.MLB.value, combined_games).schedule()
 
-
-NotionScheduler(ElligibleSportsEnum.MLB.value, combined_games).schedule()
+if(__name__ == "__main__"):
+    schedule_mlb()

@@ -6,6 +6,8 @@ from utils import (
     recursively_fetch_existing_notion_games,
 )
 from utils.assemblers import ManualAssembler
+from shared_items.utils import try_it
+
 
 
 def fetch_games() -> list[dict]:
@@ -28,8 +30,13 @@ def assemble_notion_items(games: list[NotionGame]) -> list[NotionSportsScheduleI
     return [ManualAssembler(game).notion_sports_schedule_item() for game in games]
 
 
-games = fetch_games()
-usable_events = assemble_usable_events(games)
-fresh_items = assemble_notion_items(usable_events)
+@try_it
+def schedule_manual_events():
+    games = fetch_games()
+    usable_events = assemble_usable_events(games)
+    fresh_items = assemble_notion_items(usable_events)
 
-NotionScheduler("other", fresh_items).schedule()
+    NotionScheduler("other", fresh_items).schedule()
+
+if (__name__ == "__main__"):
+    schedule_manual_events()
