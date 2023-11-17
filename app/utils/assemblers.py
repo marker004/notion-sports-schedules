@@ -217,19 +217,19 @@ class NhlAssembler(NhlBaseAssembler):
         self.game = game
 
     def format_matchup(self) -> str:
-        home_team = self.game.teams.home.team.name
-        away_team = self.game.teams.away.team.name
+        home_team = self.game.homeTeam.abbrev
+        away_team = self.game.awayTeam.abbrev
 
         return f"{away_team} vs {home_team}"
 
     def format_date(self) -> str:
-        utc_time = self.game.gameDate
+        utc_time = self.game.startTimeUTC
         local_time = utc_time.astimezone(ZoneInfo("America/Indianapolis"))
 
         return local_time.strftime("%Y-%m-%dT%H:%M:%S")
 
     def format_network(self) -> str:
-        broadcasts = [broadcast.name for broadcast in self.game.watchable_broadcasts()]
+        broadcasts = [broadcast.network for broadcast in self.game.watchable_broadcasts()]
         return ", ".join(broadcasts)
 
 

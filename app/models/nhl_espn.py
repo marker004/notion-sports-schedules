@@ -1,6 +1,7 @@
 from datetime import datetime
 from typing import Literal, Optional
 from pydantic import BaseModel
+from shared import beginning_of_today
 
 LOCAL_ZIP_CODE = "46203"
 
@@ -136,7 +137,8 @@ class DailyEspnPlusNhlSchedule(BaseModel):
         for game in self.games:
             blacked_out = self.is_game_blacked_out(game)
             power_play_game = game.broadcast == "NHLPP|ESPN+"
+            in_past = game.date < beginning_of_today
 
-            if power_play_game and not blacked_out:
+            if power_play_game and not blacked_out and not in_past:
                 not_blacked_out_games.append(game)
         return not_blacked_out_games
