@@ -1,5 +1,7 @@
 from shared import ElligibleSportsEnum, FavoriteCriterion
 
+TAB = "\t"
+
 HARD_TIMES_BADLIST = [
     "FS1",
     "TBS",
@@ -288,6 +290,7 @@ SOCCER_BROADCAST_BADLIST = [
     "ESPN Deportes",
     "ESPN Deportes HD",
     "ESPN3",
+    "Fanatiz USA",
     "Fox Deportes",
     "Fox Deportes HD",
     "Fox Soccer Plus",
@@ -400,7 +403,7 @@ SOCCER_BROADCAST_BADLIST = [
     "beIN XTRA ESPAñOL",
     "fuboTV",
     "iFollow",
-    "Surya Movies"
+    "Surya Movies",
 ]
 
 SOCCER_GOODLIST = [
@@ -693,6 +696,7 @@ NATIONAL_FLAGS = {
 
 MLB_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
     {"property": "matchup", "comparison": "contains", "value": "Red Sox"},
+    {"property": "league", "comparison": "contains", "value": "MLB - World Series"},
 ]
 
 NBA_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
@@ -713,6 +717,7 @@ NCAA_TOURNAMENT_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
 
 NHL_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
     {"property": "matchup", "comparison": "contains", "value": "Bruins"},
+    {"property": "matchup", "comparison": "contains", "value": "BOS"},
 ]
 
 

@@ -7,6 +7,7 @@ from shared_items.interfaces import Prop as NotionProp
 from dateutil.parser import parse
 from dateutil.tz import tzlocal
 
+TAB = "\t"
 
 SCHEDULE_DATABASE_ID = "7890f1c1844444228b0016ad68c07d22"
 
@@ -133,7 +134,7 @@ def log_good_networks(items: list[NotionSportsScheduleItem]) -> None:
 
     flat_list = [item for sublist in all_good_networks for item in sublist.split(", ")]
 
-    print(set(flat_list))
+    print(f"{TAB}Good networks: {', '.join(set(flat_list))}")
 
 
 def is_date(possible_date: str) -> bool:
