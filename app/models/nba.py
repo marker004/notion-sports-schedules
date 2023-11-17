@@ -1,11 +1,28 @@
 from datetime import datetime
 from typing import Literal, Optional, Union
+from typing_extensions import TypedDict
 from dateutil.parser import parse
 from dateutil.tz import tzlocal
 
 from pydantic import BaseModel, Field, validator
 from constants import NBA_BROADCASTER_BADLIST, HARD_TIMES_BADLIST
 from shared import beginning_of_today, is_date
+
+
+class HboMaxGameInfo(TypedDict):
+    matchup: str
+    datetime: str
+    network: str
+
+
+class HboMaxGame(BaseModel):
+    datetime: datetime
+    matchup: str
+    network: str
+
+    @validator("datetime", pre=True)
+    def convert_dates(cls, value):
+        return parse(value)
 
 
 class Team(BaseModel):

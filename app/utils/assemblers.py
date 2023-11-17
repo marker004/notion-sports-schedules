@@ -14,7 +14,7 @@ from models.ncaa_bball import Game as NcaaGame
 from models.notion_game import NotionGame
 from models.soccer import AppleTVFreeSoccer, GameBroadcast, LeagueTypes
 from models.mlb import Game as MlbGame, MlbEspnPlusInfo
-from models.nba import Game as NbaGame
+from models.nba import Game as NbaGame, HboMaxGame
 from models.nhl import Game as NhlGame
 from models.nhl_espn import Event as NhlEspnPlusGame
 from shared import ElligibleSportsEnum, FavoriteCriterion, NotionSportsScheduleItem
@@ -119,10 +119,21 @@ class NcaaTournamentAssembler(Assembler):
         return ElligibleSportsEnum.BASKETBALL.value
 
 
-class NbaAssembler(Assembler):
-    def __init__(self, game: NbaGame):
-        self.game = game
+class NbaBaseAssembler(Assembler):
+    def __init__(self) -> None:
         self.favorite_criteria = NBA_FAVORITE_CRITERIA
+
+    def format_league(self) -> str:
+        return "NBA"
+
+    def format_sport(self) -> str:
+        return ElligibleSportsEnum.NBA.value
+
+
+class NbaAssembler(NbaBaseAssembler):
+    def __init__(self, game: NbaGame):
+        super().__init__()
+        self.game = game
 
     def format_matchup(self) -> str:
         team_names = [self.game.visiting_team.team_name, self.game.home_team.team_name]
@@ -139,11 +150,20 @@ class NbaAssembler(Assembler):
     def format_network(self) -> str:
         return self.game.watchable_broadcaster.disp
 
-    def format_league(self) -> str:
-        return "NBA"
 
-    def format_sport(self) -> str:
-        return ElligibleSportsEnum.NBA.value
+class HboMaxGameAssembler(NbaBaseAssembler):
+    def __init__(self, game: HboMaxGame):
+        super().__init__()
+        self.game = game
+
+    def format_matchup(self) -> str:
+        return self.game.matchup
+
+    def format_date(self) -> str:
+        return self.game.datetime.strftime("%Y-%m-%dT%H:%M:%S")
+
+    def format_network(self) -> str:
+        return f"{self.game.network} (HBO Max)"
 
 
 class SoccerAssembler(Assembler):
@@ -229,7 +249,9 @@ class NhlAssembler(NhlBaseAssembler):
         return local_time.strftime("%Y-%m-%dT%H:%M:%S")
 
     def format_network(self) -> str:
-        broadcasts = [broadcast.network for broadcast in self.game.watchable_broadcasts()]
+        broadcasts = [
+            broadcast.network for broadcast in self.game.watchable_broadcasts()
+        ]
         return ", ".join(broadcasts)
 
 
