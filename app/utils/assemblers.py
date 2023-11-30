@@ -4,13 +4,15 @@ from constants import (
     MLB_FAVORITE_CRITERIA,
     NATIONAL_FLAGS,
     NBA_FAVORITE_CRITERIA,
+    NCAA_BASKETBALL_FAVORITE_CRITERIA,
     NCAA_TOURNAMENT_FAVORITE_CRITERIA,
     NHL_FAVORITE_CRITERIA,
     SOCCER_FAVORITE_CRITERIA,
 )
 from models.f1 import F1Race
 from models.indycar import IndycarRace
-from models.ncaa_bball import Game as NcaaGame
+from models.ncaa_game import NcaaGame
+from models.ncaa_bball_tournament import Game as NcaaTournamentGame
 from models.notion_game import NotionGame
 from models.soccer import AppleTVFreeSoccer, GameBroadcast, LeagueTypes
 from models.mlb import Game as MlbGame, MlbEspnPlusInfo
@@ -89,8 +91,30 @@ class ManualAssembler(Assembler):
         return "Favorite"
 
 
-class NcaaTournamentAssembler(Assembler):
+class NcaaBasketballAssembler(Assembler):
     def __init__(self, game: NcaaGame):
+        self.game = game
+        self.favorite_criteria = NCAA_BASKETBALL_FAVORITE_CRITERIA
+
+    def format_matchup(self) -> str:
+        return f"{self.game.away_team} vs {self.game.home_team}"
+
+    def format_date(self) -> str:
+        return self.game.start_time.strftime("%Y-%m-%dT%H:%M:%S") if self.game.start_time else ""
+
+    def format_network(self) -> str:
+        return ", ".join(self.game.watchable_broadcasts())
+
+    def format_league(self) -> str:
+        return "NCAA Basketball"
+
+    def format_sport(self) -> str:
+        return ElligibleSportsEnum.BASKETBALL.value
+
+
+
+class NcaaTournamentAssembler(Assembler):
+    def __init__(self, game: NcaaTournamentGame):
         self.game = game
         self.favorite_criteria = NCAA_TOURNAMENT_FAVORITE_CRITERIA
 
@@ -116,7 +140,7 @@ class NcaaTournamentAssembler(Assembler):
         return "NCAA Tournament"
 
     def format_sport(self) -> str:
-        return ElligibleSportsEnum.BASKETBALL.value
+        return ElligibleSportsEnum.MARCH_MADNESS.value
 
 
 class NbaBaseAssembler(Assembler):

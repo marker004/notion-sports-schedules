@@ -13,7 +13,7 @@ SCHEDULE_DATABASE_ID = "7890f1c1844444228b0016ad68c07d22"
 
 beginning_of_today = datetime.combine(datetime.now(), time()).astimezone(tzlocal())
 
-ElligibleSports = Literal["🏀", "⚽", "🏒", "⚾", "🏁", "🏎️", "⛹️", "other"]
+ElligibleSports = Literal["🏀", "⚽", "🏒", "⚾", "🏁", "🏎️", "⛹️", "🏆", "other"]
 
 
 class ElligibleSportsEnum(Enum):
@@ -24,6 +24,7 @@ class ElligibleSportsEnum(Enum):
     INDY_CAR = "🏁"
     F1 = "🏎️"
     BASKETBALL = "⛹️"
+    MARCH_MADNESS = "🏆"
 
 
 @dataclass

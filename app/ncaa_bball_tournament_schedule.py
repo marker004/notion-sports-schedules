@@ -2,7 +2,7 @@ from requests import Response, get
 from shared_items.utils import pp, measure_execution, try_it
 from constants import TAB
 
-from models.ncaa_bball import Game as NcaaGame, GameCollection
+from models.ncaa_bball_tournament import Game as NcaaGame, GameCollection
 from shared import ElligibleSportsEnum, NotionSportsScheduleItem, log_good_networks
 from utils import NotionScheduler
 from utils.assemblers import NcaaTournamentAssembler
@@ -36,7 +36,7 @@ def schedule_march_madness():
 
     log_good_networks(fresh_games)
 
-    NotionScheduler(ElligibleSportsEnum.BASKETBALL.value, fresh_games).schedule()
+    NotionScheduler(ElligibleSportsEnum.MARCH_MADNESS.value, fresh_games).schedule()
 
 if (__name__ == "__main__"):
     schedule_march_madness()
