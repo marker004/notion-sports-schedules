@@ -329,6 +329,8 @@ SOCCER_BROADCAST_BADLIST = [
     "Telecentro TV",
     "Telemundo Satellite Feed",
     "Telemundo Satellite Feed Pacific",
+    "truTV",
+    "truTV HD",
     "Twitch",
     "TyC Sports HD",
     "TyC Sports Internacional USA",
