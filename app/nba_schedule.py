@@ -60,6 +60,7 @@ def assemble_usable_hbo_max_games(game_infos: list[str]) -> list[HboMaxGame]:
             isinstance(title, Tag)
             and isinstance(time, Tag)
             and isinstance(network, Tag)
+            and network.text
         ):
             relevant_game_info.append(
                 HboMaxGameInfo(
