@@ -430,6 +430,8 @@ SOCCER_GOODLIST = [
     "ESPNU",
 ]
 
+NCAA_BASKETBALL_GOODLIST = ["ESPN+", "FOX"]
+
 
 NATIONAL_FLAGS = {
     "Ascension Island": "🇦🇨",
@@ -712,8 +714,17 @@ NCAA_TOURNAMENT_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
     {
         "property": "sport",
         "comparison": "equals",
-        "value": ElligibleSportsEnum.BASKETBALL.value,
+        "value": ElligibleSportsEnum.MARCH_MADNESS.value,
     },
+]
+
+NCAA_BASKETBALL_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
+    {"property": "matchup", "comparison": "contains", "value": "New Hampshire"},
+    {"property": "matchup", "comparison": "contains", "value": "Purdue"},
+    {"property": "matchup", "comparison": "contains", "value": "Indiana"},
+    {"property": "matchup", "comparison": "contains", "value": "Butler"},
+    {"property": "matchup", "comparison": "contains", "value": "IUPUI"},
+    {"property": "matchup", "comparison": "contains", "value": "Notre Dame"},
 ]
 
 NHL_FAVORITE_CRITERIA: list[FavoriteCriterion] = [
