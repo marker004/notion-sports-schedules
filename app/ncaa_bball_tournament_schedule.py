@@ -9,7 +9,7 @@ from utils.assemblers import NcaaTournamentAssembler
 
 
 def assemble_league_schedule_url() -> str:
-    return "https://sdataprod.ncaa.com/?operationName=scores_bracket_web&variables=%7B%22seasonYear%22%3A2022%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f21cac8420a55a7d190f2f686a441e2507d8fb80f25eac5c91131ddd9df588da%22%7D%7D"
+    return "https://sdataprod.ncaa.com/?operationName=scores_bracket_web&variables=%7B%22seasonYear%22%3A2023%7D&extensions=%7B%22persistedQuery%22%3A%7B%22version%22%3A1%2C%22sha256Hash%22%3A%22f21cac8420a55a7d190f2f686a441e2507d8fb80f25eac5c91131ddd9df588da%22%7D%7D"
 
 
 @measure_execution(f"{TAB}fetching new tourney schedule")
