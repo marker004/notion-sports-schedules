@@ -100,7 +100,11 @@ class NcaaBasketballAssembler(Assembler):
         return f"{self.game.away_team} vs {self.game.home_team}"
 
     def format_date(self) -> str:
-        return self.game.start_time.strftime("%Y-%m-%dT%H:%M:%S") if self.game.start_time else ""
+        return (
+            self.game.start_time.strftime("%Y-%m-%dT%H:%M:%S")
+            if self.game.start_time
+            else ""
+        )
 
     def format_network(self) -> str:
         return ", ".join(self.game.watchable_broadcasts())
@@ -110,7 +114,6 @@ class NcaaBasketballAssembler(Assembler):
 
     def format_sport(self) -> str:
         return ElligibleSportsEnum.BASKETBALL.value
-
 
 
 class NcaaTournamentAssembler(Assembler):

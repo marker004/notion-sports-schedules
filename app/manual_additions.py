@@ -9,7 +9,6 @@ from utils.assemblers import ManualAssembler
 from shared_items.utils import try_it
 
 
-
 def fetch_games() -> list[dict]:
     filter = filter_existing_manually_added_notion_games()
     return recursively_fetch_existing_notion_games(filter)
@@ -38,5 +37,6 @@ def schedule_manual_events():
 
     NotionScheduler("other", fresh_items).schedule()
 
-if (__name__ == "__main__"):
+
+if __name__ == "__main__":
     schedule_manual_events()

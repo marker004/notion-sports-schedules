@@ -27,6 +27,7 @@ def assemble_usable_events(response: Response) -> list[F1Race]:
     f1_response = F1Response(
         race_elements_container=soup.find("table", {"class": "Table"})
     )
+
     return f1_response.usable_events
 
 
@@ -44,5 +45,6 @@ def schedule_f1():
 
     NotionScheduler(ElligibleSportsEnum.F1.value, fresh_items).schedule()
 
-if (__name__ == "__main__"):
+
+if __name__ == "__main__":
     schedule_f1()

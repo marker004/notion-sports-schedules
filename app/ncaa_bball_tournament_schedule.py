@@ -28,6 +28,7 @@ def assemble_notion_items(games: list[NcaaGame]) -> list[NotionSportsScheduleIte
         NcaaTournamentAssembler(game).notion_sports_schedule_item() for game in games
     ]
 
+
 @try_it
 def schedule_march_madness():
     schedule_json = fetch_schedule_json()
@@ -38,5 +39,6 @@ def schedule_march_madness():
 
     NotionScheduler(ElligibleSportsEnum.MARCH_MADNESS.value, fresh_games).schedule()
 
-if (__name__ == "__main__"):
+
+if __name__ == "__main__":
     schedule_march_madness()

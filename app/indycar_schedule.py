@@ -46,5 +46,6 @@ def schedule_indycar():
 
     NotionScheduler(ElligibleSportsEnum.INDY_CAR.value, fresh_items).schedule()
 
-if (__name__ == "__main__"):
+
+if __name__ == "__main__":
     schedule_indycar()

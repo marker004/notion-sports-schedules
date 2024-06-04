@@ -122,6 +122,7 @@ def assemble_espn_plus_notion_items(
 ) -> list[NotionSportsScheduleItem]:
     return [MlbEspnPlusAssembler(game).notion_sports_schedule_item() for game in games]
 
+
 @try_it
 def schedule_mlb():
     schedule_json = fetch_schedule_json()
@@ -138,5 +139,6 @@ def schedule_mlb():
 
     NotionScheduler(ElligibleSportsEnum.MLB.value, combined_games).schedule()
 
-if(__name__ == "__main__"):
+
+if __name__ == "__main__":
     schedule_mlb()

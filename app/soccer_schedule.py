@@ -88,6 +88,7 @@ def assemble_apple_tv_notion_items(
         for game in games
     ]
 
+
 @try_it
 def schedule_soccer():
     schedule_json = fetch_schedule_json()
@@ -106,5 +107,6 @@ def schedule_soccer():
 
     NotionScheduler(ElligibleSportsEnum.SOCCER.value, combined_games).schedule()
 
-if(__name__ == "__main__"):
+
+if __name__ == "__main__":
     schedule_soccer()
